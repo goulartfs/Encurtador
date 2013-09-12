@@ -5,6 +5,6 @@ all:
   doctrine:
     class: sfDoctrineDatabase
     param:
-      dsn:      mysql:host=localhost;dbname=Encurtador
+      dsn:      mysql:host=localhost;dbname=encurtador
       username: root
       password: lisatewr 

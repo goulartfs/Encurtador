@@ -34,5 +34,13 @@ class mainActions extends sfActions {
             }
         }
     }
+    
+    public function executeResolve(sfWebRequest $request){
+        $this->forward404If(!$request->getParameter('url_id'));
+        $url = Doctrine::getTable('Url')->findOneByShortUrl($request->getParameter('url_id'));
+        $this->forward404If(!$url);
+        
+        $this->url = $url;
+    }
 
 }

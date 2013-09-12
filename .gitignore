@@ -1,4 +1,4 @@
 /log
 /cache
 /test
-/config/databases.yml
+config/databases.yml
