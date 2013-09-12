@@ -1,0 +1,6 @@
+Url:
+  actAs:
+    Timestampable: ~
+  columns:
+    original_url: { type: varchar(), notnull: true }
+    short_url: { type: varchar(255), notnull: true, unique: true }

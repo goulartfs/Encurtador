@@ -2,9 +2,13 @@
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
 # default rules
+resolve_url:
+  url:   /:url_id
+  param: { module: main, action: resolve }
+  
 homepage:
   url:   /
-  param: { module: default, action: index }
+  param: { module: main, action: index }
 
 # generic rules
 # please, remove them by adding more specific rules
