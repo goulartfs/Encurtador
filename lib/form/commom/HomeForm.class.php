@@ -12,7 +12,7 @@ class HomeForm extends sfForm {
                 'required' => true
                     ), array(
                 'required' => 'Campo não pode estar vazio.',
-                'invalid' => 'Url inválida.'
+                'invalid' => 'Url inválida, verifique se há "http://" no início.'
                     )),
         ));
 

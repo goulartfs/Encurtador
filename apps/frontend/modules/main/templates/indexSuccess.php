@@ -14,7 +14,7 @@
         </fieldset>
     </form>
     <?php if ($sf_user->hasFlash('notice')) { ?>
-        <?php $url_id = url_for('@resolve_url?url_id=' . $sf_user->getFlash('notice')); ?>
-        <p class="alert alert-success"><a href="<?php print URL_BASE . $url_id ?>"></a><?php print $url_id; ?></p>
+        <?php $url_id = URL_BASE . url_for('@resolve_url?url_id=' . $sf_user->getFlash('notice')); ?>
+        <p class="alert alert-success"><a href="<?php print $url_id ?>"><?php print $url_id; ?></a></p>
         <?php } ?>
 </div>
