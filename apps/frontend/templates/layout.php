@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
         <?php include_http_metas() ?>
         <?php include_metas() ?>
         <?php include_title() ?>
@@ -11,7 +11,42 @@
     </head>
 
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div id="header">
+            <div class="bg-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="span4">
+                            <img src="/images/logo.png" />
+                        </div>
+                        <div class="span8 text-right login-area">
+                            <p>
+                                Já tem uma conta?
+                                <a href="#">
+                                    <img src="/images/bt_login.png" />
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span12">
+                            <?php include_component('main', 'form') ?>
+                        </div>
+                    </div>
+                    <div class="row pq-area">
+                        <h2>Porque a CliquesBR?</h2>
+                    </div>
+                    <div class="row pos-pq">
+                        <p>
+                            <small>
+                                Ut ac orci metus. Proin sit amet ipsum ac risus cursus porttitor et eget nibh. Aenean sollicitudin quis diam non laoreet.<br/>
+                                Suspendisse tincidunt orci ut lorem dictum, ac feugiat quam auctor. Mauris consectetur tempus sapien, et interdum est molestie et. 
+                            </small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--        <div class="navbar">
             <div class="navbar-inner">
                 <div class="container">
                     <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -43,16 +78,16 @@
                             <input class="span2" type="password" placeholder="Password">
                             <button type="submit" class="btn">Sign in</button>
                         </form>
-                    </div><!--/.nav-collapse -->
+                    </div>/.nav-collapse 
                 </div>
             </div>
-        </div>
-
-        <div class="container">
-
+        </div>-->
             <?php print $sf_content; ?>
 
-            <!-- Example row of columns -->
+<!--        <div class="container">
+
+
+             Example row of columns 
             <div class="row">
                 <div class="span4">
                     <h2>Heading</h2>
@@ -77,6 +112,6 @@
                 <p>&copy; Company 2013</p>
             </footer>
 
-        </div> <!-- /container -->
+        </div>  /container -->
     </body>
 </html>

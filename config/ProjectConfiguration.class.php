@@ -8,6 +8,7 @@ class ProjectConfiguration extends sfProjectConfiguration {
     public function setup() {
         define("URL_BASE", "http://" . $_SERVER['HTTP_HOST']);
         $this->enablePlugins('sfDoctrinePlugin');
-    }
+      $this->enablePlugins('sfDoctrineGuardPlugin');
+  }
 
 }
