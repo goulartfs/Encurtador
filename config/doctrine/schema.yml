@@ -2,5 +2,12 @@ Url:
   actAs:
     Timestampable: ~
   columns:
+    user_id: { type: integer(11) }
     original_url: { type: varchar(), notnull: true }
     short_url: { type: varchar(255), notnull: true, unique: true }
+UrlVisited:
+  actAs:
+    Timestampable: ~
+  columns:
+    url_id: { type: integer(11) }
+    ipuser: { type: string(255) }
