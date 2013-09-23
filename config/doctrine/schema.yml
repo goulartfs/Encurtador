@@ -12,6 +12,8 @@ UrlControle:
   columns:
     url_id: { type: integer(11) }
     ipuser: { type: string(255) }
+  relations:
+    Url: { onDelete: RESTRICT, onUpdate: RESTRICT }
 
 TipoUsuario:
   actAs:
