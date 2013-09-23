@@ -2,12 +2,71 @@ Url:
   actAs:
     Timestampable: ~
   columns:
-    user_id: { type: integer(11) }
+    usuario_id: { type: integer(11) }
     original_url: { type: varchar(), notnull: true }
     short_url: { type: varchar(255), notnull: true, unique: true }
-UrlVisited:
+    
+UrlControle:
   actAs:
     Timestampable: ~
   columns:
     url_id: { type: integer(11) }
     ipuser: { type: string(255) }
+
+TipoUsuario:
+  actAs:
+    Timestampable: ~
+  columns:
+    tipo: { type: string(255) }
+    
+Usuario:
+  actAs:
+    Timestampable: ~
+  columns:
+    user_id: { type: integer(11) }
+    tipo_usuario_id: { type: integer(11) }
+  relations:
+    TipoUsuario: { onDelete: RESTRICT, onUpdate: RESTRICT }
+    
+Conta:
+  actAs:
+    Timestampable: ~
+  columns:
+    usuario_id: { type: integer(11) }
+    saldo: { type: float }
+  relations:
+    Usuario: { onDelete: RESTRICT, onUpdate: RESTRICT }
+    
+TipoOperacao:
+  actAs:
+    Timestampable: ~
+  columns:
+    tipo: { type: string(255) }
+    
+ContaOperacao:
+  actAs:
+    Timestampable: ~
+  columns:
+    conta_id: { type: integer(11) }
+    tipo_operacao_id: { type: integer(11) }
+    valor: { type: float }
+  relations:
+    TipoOperacao: { onDelete: RESTRICT, onUpdate: RESTRICT }
+    
+Campanha:
+  actAs:
+    Timestampable: ~
+  columns:
+    usuario_id: { type: integer(11) }
+    orcamento: { type: float }
+    titulo: { type: string(255) }
+    descricao: { type: string() }
+    url_campanha: { type: string() }
+    is_active: { type: boolean, default: 1 }
+    
+CampanhaControle:
+  actAs:
+    Timestampable: ~
+  columns:
+    campanha_id: { type: integer(11) }
+    
