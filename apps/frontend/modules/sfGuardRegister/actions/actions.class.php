@@ -15,6 +15,12 @@ class sfGuardRegisterActions extends sfActions {
      *
      * @param sfRequest $request A request object
      */
+    public function preExecute() {
+        parent::preExecute();
+
+        $this->getUser()->setFlash('title-page', 'Crie sua conta');
+    }
+    
     public function executeIndex(sfWebRequest $request) {
         if ($this->getUser()->isAuthenticated()) {
             $this->getUser()->setFlash('notice', 'Você já está cadastrado e logado!');
