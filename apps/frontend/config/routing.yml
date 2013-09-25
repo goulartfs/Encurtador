@@ -17,16 +17,27 @@ sf_guard_signout:
 sf_guard_register:
   url:   /register
   param: { module: sfGuardRegister, action: index }
-
+  
+termos:
+  url:   /termos-e-condicoes
+  param: { module: termosecondicoes, action: index }
+  
+sobre:
+  url:   /sobre-nos
+  param: { module: sobrenos, action: index }
+ 
+resolve_url:
+  url:   /:url_id
+  param: { module: main, action: resolve }
+  requirements:
+    url_id: ~
+    
 # generic rules
 # please, remove them by adding more specific rules
 default_index:
   url:   /:module
   param: { action: index }
 
+
 default:
   url:   /:module/:action/*
-
-resolve_url:
-  url:   /:url_id
-  param: { module: main, action: resolve }
