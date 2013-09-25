@@ -33,6 +33,8 @@ class mainActions extends sfActions {
                 $this->redirect($_SERVER['HTTP_REFERER']);
             }
         }
+        
+        $this->setLayout('layout');
     }
     
     public function executeResolve(sfWebRequest $request){

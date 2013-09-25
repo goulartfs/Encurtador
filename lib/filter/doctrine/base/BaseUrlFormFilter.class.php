@@ -13,6 +13,7 @@ abstract class BaseUrlFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
+      'usuario_id'   => new sfWidgetFormFilterInput(),
       'original_url' => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'short_url'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'created_at'   => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
@@ -20,6 +21,7 @@ abstract class BaseUrlFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
+      'usuario_id'   => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'original_url' => new sfValidatorPass(array('required' => false)),
       'short_url'    => new sfValidatorPass(array('required' => false)),
       'created_at'   => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
@@ -44,6 +46,7 @@ abstract class BaseUrlFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'           => 'Number',
+      'usuario_id'   => 'Number',
       'original_url' => 'Text',
       'short_url'    => 'Text',
       'created_at'   => 'Date',

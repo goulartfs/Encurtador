@@ -16,6 +16,7 @@ abstract class BaseUrlForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'           => new sfWidgetFormInputHidden(),
+      'usuario_id'   => new sfWidgetFormInputText(),
       'original_url' => new sfWidgetFormInputText(),
       'short_url'    => new sfWidgetFormInputText(),
       'created_at'   => new sfWidgetFormDateTime(),
@@ -24,6 +25,7 @@ abstract class BaseUrlForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'           => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'usuario_id'   => new sfValidatorInteger(array('required' => false)),
       'original_url' => new sfValidatorPass(),
       'short_url'    => new sfValidatorPass(),
       'created_at'   => new sfValidatorDateTime(),

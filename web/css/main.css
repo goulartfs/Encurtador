@@ -1,5 +1,14 @@
 body{
     font-family: Tahoma;
+    color: #2b2b2b;
+}
+
+a{
+    color: #286ba8;
+}
+
+strong{
+    color: #15294f;
 }
 
 #header{
@@ -7,9 +16,19 @@ body{
     height: 376px;
 }
 
+.interna #header{
+    background: url(/images/bg_topo_interna.jpg) repeat-x scroll center top transparent;
+    height: 205px;
+}
+
 #header .bg-header{
     background: url(/images/topo.jpg) no-repeat scroll center top transparent;
     height: 376px;
+}
+
+.interna #header .bg-header{
+    background: url(/images/topo_interna.jpg) no-repeat scroll center top transparent;
+    height: 205px;
 }
 
 #header .container{
@@ -19,6 +38,10 @@ body{
 #header .login-area{
     color: #fff;
     font-weight: bold;
+}
+
+#header .login-area .username{
+    color: #fac800;
 }
 
 #header .login-area a{
@@ -34,6 +57,18 @@ body{
     margin-top: 18px;
     color: #021e50;
     font-size: 30pt;
+}
+
+.interna #header .title-page {
+    color: #FFFFFF;
+    font-family: Arial;
+    font-size: 30pt;
+    font-style: italic;
+    font-weight: bold;
+    letter-spacing: -2px;
+    margin-left: 80px;
+    position: absolute;
+    top: 98px;
 }
 
 #header .pos-pq{
@@ -69,4 +104,48 @@ body{
     color: #466586;
     margin-left: 10px;
     line-height: 14px;
+}
+
+#content {
+    font-family: Tahoma;
+    font-size: 12px;
+    line-height: 25px;
+    padding: 25px 0;
+}
+
+#content p{
+    margin: 0 0 25px
+}
+
+#footer{
+    background: url(/images/bg_footer.jpg) repeat-x scroll center top #043483;
+    min-height: 56px;
+    font-size: 12px;
+}
+
+#footer a:hover{
+    color: #fff;
+    text-decoration: none;
+}
+
+#footer ul.navbar{
+    list-style: none;
+    float: left;
+    margin: 0;
+    padding: 0;
+    margin-top: 25px;
+}
+
+#footer ul.navbar li{
+    float: left;
+    margin-left: 15px;
+}
+
+#footer ul.navbar li{
+    float: left;
+    margin-left: 15px;
+}
+
+#footer ul.navbar li:first-child{
+    margin-left: 0;
 }
