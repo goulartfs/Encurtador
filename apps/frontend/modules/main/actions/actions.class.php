@@ -21,10 +21,13 @@ class mainActions extends sfActions {
         $encurtados = $this->getRequest()->getCookie('encurtados');
         
         $url_ids = str_replace('-', ',', $encurtados);
+        $this->urls = null;
         
+        if(!empty($url_ids)){
         $this->urls = Doctrine::getTable('Url')->createQuery('u')
                 ->where('u.id in ('.$url_ids.')')
                 ->execute();
+        }
 
         if ($request->getMethod() == 'POST') {
 
