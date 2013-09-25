@@ -24,6 +24,7 @@ test:
 
 all:
   .settings:
+    enabled_modules:      [default, sfGuardAuth, sfGuardRegister]
     # Form security secret (CSRF protection)
     csrf_secret:            Nuy878su
 
