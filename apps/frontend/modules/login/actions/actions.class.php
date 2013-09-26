@@ -36,7 +36,7 @@ class loginActions extends sfActions {
                 $values = $this->form->getValues();
                 $this->getUser()->signin($values['user']);
 
-                return $this->redirect('@homepage');
+                return $this->redirect('@profile');
             } else {
                 $user->setFlash('error', 'Login ou senha inválidos');
             }

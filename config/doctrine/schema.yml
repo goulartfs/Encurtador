@@ -27,8 +27,13 @@ Usuario:
   columns:
     user_id: { type: integer(11) }
     tipo_usuario_id: { type: integer(11) }
+    endereco: { type: string() }
+    estado: { type: string(255) }
+    cidade: { type: string(255) }
+    cep: { type: string(255) }
+    telefone: { type: string(255);}
   relations:
-    TipoUsuario: { onDelete: RESTRICT, onUpdate: RESTRICT }
+    sfGuardUser: { onDelete: CASCADE, onUpdate: CASCADE, local: user_id}
     
 Conta:
   actAs:

@@ -11,6 +11,11 @@ strong{
     color: #15294f;
 }
 
+.divider{
+    border-left: 1px solid #E5E5E5;
+    padding-left: 20px;
+}
+
 #header{
     background: url(/images/bg_topo.jpg) repeat-x scroll center top transparent;
     height: 376px;

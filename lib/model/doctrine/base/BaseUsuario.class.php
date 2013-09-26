@@ -7,16 +7,31 @@
  * 
  * @property integer $user_id
  * @property integer $tipo_usuario_id
- * @property TipoUsuario $TipoUsuario
+ * @property string $endereco
+ * @property string $estado
+ * @property string $cidade
+ * @property string $cep
+ * @property string $telefone
+ * @property sfGuardUser $sfGuardUser
  * @property Doctrine_Collection $Conta
  * 
  * @method integer             getUserId()          Returns the current record's "user_id" value
  * @method integer             getTipoUsuarioId()   Returns the current record's "tipo_usuario_id" value
- * @method TipoUsuario         getTipoUsuario()     Returns the current record's "TipoUsuario" value
+ * @method string              getEndereco()        Returns the current record's "endereco" value
+ * @method string              getEstado()          Returns the current record's "estado" value
+ * @method string              getCidade()          Returns the current record's "cidade" value
+ * @method string              getCep()             Returns the current record's "cep" value
+ * @method string              getTelefone()        Returns the current record's "telefone" value
+ * @method sfGuardUser         getSfGuardUser()     Returns the current record's "sfGuardUser" value
  * @method Doctrine_Collection getConta()           Returns the current record's "Conta" collection
  * @method Usuario             setUserId()          Sets the current record's "user_id" value
  * @method Usuario             setTipoUsuarioId()   Sets the current record's "tipo_usuario_id" value
- * @method Usuario             setTipoUsuario()     Sets the current record's "TipoUsuario" value
+ * @method Usuario             setEndereco()        Sets the current record's "endereco" value
+ * @method Usuario             setEstado()          Sets the current record's "estado" value
+ * @method Usuario             setCidade()          Sets the current record's "cidade" value
+ * @method Usuario             setCep()             Sets the current record's "cep" value
+ * @method Usuario             setTelefone()        Sets the current record's "telefone" value
+ * @method Usuario             setSfGuardUser()     Sets the current record's "sfGuardUser" value
  * @method Usuario             setConta()           Sets the current record's "Conta" collection
  * 
  * @package    Encurtador
@@ -37,16 +52,36 @@ abstract class BaseUsuario extends sfDoctrineRecord
              'type' => 'integer',
              'length' => 11,
              ));
+        $this->hasColumn('endereco', 'string', null, array(
+             'type' => 'string',
+             'length' => '',
+             ));
+        $this->hasColumn('estado', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('cidade', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('cep', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('telefone', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('TipoUsuario', array(
-             'local' => 'tipo_usuario_id',
+        $this->hasOne('sfGuardUser', array(
+             'local' => 'user_id',
              'foreign' => 'id',
-             'onDelete' => 'RESTRICT',
-             'onUpdate' => 'RESTRICT'));
+             'onDelete' => 'CASCADE',
+             'onUpdate' => 'CASCADE'));
 
         $this->hasMany('Conta', array(
              'local' => 'id',

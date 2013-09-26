@@ -18,6 +18,14 @@ sf_guard_register:
   url:   /register
   param: { module: sfGuardRegister, action: index }
   
+profile:
+  url:   /profile
+  param: { module: profile, action: index }
+
+profile_action:
+  url:   /profile/:action/*
+  param: { module: profile }
+  
 termos:
   url:   /termos-e-condicoes
   param: { module: termosecondicoes, action: index }
