@@ -12,7 +12,7 @@
             </p>
         <?php } else { ?>
             <p>
-                Olá, <span class="username"><?php print ucfirst($sf_user->getGuardUser()->getFirstName()) ?></span>. Seja bem vindo!
+                Olá, <a class="username" href="<?php print url_for('@profile') ?>"><?php print ucfirst($sf_user->getGuardUser()->getFirstName()) ?></a>. Seja bem vindo!
                 <br/>
                 <a href="<?php print url_for('@sf_guard_signout') ?>">Deslogar</a>
             </p>

@@ -13,15 +13,25 @@ abstract class BaseUsuarioFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'user_id'         => new sfWidgetFormFilterInput(),
-      'tipo_usuario_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('TipoUsuario'), 'add_empty' => true)),
+      'user_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('sfGuardUser'), 'add_empty' => true)),
+      'tipo_usuario_id' => new sfWidgetFormFilterInput(),
+      'endereco'        => new sfWidgetFormFilterInput(),
+      'estado'          => new sfWidgetFormFilterInput(),
+      'cidade'          => new sfWidgetFormFilterInput(),
+      'cep'             => new sfWidgetFormFilterInput(),
+      'telefone'        => new sfWidgetFormFilterInput(),
       'created_at'      => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'updated_at'      => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
     ));
 
     $this->setValidators(array(
-      'user_id'         => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'tipo_usuario_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('TipoUsuario'), 'column' => 'id')),
+      'user_id'         => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('sfGuardUser'), 'column' => 'id')),
+      'tipo_usuario_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'endereco'        => new sfValidatorPass(array('required' => false)),
+      'estado'          => new sfValidatorPass(array('required' => false)),
+      'cidade'          => new sfValidatorPass(array('required' => false)),
+      'cep'             => new sfValidatorPass(array('required' => false)),
+      'telefone'        => new sfValidatorPass(array('required' => false)),
       'created_at'      => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'updated_at'      => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
     ));
@@ -44,8 +54,13 @@ abstract class BaseUsuarioFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'              => 'Number',
-      'user_id'         => 'Number',
-      'tipo_usuario_id' => 'ForeignKey',
+      'user_id'         => 'ForeignKey',
+      'tipo_usuario_id' => 'Number',
+      'endereco'        => 'Text',
+      'estado'          => 'Text',
+      'cidade'          => 'Text',
+      'cep'             => 'Text',
+      'telefone'        => 'Text',
       'created_at'      => 'Date',
       'updated_at'      => 'Date',
     );
