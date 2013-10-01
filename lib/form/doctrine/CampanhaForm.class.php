@@ -13,7 +13,16 @@ class CampanhaForm extends BaseCampanhaForm {
     public function configure() {
         $this->widgetSchema['usuario_id'] = new sfWidgetFormInputHidden();
         $this->setDefault('usuario_id', sfContext::getInstance()->getUser()->getGuardUser()->getId());
-        
+
+        $this->widgetSchema['url_campanha'] = new sfWidgetFormInputText();
+
+        $this->validatorSchema['url_campanha'] = new sfValidatorUrl(array(
+            'required' => true
+                ), array(
+            'required' => 'Campo não pode estar vazio.',
+            'invalid' => 'Url inválida, verifique se há "http://" no início.'
+        ));
+
         unset($this['created_at'], $this['updated_at']);
     }
 
