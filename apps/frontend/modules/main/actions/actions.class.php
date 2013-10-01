@@ -17,39 +17,39 @@ class mainActions extends sfActions {
      */
     public function executeIndex(sfWebRequest $request) {
 
-        $this->form = new HomeForm();
+        $this->form = new EncurtadorForm();
         $encurtados = $this->getRequest()->getCookie('encurtados');
-        
+
         $url_ids = str_replace('-', ',', $encurtados);
         $this->urls = null;
-        
-        if(!empty($url_ids)){
-        $this->urls = Doctrine::getTable('Url')->createQuery('u')
-                ->where('u.id in ('.$url_ids.')')
-                ->execute();
+
+        if (!empty($url_ids) && !$this->getUser()->isAuthenticated()) {
+            $this->urls = Doctrine::getTable('Url')->createQuery('u')
+                    ->where('u.id in (' . $url_ids . ')')
+                    ->execute();
         }
 
         if ($request->getMethod() == 'POST') {
 
-            $this->form->bind($request->getParameter('home'));
+            $this->form->bind($request->getParameter('encurtador'));
             if ($this->form->isValid()) {
-                $url_id = Util::generateUniqueId();
-
-                $url = new Url();
-                $url->setOriginalUrl($this->form->getValue('url'));
-                $url->setShortUrl($url_id);
-                $url->save();
+                
+                $url = $this->form->process();
 
                 if (!empty($encurtados)) {
                     $encurtados .= '-';
                 }
+                
                 $encurtados .= $url->getId();
 
-                $this->getResponse()->setCookie('encurtados', $encurtados);
+                if (!$this->getUser()->isAuthenticated()) {
+                    $this->getResponse()->setCookie('encurtados', $encurtados);
+                }
 
-                $this->getUser()->setFlash('notice', $url_id);
+                $gen_url = "<a href='{$url->getFullUrl()}'>{$url->getShortUrl()}</a>";
+                $this->getUser()->setFlash('notice', "<strong>Endereço encurtado com sucesso: </strong>" . $gen_url);
 
-                $this->redirect($_SERVER['HTTP_REFERER']);
+                $this->redirect('profile/links');
             }
         }
 
@@ -60,6 +60,8 @@ class mainActions extends sfActions {
         $this->forward404If(!$request->getParameter('url_id'));
         $url = Doctrine::getTable('Url')->findOneByShortUrl($request->getParameter('url_id'));
         $this->forward404If(!$url);
+        
+        die($_SERVER["REMOTE_ADDR"]);
 
         $this->url = $url;
     }

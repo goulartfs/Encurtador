@@ -12,6 +12,7 @@ UrlControle:
   columns:
     url_id: { type: integer(11) }
     ipuser: { type: string(255) }
+    is_processed: { type: boolean, default: 0 }
   relations:
     Url: { onDelete: RESTRICT, onUpdate: RESTRICT }
 
@@ -76,4 +77,6 @@ CampanhaControle:
     Timestampable: ~
   columns:
     campanha_id: { type: integer(11) }
+    ip_viewer: { type: string(255) }
+    is_processed: { type: boolean, default: 0 }
     

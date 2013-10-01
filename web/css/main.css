@@ -16,6 +16,10 @@ strong{
     padding-left: 20px;
 }
 
+.no-margin{
+    margin: 0;
+}
+
 #header{
     background: url(/images/bg_topo.jpg) repeat-x scroll center top transparent;
     height: 376px;
@@ -86,10 +90,10 @@ strong{
 #header button{
     background: none;
     border: none;
-    padding-right: 0;
+    padding: 0;
 }
 
-#header #home_url {
+#header #encurtador_url {
     font-family: Arial;
     font-size: 25pt;
     height: auto;

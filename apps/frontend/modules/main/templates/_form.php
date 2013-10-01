@@ -2,7 +2,7 @@
     <?php print $form['url']->renderError() ?>
     <div class="display-fields">
         <?php print $form['url'] ?>
-        <?php print $form['_csrf_token'] ?>
+        <?php echo $form->renderHiddenFields() ?>
         <button class="" type="submit"><img src="/images/bt_encurtar.png" /></button>
         <p>
             <small>
