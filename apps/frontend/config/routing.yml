@@ -34,11 +34,23 @@ sobre:
   url:   /sobre-nos
   param: { module: sobrenos, action: index }
  
+new_ad:
+  url: /ad/new
+  param: { module: profile, action: newad }
+ 
+edit_ad:
+  url: /ad/:id/edit
+  param: { module: profile, action: editad }
+  requirements:
+    id: ~
+
+  
 resolve_url:
   url:   /:url_id
   param: { module: main, action: resolve }
   requirements:
     url_id: ~
+    
     
 # generic rules
 # please, remove them by adding more specific rules

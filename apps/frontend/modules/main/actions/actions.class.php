@@ -49,7 +49,11 @@ class mainActions extends sfActions {
                 $gen_url = "<a href='{$url->getFullUrl()}'>{$url->getShortUrl()}</a>";
                 $this->getUser()->setFlash('notice', "<strong>Endereço encurtado com sucesso: </strong>" . $gen_url);
 
-                $this->redirect('profile/links');
+                if (!$this->getUser()->isAuthenticated()) {
+                    $this->redirect('@homepage');
+                } else{
+                    $this->redirect('profile/links');
+                }
             }
         }
 
@@ -61,10 +65,22 @@ class mainActions extends sfActions {
         $url = Doctrine::getTable('Url')->findOneByShortUrl($request->getParameter('url_id'));
         $this->forward404If(!$url);
 
+        $this->ad = Doctrine::getTable('Campanha')->createQuery('c')
+                        ->where('c.is_active = 1')
+                        ->orderBy('RAND()')
+                        ->execute()->getFirst();
+
         $url_controle = new UrlControle();
         $url_controle->setIpuser($_SERVER['REMOTE_ADDR']);
         $url_controle->setUrlId($url->getId());
         $url_controle->save();
+
+        if ($this->ad) {
+            $ad_controle = new CampanhaControle();
+            $ad_controle->setIpViewer($_SERVER['REMOTE_ADDR']);
+            $ad_controle->setCampanhaId($this->ad->getId());
+            $ad_controle->save();
+        }
 
         $this->url = $url;
     }

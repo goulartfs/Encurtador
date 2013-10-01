@@ -10,7 +10,16 @@
  * @author     Your name here
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
-class Campanha extends BaseCampanha
-{
+class Campanha extends BaseCampanha {
+
+    public function getTotal() {
+        $total = Doctrine::getTable('CampanhaControle')->createQuery('u')
+                        ->select('count(u.campanha_id) as total')
+                        ->where('u.campanha_id = ?', $this->getId())
+                        ->groupBy('u.campanha_id')
+                        ->execute()->getFirst();
+
+        return ($total['total']) ? $total['total'] : 0;
+    }
 
 }
