@@ -58,15 +58,57 @@ class profileActions extends sfActions {
 
         if ($request->getMethod() == 'POST') {
             $this->form->bind($request->getParameter('encurtador'));
-            
+
             if ($this->form->isValid()) {
                 $url = $this->form->process();
-                
+
                 $gen_url = "<a href='{$url->getFullUrl()}'>{$url->getShortUrl()}</a>";
-                
+
                 $this->getUser()->setFlash('notice', "<strong>Endereço encurtado com sucesso: </strong>" . $gen_url);
-                
+
                 $this->redirect('profile/links');
+            }
+        }
+    }
+
+    public function executeAds(sfWebRequest $request) {
+        $this->getUser()->setFlash('title-page', 'Campanhas');
+
+        $this->ads = Doctrine::getTable('Campanha')->createQuery('c')
+                ->where('c.usuario_id = ?', $this->getUser()->getGuardUser()->getId())
+                ->orderBy('c.created_at desc')
+                ->execute();
+    }
+
+    public function executeNewad(sfWebRequest $request) {
+        $this->form = new CampanhaForm();
+        if ($request->getMethod() == 'POST') {
+            $this->form->bind($request->getParameter('campanha'));
+
+            if ($this->form->isValid()) {
+                $ad = $this->form->save();
+                $this->getUser()->setFlash('notice', 'Campanha cadastrada com sucesso.');
+
+                $this->redirect('@edit_ad?id=' . $ad->getId());
+            }
+        }
+    }
+
+    public function executeEditad(sfWebRequest $request) {
+        $this->forward404If(!$request->getParameter('id'), 'Parametro não encontrado');
+        $campanha = Doctrine::getTable('Campanha')->findOneById($request->getParameter('id'));
+        $this->forward404If(!$campanha, 'Campanha não encontrada');
+
+        $this->form = new CampanhaForm($campanha);
+
+        if ($request->getMethod() == 'POST') {
+            $this->form->bind($request->getParameter('campanha'));
+
+            if ($this->form->isValid()) {
+                $ad = $this->form->save();
+                $this->getUser()->setFlash('notice', 'Campanha atualizada com sucesso.');
+
+                $this->redirect('@edit_ad?id=' . $ad->getId());
             }
         }
     }

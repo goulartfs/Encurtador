@@ -18,7 +18,7 @@ class Url extends BaseUrl
     
     public function getTotal(){
         $total = Doctrine::getTable('UrlControle')->createQuery('u')
-                ->select('count(u.id) as total')
+                ->select('count(u.url_id) as total')
                 ->where('u.url_id = ?', $this->getId())
                 ->groupBy('u.url_id')
                 ->execute()->getFirst();

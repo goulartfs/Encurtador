@@ -1,6 +1,6 @@
 <div class="span12">
     <?php if ($urls) { ?>
-        <table class="table">
+        <table class="table table-striped table-condensed">
             <thead>
                 <tr>
                     <th>Url Original</th>
