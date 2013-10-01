@@ -15,4 +15,14 @@ class Url extends BaseUrl
     public function getFullUrl(){
        return URL_BASE . sfContext::getInstance()->getController()->genUrl('@resolve_url?url_id=' . $this->getShortUrl());
     }
+    
+    public function getTotal(){
+        $total = Doctrine::getTable('UrlControle')->createQuery('u')
+                ->select('count(u.id) as total')
+                ->where('u.url_id = ?', $this->getId())
+                ->groupBy('u.url_id')
+                ->execute()->getFirst();
+        
+        return ($total['total'])?$total['total']:0;
+    }
 }

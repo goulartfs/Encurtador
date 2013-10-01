@@ -61,10 +61,10 @@ class mainActions extends sfActions {
         $url = Doctrine::getTable('Url')->findOneByShortUrl($request->getParameter('url_id'));
         $this->forward404If(!$url);
 
-        $ip = $_SERVER['REMOTE_ADDR'];
-        $locale = @file("http://api.hostip.info/country.php?ip=" . $ip);
-        print_r($locale);
-        die('');
+        $url_controle = new UrlControle();
+        $url_controle->setIpuser($_SERVER['REMOTE_ADDR']);
+        $url_controle->setUrlId($url->getId());
+        $url_controle->save();
 
         $this->url = $url;
     }
