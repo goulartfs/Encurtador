@@ -6,5 +6,5 @@
     <!--</div>-->
 </div>
 <?php if ($ad) { ?>
-    <iframe class="span12" height="500" scrolling="auto" src="<?php print $ad->getUrlCampanha() ?>" frameborder="0" seamless></iframe>
+<iframe width="100%" height="800" scrolling="auto" src="<?php print $ad->getUrlCampanha() ?>" frameborder="0" seamless></iframe>
 <?php } ?>

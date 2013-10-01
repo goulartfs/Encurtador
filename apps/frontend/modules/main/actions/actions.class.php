@@ -61,6 +61,8 @@ class mainActions extends sfActions {
     }
 
     public function executeResolve(sfWebRequest $request) {
+        $this->setLayout('link');
+        
         $this->forward404If(!$request->getParameter('url_id'));
         $url = Doctrine::getTable('Url')->findOneByShortUrl($request->getParameter('url_id'));
         $this->forward404If(!$url);
