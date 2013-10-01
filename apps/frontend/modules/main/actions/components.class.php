@@ -13,7 +13,7 @@
 class mainComponents extends sfComponents {
     
     public function executeForm(sfWebRequest $request){
-        $this->form = new HomeForm();
+        $this->form = new EncurtadorForm();
     }
 }
 

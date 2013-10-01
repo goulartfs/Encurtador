@@ -35,7 +35,7 @@ class sfGuardRegisterActions extends sfActions {
                 $user = $this->form->save();
                 $this->getUser()->signIn($user);
 
-                $this->redirect('login/bem-vindo');
+                $this->redirect('profile/index');
             } else{
                 $this->getUser()->setFlash('error', 'Ocorreram erros. Por favor verifique o formulário.');
             }

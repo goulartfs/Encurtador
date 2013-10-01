@@ -29,7 +29,7 @@ all:
     csrf_secret:            Nuy878su
 
     # Output escaping settings
-    escaping_strategy:      true
+    escaping_strategy:      false
     escaping_method:        ESC_SPECIALCHARS
 
     # Enable the database manager
