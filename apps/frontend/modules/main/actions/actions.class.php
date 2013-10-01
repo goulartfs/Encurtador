@@ -33,13 +33,13 @@ class mainActions extends sfActions {
 
             $this->form->bind($request->getParameter('encurtador'));
             if ($this->form->isValid()) {
-                
+
                 $url = $this->form->process();
 
                 if (!empty($encurtados)) {
                     $encurtados .= '-';
                 }
-                
+
                 $encurtados .= $url->getId();
 
                 if (!$this->getUser()->isAuthenticated()) {
@@ -60,8 +60,10 @@ class mainActions extends sfActions {
         $this->forward404If(!$request->getParameter('url_id'));
         $url = Doctrine::getTable('Url')->findOneByShortUrl($request->getParameter('url_id'));
         $this->forward404If(!$url);
-        
-        die($_SERVER["REMOTE_ADDR"]);
+
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $locale = @file("http://api.hostip.info/country.php?ip=" . $ip);
+        die($locale);
 
         $this->url = $url;
     }
