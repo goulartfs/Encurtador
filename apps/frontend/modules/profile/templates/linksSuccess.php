@@ -27,7 +27,7 @@
                 <td><?php print $url->getId() ?></td>
                 <td><?php print $url->getOriginalUrl() ?></td>
                 <td><a href="<?php print $url->getFullUrl() ?>"><?php print $url->getShortUrl() ?></a></td>
-                <td><?php print '0' ?></td>
+                <td><?php print $url->getTotal() ?></td>
                 <td><?php print $url->getDateTimeObject('created_at')->format('d/m/Y h:i:s') ?></td>
             </tr>
         <?php } ?>
