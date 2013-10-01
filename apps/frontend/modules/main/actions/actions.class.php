@@ -63,7 +63,8 @@ class mainActions extends sfActions {
 
         $ip = $_SERVER['REMOTE_ADDR'];
         $locale = @file("http://api.hostip.info/country.php?ip=" . $ip);
-        die($locale);
+        print_r($locale);
+        die('');
 
         $this->url = $url;
     }
