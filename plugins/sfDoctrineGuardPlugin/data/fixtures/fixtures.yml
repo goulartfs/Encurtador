@@ -18,3 +18,13 @@ sfGuardPermission:
   Permission_admin:
     name:           admin
     description:    Administrator permission
+    
+TipoOperacao:
+  Credito:
+    tipo: Crédito da Carteira
+  Compra:
+    tipo: Compra
+  Transferencia:
+    tipo: Transferência
+  Resgate:
+    tipo: Resgate

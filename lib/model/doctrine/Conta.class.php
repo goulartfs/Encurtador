@@ -10,7 +10,14 @@
  * @author     Your name here
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
-class Conta extends BaseConta
-{
+class Conta extends BaseConta {
+
+    public function addSaldo(Conta $conta, ContaOperacao $operacao) {
+        $conta->setSaldo($conta->getSaldo() + $operacao->getValor());
+    }
+
+    public function removeSaldo(Conta $conta, ContaOperacao $operacao) {
+        $conta->setSaldo($conta->getSaldo() - $operacao->getValor());
+    }
 
 }

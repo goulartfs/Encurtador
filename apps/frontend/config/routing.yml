@@ -43,7 +43,10 @@ edit_ad:
   param: { module: profile, action: editad }
   requirements:
     id: ~
-
+ 
+wallet:
+  url: /wallet
+  param: { module: profile, action: wallet }
   
 resolve_url:
   url:   /:url_id

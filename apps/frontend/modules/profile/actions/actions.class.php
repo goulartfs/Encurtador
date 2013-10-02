@@ -113,4 +113,31 @@ class profileActions extends sfActions {
         }
     }
 
+    public function executeWallet(sfWebRequest $request) {
+        $this->conta = $this->getUser()->getGuardUser()->getConta();
+        $this->operacoes = $this->conta->getContaOperacao();
+    }
+
+    public function executeAddcredit(sfWebRequest $request) {
+
+        $operacao = new ContaOperacao();
+        $operacao->setTipoOperacaoId(1);
+        $operacao->setContaId($this->getUser()->getGuardUser()->getConta()->getId());
+        $this->form = new ContaOperacaoForm($operacao);
+
+        if ($request->getMethod() == 'POST') {
+//            print_r($request->getParameter('conta_operacao'));
+            $this->form->bind($request->getParameter('conta_operacao'));
+
+            if ($this->form->isValid()) {
+                
+                $operacao = $this->form->save();
+                $operacao->processar();
+                
+                $this->getUser()->setFlash('notice', 'Transação realizada com sucesso');
+                $this->redirect('profile/wallet');
+            }
+        }
+    }
+
 }

@@ -34,16 +34,16 @@ Usuario:
     cep: { type: string(255) }
     telefone: { type: string(255);}
   relations:
-    sfGuardUser: { onDelete: CASCADE, onUpdate: CASCADE, local: user_id}
+    sfGuardUser: { onDelete: CASCADE, onUpdate: CASCADE, local: user_id }
     
 Conta:
   actAs:
     Timestampable: ~
   columns:
-    usuario_id: { type: integer(11) }
+    user_id: { type: integer(11) }
     saldo: { type: float }
   relations:
-    Usuario: { onDelete: RESTRICT, onUpdate: RESTRICT }
+    sfGuardUser: { onDelete: CASCADE, onUpdate: CASCADE, local: user_id }
     
 TipoOperacao:
   actAs:
@@ -60,6 +60,7 @@ ContaOperacao:
     valor: { type: float }
   relations:
     TipoOperacao: { onDelete: RESTRICT, onUpdate: RESTRICT }
+    Conta: { onDelete: RESTRICT, onUpdate: RESTRICT }
     
 Campanha:
   actAs:
