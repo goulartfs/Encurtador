@@ -14,14 +14,11 @@
         <?php include_partial('commom/header') ?>
         <div id="content">
             <div class="container">
+                <?php include_partial('profile/sidebar') ?>
+
                 <div class="row">
-                    <div class="span3">
-                        <?php include_partial('profile/sidebar') ?>
-                    </div>
-                    <div class="span9">
-                        <div class="divider">
-                            <?php print $sf_content; ?>
-                        </div>
+                    <div class="span12">
+                        <?php print $sf_content; ?>
                     </div>
                 </div>
             </div>

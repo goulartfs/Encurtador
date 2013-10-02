@@ -9,15 +9,18 @@
  * @property integer $tipo_operacao_id
  * @property float $valor
  * @property TipoOperacao $TipoOperacao
+ * @property Conta $Conta
  * 
  * @method integer       getContaId()          Returns the current record's "conta_id" value
  * @method integer       getTipoOperacaoId()   Returns the current record's "tipo_operacao_id" value
  * @method float         getValor()            Returns the current record's "valor" value
  * @method TipoOperacao  getTipoOperacao()     Returns the current record's "TipoOperacao" value
+ * @method Conta         getConta()            Returns the current record's "Conta" value
  * @method ContaOperacao setContaId()          Sets the current record's "conta_id" value
  * @method ContaOperacao setTipoOperacaoId()   Sets the current record's "tipo_operacao_id" value
  * @method ContaOperacao setValor()            Sets the current record's "valor" value
  * @method ContaOperacao setTipoOperacao()     Sets the current record's "TipoOperacao" value
+ * @method ContaOperacao setConta()            Sets the current record's "Conta" value
  * 
  * @package    Encurtador
  * @subpackage model
@@ -47,6 +50,12 @@ abstract class BaseContaOperacao extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('TipoOperacao', array(
              'local' => 'tipo_operacao_id',
+             'foreign' => 'id',
+             'onDelete' => 'RESTRICT',
+             'onUpdate' => 'RESTRICT'));
+
+        $this->hasOne('Conta', array(
+             'local' => 'conta_id',
              'foreign' => 'id',
              'onDelete' => 'RESTRICT',
              'onUpdate' => 'RESTRICT'));

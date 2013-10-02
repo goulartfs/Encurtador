@@ -10,7 +10,28 @@
  * @author     Your name here
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
-class sfGuardUser extends PluginsfGuardUser
-{
+class sfGuardUser extends PluginsfGuardUser {
+
+    public function getConta() {
+        $conta_usuario = Doctrine::getTable('Conta')->findOneByUserId($this->getId());
+
+        if (is_null($conta_usuario)) {
+            return false;
+        } else {
+            return $conta_usuario;
+        }
+    }
+
+    public function criarConta() {
+        if (!$this->getConta()) {
+            $conta = new Conta();
+            $conta->setUserId($this->getId());
+            $conta->save();
+
+            return $conta;
+        }
+
+        return $this->getConta();
+    }
 
 }

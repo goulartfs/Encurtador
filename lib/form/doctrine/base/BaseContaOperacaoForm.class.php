@@ -16,7 +16,7 @@ abstract class BaseContaOperacaoForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'               => new sfWidgetFormInputHidden(),
-      'conta_id'         => new sfWidgetFormInputText(),
+      'conta_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Conta'), 'add_empty' => true)),
       'tipo_operacao_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('TipoOperacao'), 'add_empty' => true)),
       'valor'            => new sfWidgetFormInputText(),
       'created_at'       => new sfWidgetFormDateTime(),
@@ -25,7 +25,7 @@ abstract class BaseContaOperacaoForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'               => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'conta_id'         => new sfValidatorInteger(array('required' => false)),
+      'conta_id'         => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Conta'), 'required' => false)),
       'tipo_operacao_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('TipoOperacao'), 'required' => false)),
       'valor'            => new sfValidatorNumber(array('required' => false)),
       'created_at'       => new sfValidatorDateTime(),
