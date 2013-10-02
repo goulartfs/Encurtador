@@ -31,7 +31,7 @@
             <tbody>
                 <tr>
                     <td>
-                        <p class="text-right lead">R$ <?php print $conta->getSaldo() ?></p>
+                        <p class="text-right lead">R$ <?php print $conta->getSaldo() ? $conta->getSaldo() : 0.00 ?></p>
                         <a class="btn btn-block btn-success" href="<?php print url_for('profile/add-credit') ?>">Adicionar Créditos</a>
                     </td>
                 </tr>
