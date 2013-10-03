@@ -31,11 +31,9 @@ all:
       transport:
         class: Swift_SmtpTransport
         param:
-          host:       smtp.gmail.com
-          port:       465
-          encryption: ssl
-          username: goulartfs@gmail.com
-          password: $cku3l4m4n3
+          host: mail.3prock.com
+          username: papatudo@3prock.com
+          password: "!3pr0ck!"
   routing:
     class: sfPatternRouting
     param:
