@@ -13,6 +13,7 @@
  * @property string $cep
  * @property string $telefone
  * @property sfGuardUser $sfGuardUser
+ * @property TipoUsuario $TipoUsuario
  * 
  * @method integer     getUserId()          Returns the current record's "user_id" value
  * @method integer     getTipoUsuarioId()   Returns the current record's "tipo_usuario_id" value
@@ -22,6 +23,7 @@
  * @method string      getCep()             Returns the current record's "cep" value
  * @method string      getTelefone()        Returns the current record's "telefone" value
  * @method sfGuardUser getSfGuardUser()     Returns the current record's "sfGuardUser" value
+ * @method TipoUsuario getTipoUsuario()     Returns the current record's "TipoUsuario" value
  * @method Usuario     setUserId()          Sets the current record's "user_id" value
  * @method Usuario     setTipoUsuarioId()   Sets the current record's "tipo_usuario_id" value
  * @method Usuario     setEndereco()        Sets the current record's "endereco" value
@@ -30,6 +32,7 @@
  * @method Usuario     setCep()             Sets the current record's "cep" value
  * @method Usuario     setTelefone()        Sets the current record's "telefone" value
  * @method Usuario     setSfGuardUser()     Sets the current record's "sfGuardUser" value
+ * @method Usuario     setTipoUsuario()     Sets the current record's "TipoUsuario" value
  * 
  * @package    Encurtador
  * @subpackage model
@@ -79,6 +82,12 @@ abstract class BaseUsuario extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE',
              'onUpdate' => 'CASCADE'));
+
+        $this->hasOne('TipoUsuario', array(
+             'local' => 'tipo_usuario_id',
+             'foreign' => 'id',
+             'onDelete' => 'RESTRICT',
+             'onUpdate' => 'RESTRICT'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

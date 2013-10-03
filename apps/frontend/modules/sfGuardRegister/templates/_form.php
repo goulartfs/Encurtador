@@ -50,6 +50,19 @@
             </div>
         </div>
         <div class="control-group">
+            <label class="control-label" for="tipo_usuario">Tipo de usuário</label>
+            <div class="controls">
+                <?php echo $form['tipo_usuario']->renderError() ?>
+                <?php echo $form['tipo_usuario']->render(array('id' => 'tipo_usuario', 'class' => 'text-input')) ?>
+                <span class="help-block">
+                    <ol>
+                        <li><strong>Publisher</strong>: Encurta os links</li>
+                        <li><strong>Advertiser</strong>: Gera campanhas</li>
+                    </ol>
+                </span>
+            </div>
+        </div>
+        <div class="control-group">
             <div class="controls">
                 <?php echo $form->renderHiddenFields() ?>
                 <button type="submit" class="btn">Registrar</button>
