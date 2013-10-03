@@ -28,3 +28,9 @@ TipoOperacao:
     tipo: Transferência
   Resgate:
     tipo: Resgate
+    
+TipoUsuario:
+  Publisher:
+    tipo: Publisher
+  Advertiser:
+    tipo: Advertiser

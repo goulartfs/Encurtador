@@ -130,12 +130,29 @@ class profileActions extends sfActions {
             $this->form->bind($request->getParameter('conta_operacao'));
 
             if ($this->form->isValid()) {
-                
+
                 $operacao = $this->form->save();
                 $operacao->processar();
-                
+
                 $this->getUser()->setFlash('notice', 'Transação realizada com sucesso');
                 $this->redirect('profile/wallet');
+            }
+        }
+    }
+
+    public function executeMass(sfWebRequest $request) {
+        $this->form = new EncurtadorMassivoForm();
+        
+        if ($request->getMethod() == 'POST') {
+
+            $this->form->bind($request->getParameter('encurtador'));
+
+            if ($this->form->isValid()) {
+
+                $this->form->process();
+
+                $this->getUser()->setFlash('notice', 'Links encurtador com sucesso.');
+                $this->redirect('profile/links');
             }
         }
     }

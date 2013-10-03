@@ -10,7 +10,11 @@
  * @author     Your name here
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
-class TipoUsuario extends BaseTipoUsuario
-{
+class TipoUsuario extends BaseTipoUsuario {
+
+    public function __toString() {
+        parent::__toString();
+        return $this->getTipo();
+    }
 
 }

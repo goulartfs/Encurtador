@@ -14,7 +14,7 @@ abstract class BaseUsuarioFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'user_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('sfGuardUser'), 'add_empty' => true)),
-      'tipo_usuario_id' => new sfWidgetFormFilterInput(),
+      'tipo_usuario_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('TipoUsuario'), 'add_empty' => true)),
       'endereco'        => new sfWidgetFormFilterInput(),
       'estado'          => new sfWidgetFormFilterInput(),
       'cidade'          => new sfWidgetFormFilterInput(),
@@ -26,7 +26,7 @@ abstract class BaseUsuarioFormFilter extends BaseFormFilterDoctrine
 
     $this->setValidators(array(
       'user_id'         => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('sfGuardUser'), 'column' => 'id')),
-      'tipo_usuario_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'tipo_usuario_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('TipoUsuario'), 'column' => 'id')),
       'endereco'        => new sfValidatorPass(array('required' => false)),
       'estado'          => new sfValidatorPass(array('required' => false)),
       'cidade'          => new sfValidatorPass(array('required' => false)),
@@ -55,7 +55,7 @@ abstract class BaseUsuarioFormFilter extends BaseFormFilterDoctrine
     return array(
       'id'              => 'Number',
       'user_id'         => 'ForeignKey',
-      'tipo_usuario_id' => 'Number',
+      'tipo_usuario_id' => 'ForeignKey',
       'endereco'        => 'Text',
       'estado'          => 'Text',
       'cidade'          => 'Text',

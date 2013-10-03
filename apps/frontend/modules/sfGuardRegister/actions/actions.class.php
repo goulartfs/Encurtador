@@ -36,6 +36,7 @@ class sfGuardRegisterActions extends sfActions {
                 $this->getUser()->signIn($user);
                 
                 $user->criarConta();
+                $user->criarUsuario($this->form->getValue('tipo_usuario'));
 
                 $this->redirect('profile/index');
             } else{

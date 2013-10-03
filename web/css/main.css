@@ -7,9 +7,9 @@ a{
     color: #286ba8;
 }
 
-strong{
+/*strong{
     color: #15294f;
-}
+}*/
 
 .divider{
     border-left: 1px solid #E5E5E5;
@@ -18,6 +18,11 @@ strong{
 
 .no-margin{
     margin: 0;
+}
+
+
+.navbar .brand {
+    padding: 7px 20px;
 }
 
 #header{

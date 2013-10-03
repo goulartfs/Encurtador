@@ -3,7 +3,12 @@
         <label for="encurtador_url" class="text-left">Encurte sua URL aqui:</label>
         <?php print $form['url']->render(array('class' => 'span7')); ?>
         <?php print $form->renderHiddenFields() ?>
-        <button class="btn btn-primary" type="submit">Encurtar!</button>
+        <button class="btn btn-primary" type="submit">Encurtar!&nbsp;&nbsp;&nbsp;<i class="icon-resize-small icon-white"></i></button>
+    </div>
+    <div class="text-right">
+        <br/>
+        <a class="text-success" href="<?php print url_for('profile/mass') ?>">Ir para o encurtador em massa</a>
+        <i class="icon-share-alt"></i>
     </div>
 </form>
 <?php if ($sf_user->hasFlash('notice')) { ?>

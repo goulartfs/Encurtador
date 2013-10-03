@@ -22,6 +22,16 @@ class sfGuardUser extends PluginsfGuardUser {
         }
     }
 
+    public function getUsuario() {
+        $usuario_cadastro = Doctrine::getTable('Usuario')->findOneByUserId($this->getId());
+
+        if (is_null($usuario_cadastro)) {
+            return false;
+        } else {
+            return $usuario_cadastro;
+        }
+    }
+
     public function criarConta() {
         if (!$this->getConta()) {
             $conta = new Conta();
@@ -32,6 +42,19 @@ class sfGuardUser extends PluginsfGuardUser {
         }
 
         return $this->getConta();
+    }
+
+    public function criarUsuario($tipo_usuario) {
+        if (!$this->getUsuario()) {
+            $usuario = new Usuario();
+            $usuario->setUserId($this->getId());
+            $usuario->setTipoUsuarioId($tipo_usuario);
+            $usuario->save();
+
+            return $usuario;
+        }
+
+        return $this->getUsuario();
     }
 
 }

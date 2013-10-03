@@ -35,6 +35,7 @@ Usuario:
     telefone: { type: string(255);}
   relations:
     sfGuardUser: { onDelete: CASCADE, onUpdate: CASCADE, local: user_id }
+    TipoUsuario: { onDelete: RESTRICT, onUpdate: RESTRICT }
     
 Conta:
   actAs:

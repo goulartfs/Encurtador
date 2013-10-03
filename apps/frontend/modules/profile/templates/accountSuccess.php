@@ -17,7 +17,14 @@
         <div class="control-group">
             <label class="control-label" for="username">Usuário</label>
             <div class="controls">
-                <input type="text" value="<?php print $form['subform']['sfGuardUser']['username']->getValue() ?>" disabled />
+                <input type="text" value="<?php print $sf_user->getGuardUser()->getUsername() ?>" disabled />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="tipo_usuario">Tipo de usuário</label>
+            <div class="controls">
+                
+                <input type="text" value="<?php print $sf_user->getGuardUser()->getUsuario()->getTipoUsuario() ?>" disabled />
             </div>
         </div>
         <div class="control-group">

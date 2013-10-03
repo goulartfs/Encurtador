@@ -21,17 +21,8 @@ class EncurtadorForm extends sfForm {
 
     public function process() {
 
-        $url_id = Util::generateUniqueId();
-
-        $url = new Url();
-        $url->setOriginalUrl($this->getValue('url'));
-        $url->setShortUrl($url_id);
-        if (sfContext::getInstance()->getUser()->isAuthenticated()) {
-            $url->setUsuarioId(sfContext::getInstance()->getUser()->getGuardUser()->getId());
-        }
-        $url->save();
-        
-        return $url;
+        $encurtador = new Encurtador($this->getValue('url'));
+        return $encurtador->doShrink();
     }
 
 }
