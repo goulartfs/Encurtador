@@ -24,11 +24,18 @@ test:
       delivery_strategy: none
 
 dev:
-  mailer:
-    param:
-      delivery_strategy: none
 
 all:
+  mailer:
+    param:
+      transport:
+        class: Swift_SmtpTransport
+        param:
+          host:       smtp.gmail.com
+          port:       465
+          encryption: ssl
+          username: goulartfs@gmail.com
+          password: $cku3l4m4n3
   routing:
     class: sfPatternRouting
     param:

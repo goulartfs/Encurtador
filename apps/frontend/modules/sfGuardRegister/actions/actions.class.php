@@ -33,16 +33,61 @@ class sfGuardRegisterActions extends sfActions {
             $this->form->bind($request->getParameter($this->form->getName()));
             if ($this->form->isValid()) {
                 $user = $this->form->save();
-                $this->getUser()->signIn($user);
+                
+                $user->setIsActive(0);
+                $user->save();
                 
                 $user->criarConta();
                 $user->criarUsuario($this->form->getValue('tipo_usuario'));
+                
+                $validacao = new ValidaUsuario();
+                $validacao->setUserId($user->getId());
+                $validacao->setChave(md5(uniqid("")));
+                $validacao->save();
+                
+                $email = $this->getMailer()->compose();
+                $email->setFrom('no-reply@cliquesbr.com.br', 'CliquesBr');
+                $email->setSubject('Confirmação de Cadastro');
+                $email->addTo($user->getEmailAddress(), $user->getFirstName());
+                
+                $link = URL_BASE . $this->getController()->genUrl('@confirm_user?id=' . $validacao->getChave());
+                
+                ob_start();
+                print "<h1>Obrigado por se cadastrar</h1>";
+                print "<p>Confirme seu cadastro: <a href='{$link}'>{$link}</a>.</p>";
+                print "<p>Atenciosamente,<br/><strong>CliquesBr</strong></p>";
+                $body = ob_get_clean();
+                
+                $email->setBody($body, 'text/html');
+                
+                $this->getMailer()->send($email);
 
-                $this->redirect('profile/index');
+                $this->redirect('@pos_register');
             } else{
                 $this->getUser()->setFlash('error', 'Ocorreram erros. Por favor verifique o formulário.');
             }
         }
+    }
+    
+    public function executePosregister(sfWebRequest $request){
+        
+    }
+    
+    public function executeConfirm(sfWebRequest $request){
+        $validacao = Doctrine::getTable('ValidaUsuario')->findOneByChave($request->getParameter('id'));
+        $this->forward404If(!$validacao, 'Chave de validação não encontrada.');
+        $this->forward404If($validacao->getIsConfirmed(), 'Seu cadastro já está validado.');
+        
+        $validacao->setIsConfirmed(1);
+        $validacao->save();
+        
+        $usuario = $validacao->getSfGuardUser();
+        $usuario->setIsActive(1);
+        $usuario->save();
+        
+        $this->getUser()->signIn($usuario);
+        
+        $this->redirect('profile/links');
     }
 
 }

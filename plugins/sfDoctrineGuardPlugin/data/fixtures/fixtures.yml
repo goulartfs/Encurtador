@@ -2,7 +2,7 @@ sfGuardUser:
   User_admin:
     first_name:     Filipe
     last_name:      Synthis
-    email_address:  goulartfs@gmail.com
+    email_address:  filipe@filipe.com
     username:       admin
     password:       admin
     is_super_admin: true
