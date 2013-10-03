@@ -37,6 +37,16 @@ Usuario:
     sfGuardUser: { onDelete: CASCADE, onUpdate: CASCADE, local: user_id }
     TipoUsuario: { onDelete: RESTRICT, onUpdate: RESTRICT }
     
+ValidaUsuario:
+  actAs:
+    Timestampable: ~
+  columns:
+    user_id: { type: integer(11) }
+    chave: { type: string() }
+    is_confirmed: { type: boolean, default: 0 }
+  relations:
+    sfGuardUser: { onDelete: CASCADE, onUpdate: CASCADE, local: user_id }
+    
 Conta:
   actAs:
     Timestampable: ~
