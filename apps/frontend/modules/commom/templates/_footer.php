@@ -6,6 +6,7 @@
                     <li><a href="#">Anúncio</a></li>
                     <li><a href="<?php print url_for('termos-e-condicoes/index') ?>">Termos e condições</a></li>
                     <li><a href="<?php print url_for('sobre-nos/index') ?>">Sobre nós</a></li>
+                    <li><a href="<?php print url_for('fale-conosco/suporte') ?>">Suporte</a></li>
                 </ul>
                 <div class="clearfix"></div>
             </div>
