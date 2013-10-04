@@ -16,7 +16,7 @@ abstract class BaseCampanhaForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'           => new sfWidgetFormInputHidden(),
-      'usuario_id'   => new sfWidgetFormInputText(),
+      'user_id'      => new sfWidgetFormInputText(),
       'orcamento'    => new sfWidgetFormInputText(),
       'titulo'       => new sfWidgetFormInputText(),
       'descricao'    => new sfWidgetFormTextarea(),
@@ -28,7 +28,7 @@ abstract class BaseCampanhaForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'           => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'usuario_id'   => new sfValidatorInteger(array('required' => false)),
+      'user_id'      => new sfValidatorInteger(array('required' => false)),
       'orcamento'    => new sfValidatorNumber(array('required' => false)),
       'titulo'       => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'descricao'    => new sfValidatorString(array('required' => false)),

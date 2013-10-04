@@ -8,13 +8,16 @@
  * @property integer $campanha_id
  * @property string $ip_viewer
  * @property boolean $is_processed
+ * @property datetime $data_processado
  * 
- * @method integer          getCampanhaId()   Returns the current record's "campanha_id" value
- * @method string           getIpViewer()     Returns the current record's "ip_viewer" value
- * @method boolean          getIsProcessed()  Returns the current record's "is_processed" value
- * @method CampanhaControle setCampanhaId()   Sets the current record's "campanha_id" value
- * @method CampanhaControle setIpViewer()     Sets the current record's "ip_viewer" value
- * @method CampanhaControle setIsProcessed()  Sets the current record's "is_processed" value
+ * @method integer          getCampanhaId()      Returns the current record's "campanha_id" value
+ * @method string           getIpViewer()        Returns the current record's "ip_viewer" value
+ * @method boolean          getIsProcessed()     Returns the current record's "is_processed" value
+ * @method datetime         getDataProcessado()  Returns the current record's "data_processado" value
+ * @method CampanhaControle setCampanhaId()      Sets the current record's "campanha_id" value
+ * @method CampanhaControle setIpViewer()        Sets the current record's "ip_viewer" value
+ * @method CampanhaControle setIsProcessed()     Sets the current record's "is_processed" value
+ * @method CampanhaControle setDataProcessado()  Sets the current record's "data_processado" value
  * 
  * @package    Encurtador
  * @subpackage model
@@ -37,6 +40,9 @@ abstract class BaseCampanhaControle extends sfDoctrineRecord
         $this->hasColumn('is_processed', 'boolean', null, array(
              'type' => 'boolean',
              'default' => 0,
+             ));
+        $this->hasColumn('data_processado', 'datetime', null, array(
+             'type' => 'datetime',
              ));
     }
 

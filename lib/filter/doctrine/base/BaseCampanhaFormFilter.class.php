@@ -13,7 +13,7 @@ abstract class BaseCampanhaFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'usuario_id'   => new sfWidgetFormFilterInput(),
+      'user_id'      => new sfWidgetFormFilterInput(),
       'orcamento'    => new sfWidgetFormFilterInput(),
       'titulo'       => new sfWidgetFormFilterInput(),
       'descricao'    => new sfWidgetFormFilterInput(),
@@ -24,7 +24,7 @@ abstract class BaseCampanhaFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
-      'usuario_id'   => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'user_id'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'orcamento'    => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
       'titulo'       => new sfValidatorPass(array('required' => false)),
       'descricao'    => new sfValidatorPass(array('required' => false)),
@@ -52,7 +52,7 @@ abstract class BaseCampanhaFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'           => 'Number',
-      'usuario_id'   => 'Number',
+      'user_id'      => 'Number',
       'orcamento'    => 'Number',
       'titulo'       => 'Text',
       'descricao'    => 'Text',

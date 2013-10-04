@@ -2,7 +2,7 @@ Url:
   actAs:
     Timestampable: ~
   columns:
-    usuario_id: { type: integer(11) }
+    user_id: { type: integer(11) }
     original_url: { type: varchar(), notnull: true }
     short_url: { type: varchar(255), notnull: true, unique: true }
     
@@ -13,6 +13,7 @@ UrlControle:
     url_id: { type: integer(11) }
     ipuser: { type: string(255) }
     is_processed: { type: boolean, default: 0 }
+    data_processado: { type: datetime }
   relations:
     Url: { onDelete: RESTRICT, onUpdate: RESTRICT }
 
@@ -77,7 +78,7 @@ Campanha:
   actAs:
     Timestampable: ~
   columns:
-    usuario_id: { type: integer(11) }
+    user_id: { type: integer(11) }
     orcamento: { type: float }
     titulo: { type: string(255) }
     descricao: { type: string() }
@@ -91,4 +92,12 @@ CampanhaControle:
     campanha_id: { type: integer(11) }
     ip_viewer: { type: string(255) }
     is_processed: { type: boolean, default: 0 }
+    data_processado: { type: datetime }
+    
+CustoClique:
+  actAs:
+    Timestampable: ~
+  columns:
+    nclique: { type: integer(11) }
+    custo: { type: float } 
     
