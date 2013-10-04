@@ -1,7 +1,6 @@
 <h2>Campanhas</h1>
 <div class="row help-block">
     <div class="span12">
-        <?php include_partial('profile/pagination', array('pager' => $pager, 'route' => 'profile/ads')) ?>
         <?php include_partial('profile/list_ads', array('ads' => $pager->getResults(), 'pager' => $pager)) ?>
         <?php include_partial('profile/pagination', array('pager' => $pager, 'route' => 'profile/ads')) ?>
     </div>
