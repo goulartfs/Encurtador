@@ -14,8 +14,7 @@
         <?php include_partial('commom/header') ?>
         <div id="content">
             <div class="container">
-                <?php include_partial('profile/sidebar') ?>
-
+                <?php include_partial('commom/sidebar') ?>
                 <div class="row">
                     <div class="span12">
                         <?php print $sf_content; ?>

@@ -24,6 +24,7 @@
  * @property Doctrine_Collection $Usuario
  * @property Doctrine_Collection $ValidaUsuario
  * @property Doctrine_Collection $Conta
+ * @property Doctrine_Collection $Resgate
  * 
  * @method string                getFirstName()             Returns the current record's "first_name" value
  * @method string                getLastName()              Returns the current record's "last_name" value
@@ -44,6 +45,7 @@
  * @method Doctrine_Collection   getUsuario()               Returns the current record's "Usuario" collection
  * @method Doctrine_Collection   getValidaUsuario()         Returns the current record's "ValidaUsuario" collection
  * @method Doctrine_Collection   getConta()                 Returns the current record's "Conta" collection
+ * @method Doctrine_Collection   getResgate()               Returns the current record's "Resgate" collection
  * @method sfGuardUser           setFirstName()             Sets the current record's "first_name" value
  * @method sfGuardUser           setLastName()              Sets the current record's "last_name" value
  * @method sfGuardUser           setEmailAddress()          Sets the current record's "email_address" value
@@ -63,6 +65,7 @@
  * @method sfGuardUser           setUsuario()               Sets the current record's "Usuario" collection
  * @method sfGuardUser           setValidaUsuario()         Sets the current record's "ValidaUsuario" collection
  * @method sfGuardUser           setConta()                 Sets the current record's "Conta" collection
+ * @method sfGuardUser           setResgate()               Sets the current record's "Resgate" collection
  * 
  * @package    Encurtador
  * @subpackage model
@@ -167,6 +170,10 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
              'foreign' => 'user_id'));
 
         $this->hasMany('Conta', array(
+             'local' => 'id',
+             'foreign' => 'user_id'));
+
+        $this->hasMany('Resgate', array(
              'local' => 'id',
              'foreign' => 'user_id'));
 

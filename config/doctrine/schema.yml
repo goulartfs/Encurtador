@@ -11,11 +11,14 @@ UrlControle:
     Timestampable: ~
   columns:
     url_id: { type: integer(11) }
+    resgate_id: { type: integer(11) }
     ipuser: { type: string(255) }
+    is_rescued: { type: boolean, default: 0 }
     is_processed: { type: boolean, default: 0 }
     data_processado: { type: datetime }
   relations:
     Url: { onDelete: RESTRICT, onUpdate: RESTRICT }
+    Resgate: { onDelete: RESTRICT, onUpdate: RESTRICT }
 
 TipoUsuario:
   actAs:
@@ -100,4 +103,29 @@ CustoClique:
   columns:
     nclique: { type: integer(11) }
     custo: { type: float } 
+
+Status:
+  actAs:
+    Timestampable: ~
+  columns:
+    tipo: { type: string(255) }
     
+TipoResgate:
+  actAs:
+    Timestampable: ~
+  columns:
+    tipo: { type: string(255) }
+    descricao: { type: string() }
+     
+Resgate:
+  actAs:
+    Timestampable: ~
+  columns:
+    user_id: { type: integer(11) }
+    tipo_resgate_id: { type: integer(11) }
+    status_id: { type: integer(11) }
+    valor: { type: float }
+  relations:
+    sfGuardUser: { onDelete: RESTRICT, onUpdate: RESTRICT, local: user_id }
+    TipoResgate: { onDelete: RESTRICT, onUpdate: RESTRICT }
+    Status: { onDelete: RESTRICT, onUpdate: RESTRICT }
