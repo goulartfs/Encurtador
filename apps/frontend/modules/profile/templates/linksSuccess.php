@@ -18,7 +18,6 @@
 <?php } ?>
 <div class="row">
     <div class="span9">
-        <?php include_partial('profile/pagination', array('pager'=>$pager, 'route'=>'profile/links')) ?>
         <?php include_partial('profile/list_links', array('urls' => $pager->getResults(), 'pager' => $pager)) ?>
         <?php include_partial('profile/pagination', array('pager'=>$pager, 'route'=>'profile/links')) ?>
     </div>
