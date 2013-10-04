@@ -52,9 +52,12 @@ class profileActions extends sfActions {
         $this->form = new EncurtadorForm();
 
         $this->urls = Doctrine::getTable('Url')->createQuery('u')
-                ->where('u.usuario_id = ?', $this->getUser()->getGuardUser()->getId())
+                ->where('u.user_id = ?', $this->getUser()->getGuardUser()->getId())
                 ->orderBy('u.created_at desc')
                 ->execute();
+
+        $this->ganhos = Url::getGanhosDoUsuario($this->getUser()->getGuardUser());
+        $this->views = Url::getTotalAcessoByUser($this->getUser()->getGuardUser());
 
         if ($request->getMethod() == 'POST') {
             $this->form->bind($request->getParameter('encurtador'));
@@ -75,7 +78,7 @@ class profileActions extends sfActions {
         $this->getUser()->setFlash('title-page', 'Campanhas');
 
         $this->ads = Doctrine::getTable('Campanha')->createQuery('c')
-                ->where('c.usuario_id = ?', $this->getUser()->getGuardUser()->getId())
+                ->where('c.user_id = ?', $this->getUser()->getGuardUser()->getId())
                 ->orderBy('c.created_at desc')
                 ->execute();
     }
@@ -142,7 +145,7 @@ class profileActions extends sfActions {
 
     public function executeMass(sfWebRequest $request) {
         $this->form = new EncurtadorMassivoForm();
-        
+
         if ($request->getMethod() == 'POST') {
 
             $this->form->bind($request->getParameter('encurtador'));

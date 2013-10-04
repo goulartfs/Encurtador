@@ -8,16 +8,19 @@
  * @property integer $url_id
  * @property string $ipuser
  * @property boolean $is_processed
+ * @property datetime $data_processado
  * @property Url $Url
  * 
- * @method integer     getUrlId()        Returns the current record's "url_id" value
- * @method string      getIpuser()       Returns the current record's "ipuser" value
- * @method boolean     getIsProcessed()  Returns the current record's "is_processed" value
- * @method Url         getUrl()          Returns the current record's "Url" value
- * @method UrlControle setUrlId()        Sets the current record's "url_id" value
- * @method UrlControle setIpuser()       Sets the current record's "ipuser" value
- * @method UrlControle setIsProcessed()  Sets the current record's "is_processed" value
- * @method UrlControle setUrl()          Sets the current record's "Url" value
+ * @method integer     getUrlId()           Returns the current record's "url_id" value
+ * @method string      getIpuser()          Returns the current record's "ipuser" value
+ * @method boolean     getIsProcessed()     Returns the current record's "is_processed" value
+ * @method datetime    getDataProcessado()  Returns the current record's "data_processado" value
+ * @method Url         getUrl()             Returns the current record's "Url" value
+ * @method UrlControle setUrlId()           Sets the current record's "url_id" value
+ * @method UrlControle setIpuser()          Sets the current record's "ipuser" value
+ * @method UrlControle setIsProcessed()     Sets the current record's "is_processed" value
+ * @method UrlControle setDataProcessado()  Sets the current record's "data_processado" value
+ * @method UrlControle setUrl()             Sets the current record's "Url" value
  * 
  * @package    Encurtador
  * @subpackage model
@@ -40,6 +43,9 @@ abstract class BaseUrlControle extends sfDoctrineRecord
         $this->hasColumn('is_processed', 'boolean', null, array(
              'type' => 'boolean',
              'default' => 0,
+             ));
+        $this->hasColumn('data_processado', 'datetime', null, array(
+             'type' => 'datetime',
              ));
     }
 

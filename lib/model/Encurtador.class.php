@@ -34,7 +34,7 @@ class Encurtador {
         $url->setShortUrl(self::getUniqueId());
 
         if (sfContext::getInstance()->getUser()->isAuthenticated()) {
-            $url->setUsuarioId(sfContext::getInstance()->getUser()->getGuardUser()->getId());
+            $url->setUserId(sfContext::getInstance()->getUser()->getGuardUser()->getId());
         }
 
         $url->save();
