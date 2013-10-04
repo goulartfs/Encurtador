@@ -46,7 +46,7 @@ class sfGuardRegisterActions extends sfActions {
                 $validacao->save();
                 
                 $email = $this->getMailer()->compose();
-                $email->setFrom('no-reply@cliquesbr.com.br', 'CliquesBr');
+                $email->setFrom('contato@cliquesbr.com.br', 'CliquesBr');
                 $email->setSubject('Confirmação de Cadastro');
                 $email->addTo($user->getEmailAddress(), $user->getFirstName());
                 
