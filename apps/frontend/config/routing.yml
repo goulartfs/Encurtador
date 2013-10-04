@@ -58,6 +58,11 @@ wallet:
   url: /wallet
   param: { module: profile, action: wallet }
   
+ 
+retirada:
+  url: /retirada
+  param: { module: retirada, action: index }
+  
 resolve_url:
   url:   /:url_id
   param: { module: main, action: resolve }

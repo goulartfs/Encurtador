@@ -17,7 +17,9 @@ abstract class BaseUrlControleForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'              => new sfWidgetFormInputHidden(),
       'url_id'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Url'), 'add_empty' => true)),
+      'resgate_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Resgate'), 'add_empty' => true)),
       'ipuser'          => new sfWidgetFormInputText(),
+      'is_rescued'      => new sfWidgetFormInputCheckbox(),
       'is_processed'    => new sfWidgetFormInputCheckbox(),
       'data_processado' => new sfWidgetFormInputText(),
       'created_at'      => new sfWidgetFormDateTime(),
@@ -27,7 +29,9 @@ abstract class BaseUrlControleForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'              => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'url_id'          => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Url'), 'required' => false)),
+      'resgate_id'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Resgate'), 'required' => false)),
       'ipuser'          => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'is_rescued'      => new sfValidatorBoolean(array('required' => false)),
       'is_processed'    => new sfValidatorBoolean(array('required' => false)),
       'data_processado' => new sfValidatorPass(array('required' => false)),
       'created_at'      => new sfValidatorDateTime(),

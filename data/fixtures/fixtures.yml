@@ -1,41 +1,62 @@
-sfGuardUser:
-  User_admin:
-    first_name:     Filipe
-    last_name:      Synthis
-    email_address:  filipe@filipe.com
-    username:       admin
-    password:       admin
-    is_super_admin: true
-    Groups:         [Group_admin]
-
-sfGuardGroup:
-  Group_admin:
-    name:           admin
-    description:    Administrator group
-    Permissions:    [Permission_admin]
-
-sfGuardPermission:
-  Permission_admin:
-    name:           admin
-    description:    Administrator permission
-    
-TipoOperacao:
-  Credito:
-    tipo: Crédito da Carteira
-  Compra:
-    tipo: Compra
-  Transferencia:
-    tipo: Transferência
-  Resgate:
-    tipo: Resgate
-    
-TipoUsuario:
-  Publisher:
-    tipo: Publisher
-  Advertiser:
-    tipo: Advertiser
-    
-CustoClique:
-  Default:
-    nclique: 1000
-    custo: 4
+#sfGuardUser:
+#  User_admin:
+#    first_name:     Filipe
+#    last_name:      Synthis
+#    email_address:  filipe@filipe.com
+#    username:       admin
+#    password:       admin
+#    is_super_admin: true
+#    Groups:         [Group_admin]
+#
+#sfGuardGroup:
+#  Group_admin:
+#    name:           admin
+#    description:    Administrator group
+#    Permissions:    [Permission_admin]
+#
+#sfGuardPermission:
+#  Permission_admin:
+#    name:           admin
+#    description:    Administrator permission
+#    
+#TipoOperacao:
+#  Credito:
+#    tipo: Crédito da Carteira
+#  Compra:
+#    tipo: Compra
+#  Transferencia:
+#    tipo: Transferência
+#  Resgate:
+#    tipo: Resgate
+#    
+#TipoUsuario:
+#  Publisher:
+#    tipo: Publisher
+#  Advertiser:
+#    tipo: Advertiser
+#    
+#CustoClique:
+#  Default:
+#    nclique: 1000
+#    custo: 4
+#    
+#TipoResgate:
+#  Deposito:
+#    tipo: Depósito
+#    descricao: Depósito em conta bancária
+#  Paypal:
+#    tipo: Paypal
+#    descricao: Crédito no Paypal
+#  Carteira:
+#    tipo: Carteira
+#    descricao: Transferência para carteira CliqueBR
+#    
+#Status:
+#  Resgatado:
+#    tipo: Solicitado Resgate
+#  Pendente:
+#    tipo: Pendente de Depósito
+#  Finalizado:
+#    tipo: Finalizado
+#  Transferido:
+#    tipo: Transferido para Carteira

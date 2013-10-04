@@ -1,0 +1,131 @@
+Conta:
+  Conta_1:
+    sfGuardUser: sfGuardUser_2
+    saldo: null
+    created_at: '2013-10-04 03:06:04'
+    updated_at: '2013-10-04 03:06:04'
+CustoClique:
+  CustoClique_1:
+    nclique: '1000'
+    custo: '4.00'
+    created_at: '2013-10-04 03:04:41'
+    updated_at: '2013-10-04 03:04:41'
+sfGuardGroup:
+  sfGuardGroup_1:
+    name: admin
+    description: 'Administrator group'
+    created_at: '2013-10-04 03:04:40'
+    updated_at: '2013-10-04 03:04:40'
+sfGuardGroupPermission:
+  sfGuardGroupPermission_1_1:
+    Group: sfGuardGroup_1
+    Permission: sfGuardPermission_1
+    created_at: '2013-10-04 03:04:40'
+    updated_at: '2013-10-04 03:04:40'
+sfGuardPermission:
+  sfGuardPermission_1:
+    name: admin
+    description: 'Administrator permission'
+    created_at: '2013-10-04 03:04:40'
+    updated_at: '2013-10-04 03:04:40'
+sfGuardUser:
+  sfGuardUser_1:
+    first_name: Filipe
+    last_name: Synthis
+    email_address: filipe@filipe.com
+    username: admin
+    password: admin
+    is_active: true
+    is_super_admin: true
+    last_login: null
+    created_at: '2013-10-04 03:04:40'
+    updated_at: '2013-10-04 03:04:40'
+  sfGuardUser_2:
+    first_name:     Filipe
+    last_name:      Synthis
+    email_address:  goulartfs@gmail.com
+    username:       filipe
+    password:       filipe
+sfGuardUserGroup:
+  sfGuardUserGroup_1_1:
+    User: sfGuardUser_1
+    Group: sfGuardGroup_1
+    created_at: '2013-10-04 03:04:40'
+    updated_at: '2013-10-04 03:04:40'
+Status:
+  Status_1:
+    tipo: 'Solicitado Resgate'
+    created_at: '2013-10-04 03:04:41'
+    updated_at: '2013-10-04 03:04:41'
+  Status_2:
+    tipo: 'Pendente de Depósito'
+    created_at: '2013-10-04 03:04:41'
+    updated_at: '2013-10-04 03:04:41'
+  Status_3:
+    tipo: Finalizado
+    created_at: '2013-10-04 03:04:41'
+    updated_at: '2013-10-04 03:04:41'
+  Status_4:
+    tipo: 'Transferido para Carteira'
+    created_at: '2013-10-04 03:04:41'
+    updated_at: '2013-10-04 03:04:41'
+TipoOperacao:
+  TipoOperacao_1:
+    tipo: 'Crédito da Carteira'
+    created_at: '2013-10-04 03:04:40'
+    updated_at: '2013-10-04 03:04:40'
+  TipoOperacao_2:
+    tipo: Compra
+    created_at: '2013-10-04 03:04:40'
+    updated_at: '2013-10-04 03:04:40'
+  TipoOperacao_3:
+    tipo: Transferência
+    created_at: '2013-10-04 03:04:40'
+    updated_at: '2013-10-04 03:04:40'
+  TipoOperacao_4:
+    tipo: Resgate
+    created_at: '2013-10-04 03:04:40'
+    updated_at: '2013-10-04 03:04:40'
+TipoResgate:
+  TipoResgate_1:
+    tipo: Depósito
+    descricao: 'Depósito em conta bancária'
+    created_at: '2013-10-04 03:04:41'
+    updated_at: '2013-10-04 03:04:41'
+  TipoResgate_2:
+    tipo: Paypal
+    descricao: 'Crédito no Paypal'
+    created_at: '2013-10-04 03:04:41'
+    updated_at: '2013-10-04 03:04:41'
+  TipoResgate_3:
+    tipo: Carteira
+    descricao: 'Transferência para carteira CliqueBR'
+    created_at: '2013-10-04 03:04:41'
+    updated_at: '2013-10-04 03:04:41'
+TipoUsuario:
+  TipoUsuario_1:
+    tipo: Publisher
+    created_at: '2013-10-04 03:04:40'
+    updated_at: '2013-10-04 03:04:40'
+  TipoUsuario_2:
+    tipo: Advertiser
+    created_at: '2013-10-04 03:04:40'
+    updated_at: '2013-10-04 03:04:40'
+Usuario:
+  Usuario_1:
+    sfGuardUser: sfGuardUser_2
+    TipoUsuario: TipoUsuario_1
+    endereco: null
+    estado: null
+    cidade: null
+    cep: null
+    telefone: null
+    created_at: '2013-10-04 03:06:04'
+    updated_at: '2013-10-04 03:06:04'
+ValidaUsuario:
+  ValidaUsuario_1:
+    sfGuardUser: sfGuardUser_2
+    chave: d481df887392c450f58c04877d508300
+    is_confirmed: false
+    created_at: '2013-10-04 03:06:04'
+    updated_at: '2013-10-04 03:06:04'
