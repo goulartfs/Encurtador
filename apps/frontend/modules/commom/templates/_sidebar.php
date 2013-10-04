@@ -25,7 +25,7 @@
             <li class="divider-vertical"></li>
             <li class="<?php print (in_array($sf_context->getActionName(), array('changepass'))) ? 'active' : false; ?>"><a href="#">Trocar</a></li>
             <li class="divider-vertical"></li>
-            <li class="<?php print (in_array($sf_context->getModuleName(), array('faleconosco'))) ? 'active' : false; ?>"><a href="#">Suporte</a></li>
+            <li class="<?php print (in_array($sf_context->getModuleName(), array('faleconosco'))) ? 'active' : false; ?>"><a href="<?php print url_for('fale-conosco/suporte') ?>">Suporte</a></li>
         </ul>
     </div>
 </div>
