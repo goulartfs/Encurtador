@@ -13,7 +13,7 @@
 class Url extends BaseUrl {
 
     public function getFullUrl() {
-        return URL_BASE . sfContext::getInstance()->getController()->genUrl('@resolve_url?url_id=' . $this->getShortUrl());
+        return sfContext::getInstance()->getController()->genUrl('@resolve_url?url_id=' . $this->getShortUrl(), true);
     }
 
     public function getTotal() {

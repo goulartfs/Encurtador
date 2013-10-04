@@ -18,35 +18,22 @@
 <?php } ?>
 <div class="row">
     <div class="span9">
-        <div class="thumbnail">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th colspan="6">Links encurtados</th>
-                    </tr>
-                    <tr>
-                        <th>#</th>
-                        <th>Url Original</th>
-                        <th>Url Encurtada</th>
-                        <th>Visualizações</th>
-                        <th>Ganhos</th>
-                        <th>Criada em</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($urls as $url) { ?>
-                        <tr>
-                            <td><?php print $url->getId() ?></td>
-                            <td><?php print $url->getOriginalUrl() ?></td>
-                            <td><a href="<?php print $url->getFullUrl() ?>"><?php print $url->getShortUrl() ?></a></td>
-                            <td><?php print $url->getTotal() ?></td>
-                            <td><?php print "R$ " . $url->getGanhos() ?></td>
-                            <td><?php print $url->getDateTimeObject('created_at')->format('d/m/Y h:i:s') ?></td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-        </div>
+        <?php include_partial('profile/list_links', array('urls' => $pager->getResults(), 'pager' => $pager)) ?>
+        <?php if ($pager->haveToPaginate()): ?>
+            <div class="pagination">
+                <ul>
+                    <li class="<?php print ($pager->getPreviousPage() == $sf_request->getParameter('page', 1)) ? "disabled" : false; ?>"><a href="<?php echo url_for('profile/links') ?>?page=<?php echo $pager->getPreviousPage() ?>">«</a></li>
+                    <?php foreach ($pager->getLinks() as $page): ?>
+                        <?php if ($page == $pager->getPage()): ?>
+                            <li class="active"><a href="#"><?php echo $page ?></a></li>
+                        <?php else: ?>
+                            <li><a href="<?php echo url_for('profile/links', true) ?>?page=<?php echo $page ?>"><?php echo $page ?></a></li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                    <li class="<?php print ($pager->getNextPage() == $sf_request->getParameter('page')) ? "disabled" : false; ?>"><a href="<?php echo url_for('profile/links') ?>?page=<?php echo $pager->getNextPage() ?>">»</a></li>
+                </ul>
+            </div>
+        <?php endif; ?>
     </div>
     <div class="span3">
         <div class="thumbnail help-block">

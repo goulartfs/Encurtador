@@ -51,10 +51,15 @@ class profileActions extends sfActions {
 
         $this->form = new EncurtadorForm();
 
-        $this->urls = Doctrine::getTable('Url')->createQuery('u')
+        $urls = Doctrine_Query::create()
+                ->from('Url u')
                 ->where('u.user_id = ?', $this->getUser()->getGuardUser()->getId())
-                ->orderBy('u.created_at desc')
-                ->execute();
+                ->orderBy('u.created_at desc');
+
+        $this->pager = new sfDoctrinePager('Url');
+        $this->pager->setQuery($urls);
+        $this->pager->setPage($request->getParameter('page', 1));
+        $this->pager->init();
 
         $this->ganhos = Url::getGanhosDoUsuario($this->getUser()->getGuardUser());
         $this->views = Url::getTotalAcessoByUser($this->getUser()->getGuardUser());
@@ -77,10 +82,15 @@ class profileActions extends sfActions {
     public function executeAds(sfWebRequest $request) {
         $this->getUser()->setFlash('title-page', 'Campanhas');
 
-        $this->ads = Doctrine::getTable('Campanha')->createQuery('c')
+        $ads = Doctrine_Query::create()
+                ->from('Campanha c')
                 ->where('c.user_id = ?', $this->getUser()->getGuardUser()->getId())
-                ->orderBy('c.created_at desc')
-                ->execute();
+                ->orderBy('c.created_at desc');
+
+        $this->pager = new sfDoctrinePager('Campanha');
+        $this->pager->setQuery($ads);
+        $this->pager->setPage($request->getParameter('page', 1));
+        $this->pager->init();
     }
 
     public function executeNewad(sfWebRequest $request) {
