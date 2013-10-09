@@ -32,7 +32,7 @@
                 <tr>
                     <td>
                         <p class="text-right lead">R$ <?php print $conta->getSaldo() ? $conta->getSaldo() : 0.00 ?></p>
-                        <a class="btn btn-block btn-success" href="<?php print url_for('profile/add-credit') ?>">Adicionar Créditos</a>
+                        <a class="btn btn-block btn-success" href="<?php print url_for('@carteira_new') ?>">Adicionar Créditos</a>
                     </td>
                 </tr>
             </tbody>
@@ -50,7 +50,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <a class="btn btn-block btn-small" href="<?php print url_for('profile/links') ?>">Seus links encurtados</a>
+                        <a class="btn btn-block btn-small" href="<?php print url_for('@link') ?>">Seus links encurtados</a>
                     </td>
                 </tr>
             </tbody>

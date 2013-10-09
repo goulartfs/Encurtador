@@ -1,0 +1,1 @@
+<h1 class="head_page">Resgate</h1>

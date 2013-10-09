@@ -9,6 +9,8 @@
  * @property integer $tipo_resgate_id
  * @property integer $status_id
  * @property float $valor
+ * @property varchar $authkey
+ * @property boolean $is_confirmed
  * @property sfGuardUser $sfGuardUser
  * @property TipoResgate $TipoResgate
  * @property Status $Status
@@ -18,6 +20,8 @@
  * @method integer             getTipoResgateId()   Returns the current record's "tipo_resgate_id" value
  * @method integer             getStatusId()        Returns the current record's "status_id" value
  * @method float               getValor()           Returns the current record's "valor" value
+ * @method varchar             getAuthkey()         Returns the current record's "authkey" value
+ * @method boolean             getIsConfirmed()     Returns the current record's "is_confirmed" value
  * @method sfGuardUser         getSfGuardUser()     Returns the current record's "sfGuardUser" value
  * @method TipoResgate         getTipoResgate()     Returns the current record's "TipoResgate" value
  * @method Status              getStatus()          Returns the current record's "Status" value
@@ -26,6 +30,8 @@
  * @method Resgate             setTipoResgateId()   Sets the current record's "tipo_resgate_id" value
  * @method Resgate             setStatusId()        Sets the current record's "status_id" value
  * @method Resgate             setValor()           Sets the current record's "valor" value
+ * @method Resgate             setAuthkey()         Sets the current record's "authkey" value
+ * @method Resgate             setIsConfirmed()     Sets the current record's "is_confirmed" value
  * @method Resgate             setSfGuardUser()     Sets the current record's "sfGuardUser" value
  * @method Resgate             setTipoResgate()     Sets the current record's "TipoResgate" value
  * @method Resgate             setStatus()          Sets the current record's "Status" value
@@ -55,6 +61,14 @@ abstract class BaseResgate extends sfDoctrineRecord
              ));
         $this->hasColumn('valor', 'float', null, array(
              'type' => 'float',
+             ));
+        $this->hasColumn('authkey', 'varchar', 255, array(
+             'type' => 'varchar',
+             'length' => 255,
+             ));
+        $this->hasColumn('is_confirmed', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => 0,
              ));
     }
 

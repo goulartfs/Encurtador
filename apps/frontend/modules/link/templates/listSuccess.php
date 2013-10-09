@@ -1,4 +1,4 @@
-<form action="<?php print url_for('profile/links') ?>" method="post" class="well text-center">
+<form action="<?php print url_for('@link') ?>" method="post" class="well text-center">
     <div class="input-append no-margin">
         <label for="encurtador_url" class="text-left">Encurte sua URL aqui:</label>
         <?php print $form['url']->render(array('class' => 'span7')); ?>
@@ -7,7 +7,7 @@
     </div>
     <div class="text-right">
         <br/>
-        <a class="text-success" href="<?php print url_for('profile/mass') ?>">Ir para o encurtador em massa</a>
+        <a class="text-success" href="<?php print url_for('@link_mass') ?>">Ir para o encurtador em massa</a>
         <i class="icon-share-alt"></i>
     </div>
 </form>
@@ -18,8 +18,8 @@
 <?php } ?>
 <div class="row">
     <div class="span9">
-        <?php include_partial('profile/list_links', array('urls' => $pager->getResults(), 'pager' => $pager)) ?>
-        <?php include_partial('profile/pagination', array('pager'=>$pager, 'route'=>'profile/links')) ?>
+        <?php include_partial('link/list_links', array('urls' => $pager->getResults(), 'pager' => $pager)) ?>
+        <?php include_partial('commom/pagination', array('pager'=>$pager, 'route'=>'@link')) ?>
     </div>
     <div class="span3">
         <div class="thumbnail help-block">
@@ -33,7 +33,7 @@
                     <tr>
                         <td>
                             <p class="text-right lead">R$ <?php print $ganhos; ?></p>
-                            <a class="btn btn-block btn-primary" href="#">Resgatar</a>
+                            <a class="btn btn-block btn-primary" href="<?php print url_for('@retirada') ?>">Resgatar</a>
                         </td>
                     </tr>
                 </tbody>

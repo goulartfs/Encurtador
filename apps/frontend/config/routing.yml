@@ -44,24 +44,69 @@ sobre:
   url:   /sobre-nos
   param: { module: sobrenos, action: index }
  
-new_ad:
-  url: /ad/new
-  param: { module: profile, action: newad }
+campanha:
+  url: /advertise
+  param: { module: campanha, action: list }
+  
+campanha_new:
+  url: /advertise/new
+  param: { module: campanha, action: newad }
  
-edit_ad:
-  url: /ad/:id/edit
+campanha_edit:
+  url: /advertise/:id/edit
   param: { module: profile, action: editad }
   requirements:
     id: ~
  
-wallet:
+carteira:
   url: /wallet
-  param: { module: profile, action: wallet }
+  param: { module: carteira, action: list }
+
+carteira_new:
+  url: /wallet/add-credit
+  param: { module: carteira, action: addcredit }
+
+link:
+  url: /link
+  param: { module: link, action: list }
+
+link_new:
+  url: /link/new
+  param: { module: link, action: list }
+
+link_mass:
+  url: /link/mass-shortener
+  param: { module: link, action: mass }
   
- 
 retirada:
-  url: /retirada
+  url: /withdraw
   param: { module: retirada, action: index }
+  
+retirada_select:
+  url: /withdraw/select
+  param: { module: retirada, action: chooseRetirada }
+  
+retirada_deposito:
+  url: /withdraw/deposit
+  param: { module: retirada, action: deposito }
+  
+retirada_paypal:
+  url: /withdraw/paypal
+  param: { module: retirada, action: paypal }
+  
+retirada_carteira:
+  url: /withdraw/wallet
+  param: { module: retirada, action: carteira }
+  
+retirada_confirm:
+  url: /withdraw/confirm
+  param: { module: retirada, action: confirm }
+  
+retirada_finish:
+  url: /withdraw/:authkey/finish
+  param: { module: retirada, action: finish }
+  requirements:
+    authkey: ~
   
 resolve_url:
   url:   /:url_id

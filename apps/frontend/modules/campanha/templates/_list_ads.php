@@ -17,7 +17,7 @@
         <tbody>
             <?php foreach ($ads as $ad) { ?>
                 <tr>
-                    <td><a class="btn" title="Editar campanha" href="<?php print url_for('@edit_ad?id=' . $ad->getId()) ?>"><i class="icon-pencil"></i></a></td>
+                    <td><a class="btn" title="Editar campanha" href="<?php print url_for('@campanha_edit?id=' . $ad->getId()) ?>"><i class="icon-pencil"></i></a></td>
                     <td><?php print $ad->getTitulo() ?></td>
                     <td><?php print $ad->getOrcamento() ?></td>
                     <td><?php print $ad->getUrlCampanha() ?></td>
