@@ -1,6 +1,6 @@
-<form class="form-horizontal" action="<?php print url_for('profile/new-ad') ?>" method="post">
+<form class="form-horizontal" action="<?php print url_for('@link_mass') ?>" method="post">
     <fieldset>
-        <legend>Nova Campanha</legend>
+        <legend>Encurtador Massivo</legend>
         <?php if ($sf_user->hasFlash('error')): ?>
             <div class="alert alert-error">
                 <button type="button" class="close" data-dismiss="alert">×</button>
@@ -14,10 +14,13 @@
             </div>
         <?php endif; ?>
 
-        <?php include_partial('profile/form', array('form'=>$form)) ?>
+        <?php include_partial('commom/form', array('form' => $form)) ?>
         <div class="control-group">
             <div class="controls">
-                <button type="submit" class="btn btn-primary">Criar</button>
+                <div class="btn-group">
+                    <a href="<?php print url_for('@link') ?>"><button class="btn" type="button"><i class="icon-arrow-left"></i>&nbsp;Voltar para lista</button></a>
+                    <button type="submit" class="btn btn-primary">Encurtar todos&nbsp;<i class="icon-resize-small icon-white"></i></button>
+                </div>
             </div>
         </div>
     </fieldset>

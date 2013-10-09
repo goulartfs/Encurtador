@@ -25,6 +25,8 @@
  * @property Doctrine_Collection $ValidaUsuario
  * @property Doctrine_Collection $Conta
  * @property Doctrine_Collection $Resgate
+ * @property Doctrine_Collection $DadoBancario
+ * @property Doctrine_Collection $Paypal
  * 
  * @method string                getFirstName()             Returns the current record's "first_name" value
  * @method string                getLastName()              Returns the current record's "last_name" value
@@ -46,6 +48,8 @@
  * @method Doctrine_Collection   getValidaUsuario()         Returns the current record's "ValidaUsuario" collection
  * @method Doctrine_Collection   getConta()                 Returns the current record's "Conta" collection
  * @method Doctrine_Collection   getResgate()               Returns the current record's "Resgate" collection
+ * @method Doctrine_Collection   getDadoBancario()          Returns the current record's "DadoBancario" collection
+ * @method Doctrine_Collection   getPaypal()                Returns the current record's "Paypal" collection
  * @method sfGuardUser           setFirstName()             Sets the current record's "first_name" value
  * @method sfGuardUser           setLastName()              Sets the current record's "last_name" value
  * @method sfGuardUser           setEmailAddress()          Sets the current record's "email_address" value
@@ -66,6 +70,8 @@
  * @method sfGuardUser           setValidaUsuario()         Sets the current record's "ValidaUsuario" collection
  * @method sfGuardUser           setConta()                 Sets the current record's "Conta" collection
  * @method sfGuardUser           setResgate()               Sets the current record's "Resgate" collection
+ * @method sfGuardUser           setDadoBancario()          Sets the current record's "DadoBancario" collection
+ * @method sfGuardUser           setPaypal()                Sets the current record's "Paypal" collection
  * 
  * @package    Encurtador
  * @subpackage model
@@ -174,6 +180,14 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
              'foreign' => 'user_id'));
 
         $this->hasMany('Resgate', array(
+             'local' => 'id',
+             'foreign' => 'user_id'));
+
+        $this->hasMany('DadoBancario', array(
+             'local' => 'id',
+             'foreign' => 'user_id'));
+
+        $this->hasMany('Paypal', array(
              'local' => 'id',
              'foreign' => 'user_id'));
 

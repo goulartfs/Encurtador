@@ -1,5 +1,5 @@
 <h1></h1>
-<form class="form-horizontal" action="<?php print url_for('profile/add-credit') ?>" method="post">
+<form class="form-horizontal" action="<?php print url_for('@carteira_new') ?>" method="post">
     <fieldset>
         <legend>Adicionar créditos na carteira</legend>
         <?php if ($sf_user->hasFlash('error')): ?>
@@ -15,7 +15,7 @@
             </div>
         <?php endif; ?>
 
-        <?php include_partial('profile/form', array('form' => $form)) ?>
+        <?php include_partial('commom/form', array('form' => $form)) ?>
         <div class="control-group">
             <div class="controls">
                 <button type="submit" class="btn btn-primary">Criar</button>

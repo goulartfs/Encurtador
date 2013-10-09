@@ -1,4 +1,4 @@
-<form class="form-horizontal" action="<?php print url_for('@edit_ad?id=' . $form['id']->getValue()) ?>" method="post">
+<form class="form-horizontal" action="<?php print url_for('@campanha_edit?id=' . $form['id']->getValue()) ?>" method="post">
     <fieldset>
         <legend>Editar Campanha</legend>
         <?php if ($sf_user->hasFlash('error')): ?>
@@ -34,7 +34,7 @@
 
         <div class="control-group">
             <div class="controls">
-                <a class="btn" href="<?php print url_for('profile/ads') ?>">Voltar para lista</a>
+                <a class="btn" href="<?php print url_for('@campanha') ?>">Voltar para lista</a>
                 <button type="submit" class="btn btn-primary">Atualizar</button>
             </div>
         </div>

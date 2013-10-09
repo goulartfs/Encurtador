@@ -16,6 +16,13 @@ class mainActions extends sfActions {
      * @param sfRequest $request A request object
      */
     public function executeIndex(sfWebRequest $request) {
+        
+        if($this->getUser()->isAuthenticated()){
+            if($this->getUser()->getGuardUser()->getUsuario()->getTipoUsuario()->getId() == 1)
+                $this->redirect('@link');
+            if($this->getUser()->getGuardUser()->getUsuario()->getTipoUsuario()->getId() == 2)
+                $this->redirect('@campanha');
+        }
 
         $this->form = new EncurtadorForm();
         $encurtados = $this->getRequest()->getCookie('encurtados');

@@ -125,7 +125,37 @@ Resgate:
     tipo_resgate_id: { type: integer(11) }
     status_id: { type: integer(11) }
     valor: { type: float }
+    authkey: { type: varchar(255) }
+    is_confirmed: { type: boolean, default: 0 }
   relations:
     sfGuardUser: { onDelete: RESTRICT, onUpdate: RESTRICT, local: user_id }
     TipoResgate: { onDelete: RESTRICT, onUpdate: RESTRICT }
     Status: { onDelete: RESTRICT, onUpdate: RESTRICT }
+     
+DadoBancario:
+  actAs:
+    Timestampable: ~
+  columns:
+    user_id: { type: integer(11) }
+    banco: { type: varchar(255) }
+    agencia: { type: varchar(255) }
+    tipo_conta: { type: varchar(255) }
+    conta_numero: { type: varchar(255) }
+    favorecido: { type: varchar(255) }
+    cpf: { type: varchar(255) }
+  relations:
+    sfGuardUser: { onDelete: RESTRICT, onUpdate: RESTRICT, local: user_id }
+    
+Paypal:
+  actAs:
+    Timestampable: ~
+  columns:
+    user_id: { type: integer(11) }
+    banco: { type: varchar(255) }
+    agencia: { type: varchar(255) }
+    tipo_conta: { type: varchar(255) }
+    conta_numero: { type: varchar(255) }
+    favorecido: { type: varchar(255) }
+    cpf: { type: varchar(255) }
+  relations:
+    sfGuardUser: { onDelete: RESTRICT, onUpdate: RESTRICT, local: user_id }

@@ -20,6 +20,8 @@ abstract class BaseResgateForm extends BaseFormDoctrine
       'tipo_resgate_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('TipoResgate'), 'add_empty' => true)),
       'status_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Status'), 'add_empty' => true)),
       'valor'           => new sfWidgetFormInputText(),
+      'authkey'         => new sfWidgetFormInputText(),
+      'is_confirmed'    => new sfWidgetFormInputCheckbox(),
       'created_at'      => new sfWidgetFormDateTime(),
       'updated_at'      => new sfWidgetFormDateTime(),
     ));
@@ -30,6 +32,8 @@ abstract class BaseResgateForm extends BaseFormDoctrine
       'tipo_resgate_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('TipoResgate'), 'required' => false)),
       'status_id'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Status'), 'required' => false)),
       'valor'           => new sfValidatorNumber(array('required' => false)),
+      'authkey'         => new sfValidatorPass(array('required' => false)),
+      'is_confirmed'    => new sfValidatorBoolean(array('required' => false)),
       'created_at'      => new sfValidatorDateTime(),
       'updated_at'      => new sfValidatorDateTime(),
     ));
