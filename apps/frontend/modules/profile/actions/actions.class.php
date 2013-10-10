@@ -39,7 +39,7 @@ class profileActions extends sfActions {
                 $this->form->save();
 
                 $this->getUser()->setFlash('notice', 'Cadastro atualizado com sucesso.');
-                $this->redirect('profile/account');
+                $this->redirect('@profile');
             } else {
                 $this->getUser()->setFlash('error', 'Verifique as informações e tente novamente.');
             }

@@ -12,7 +12,7 @@ sf_guard_signin:
 
 sf_guard_signout:
   url:   /logout
-  param: { module: sfGuardAuth, action: signout }
+  param: { module: main, action: logout }
   
 sf_guard_register:
   url:   /register

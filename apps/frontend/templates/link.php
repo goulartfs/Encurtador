@@ -10,11 +10,10 @@
         <?php include_javascripts() ?>
     </head>
 
-    <body class="interna">
-        <?php include_partial('commom/header') ?>
+    <body class="link">
+        <?php include_partial('commom/headerLink') ?>
         <div id="content">
             <?php print $sf_content; ?>
         </div>
-        <?php include_partial('commom/footer') ?>
     </body>
 </html>
