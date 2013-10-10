@@ -45,7 +45,9 @@ class profileActions extends sfActions {
             }
         }
     }
-
-
-
+    
+    public function executeChangeProfile(sfWebRequest $request) {
+        $this->getUser()->setAttribute('profile', $request->getParameter('profile'));
+        $this->redirect('@homepage');
+    }
 }

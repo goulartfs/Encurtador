@@ -16,12 +16,19 @@ class mainActions extends sfActions {
      * @param sfRequest $request A request object
      */
     public function executeIndex(sfWebRequest $request) {
-        
-        if($this->getUser()->isAuthenticated()){
-            if($this->getUser()->getGuardUser()->getUsuario()->getTipoUsuario()->getId() == 1)
-                $this->redirect('@link');
-            if($this->getUser()->getGuardUser()->getUsuario()->getTipoUsuario()->getId() == 2)
-                $this->redirect('@campanha');
+
+        if ($this->getUser()->isAuthenticated()) {
+            if (!$this->getUser()->hasAttribute('profile')) {
+                if ($this->getUser()->getGuardUser()->getUsuario()->getTipoUsuario()->getId() == 1)
+                    $this->redirect('@link');
+                if ($this->getUser()->getGuardUser()->getUsuario()->getTipoUsuario()->getId() == 2)
+                    $this->redirect('@campanha');
+            } else {
+                if ($this->getUser()->getAttribute('profile') == 'publisher')
+                    $this->redirect('@link');
+                if ($this->getUser()->getAttribute('profile') == 'advertiser')
+                    $this->redirect('@campanha');
+            }
         }
 
         $this->form = new EncurtadorForm();
@@ -58,7 +65,7 @@ class mainActions extends sfActions {
 
                 if (!$this->getUser()->isAuthenticated()) {
                     $this->redirect('@homepage');
-                } else{
+                } else {
                     $this->redirect('profile/links');
                 }
             }
@@ -69,7 +76,7 @@ class mainActions extends sfActions {
 
     public function executeResolve(sfWebRequest $request) {
         $this->setLayout('link');
-        
+
         $this->forward404If(!$request->getParameter('url_id'));
         $url = Doctrine::getTable('Url')->findOneByShortUrl($request->getParameter('url_id'));
         $this->forward404If(!$url);

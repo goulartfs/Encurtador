@@ -32,9 +32,11 @@ profile:
   url:   /profile
   param: { module: profile, action: index }
 
-profile_action:
-  url:   /profile/:action/*
-  param: { module: profile }
+profile_change:
+  url:   /profile/:profile
+  param: { module: profile, action: changeProfile }
+  requirements:
+    profile: ~
   
 termos:
   url:   /termos-e-condicoes
