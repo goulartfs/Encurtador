@@ -138,6 +138,10 @@ a{
     line-height: 14px;
 }
 
+.link #content {
+    padding: 0;
+}
+
 #content {
     font-family: Tahoma;
     font-size: 12px;
