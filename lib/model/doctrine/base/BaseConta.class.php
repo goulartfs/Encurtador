@@ -33,8 +33,10 @@ abstract class BaseConta extends sfDoctrineRecord
              'type' => 'integer',
              'length' => 11,
              ));
-        $this->hasColumn('saldo', 'float', null, array(
+        $this->hasColumn('saldo', 'float', 11, array(
              'type' => 'float',
+             'length' => 11,
+             'scale' => '6',
              ));
     }
 

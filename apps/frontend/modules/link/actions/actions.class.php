@@ -41,7 +41,7 @@ class linkActions extends sfActions {
         $this->pager->setPage($request->getParameter('page', 1));
         $this->pager->init();
 
-        $this->ganhos = Url::getGanhosDoUsuario($this->getUser()->getGuardUser());
+        $this->ganhos = Url::getGanhosDisponivelDoUsuario($this->getUser()->getGuardUser());
         $this->views = Url::getTotalAcessoByUser($this->getUser()->getGuardUser());
 
         if ($request->getMethod() == 'POST') {

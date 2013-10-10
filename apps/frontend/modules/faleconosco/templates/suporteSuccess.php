@@ -1,4 +1,4 @@
-<form class="form-horizontal" action="<?php print url_for('fale-conosco/suporte') ?>" method="post">
+<form class="form-horizontal" action="<?php print url_for('@suporte') ?>" method="post">
     <fieldset>
         <legend>Suporte</legend>
         <?php if ($sf_user->hasFlash('error')): ?>
@@ -14,7 +14,7 @@
             </div>
         <?php endif; ?>
 
-        <?php include_partial('profile/form', array('form'=>$form)) ?>
+        <?php include_partial('commom/form', array('form'=>$form)) ?>
         <div class="control-group">
             <div class="controls">
                 <button type="submit" class="btn btn-primary">Enviar</button>

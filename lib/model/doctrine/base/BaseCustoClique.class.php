@@ -27,8 +27,10 @@ abstract class BaseCustoClique extends sfDoctrineRecord
              'type' => 'integer',
              'length' => 11,
              ));
-        $this->hasColumn('custo', 'float', null, array(
+        $this->hasColumn('custo', 'float', 11, array(
              'type' => 'float',
+             'length' => 11,
+             'scale' => '6',
              ));
     }
 

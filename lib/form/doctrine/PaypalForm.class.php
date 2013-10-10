@@ -12,5 +12,7 @@ class PaypalForm extends BasePaypalForm
 {
   public function configure()
   {
+      $this->widgetSchema['user_id'] = new sfWidgetFormInputHidden();
+      unset($this['created_at'], $this['updated_at']);
   }
 }
