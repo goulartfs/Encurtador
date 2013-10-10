@@ -1,7 +1,7 @@
 <?php
-if ($sf_user->getAttribute() == 'publisher') {
+if ($sf_user->getAttribute('profile') == 'publisher') {
     include_partial('commom/publisher');
-} else if ($sf_user->getAttribute() == 'advertiser') {
+} else if ($sf_user->getAttribute('profile') == 'advertiser') {
     include_partial('commom/advertiser');
 } else {
     include_partial('commom/publisher');
