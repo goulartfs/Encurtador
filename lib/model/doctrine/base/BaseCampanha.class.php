@@ -39,8 +39,10 @@ abstract class BaseCampanha extends sfDoctrineRecord
              'type' => 'integer',
              'length' => 11,
              ));
-        $this->hasColumn('orcamento', 'float', null, array(
+        $this->hasColumn('orcamento', 'float', 11, array(
              'type' => 'float',
+             'length' => 11,
+             'scale' => '6',
              ));
         $this->hasColumn('titulo', 'string', 255, array(
              'type' => 'string',

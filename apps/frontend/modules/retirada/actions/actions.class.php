@@ -18,13 +18,23 @@ class retiradaActions extends sfActions {
     public function preExecute() {
         parent::preExecute();
 
-        $this->getUser()->setFlash('title-page', 'Retirada');
+        $this->getUser()->setFlash('title-page', 'Resgate');
         $this->setLayout('profile');
-        $this->ganhos = Url::getGanhosDoUsuario($this->getUser()->getGuardUser());
+        $this->ganhos = Url::getGanhosDisponivelDoUsuario($this->getUser()->getGuardUser());
     }
 
     public function executeIndex(sfWebRequest $request) {
         $this->form = new MeioResgateForm();
+        
+        $resgate = Doctrine_Query::create()
+                ->from('Resgate r')
+                ->where('r.user_id = ?', $this->getUser()->getGuardUser()->getId())
+                ->orderBy('r.created_at desc');
+
+        $this->pager = new sfDoctrinePager('Resgate');
+        $this->pager->setQuery($resgate);
+        $this->pager->setPage($request->getParameter('page', 1));
+        $this->pager->init();
     }
 
     public function executeChooseRetirada(sfWebRequest $request) {
@@ -98,8 +108,31 @@ class retiradaActions extends sfActions {
             $this->redirect('@retirada');
         }
 
-        $dado_usuario = Doctrine::getTable('DadoBancario')->findOneByUserId($this->getUser()->getGuardUser()->getId());
+        $dado_usuario = Doctrine::getTable('Paypal')->findOneByUserId($this->getUser()->getGuardUser()->getId());
+
+        if (!$dado_usuario) {
+            $dado_usuario = new Paypal();
+            $dado_usuario->setUserId($this->getUser()->getGuardUser()->getId());
+        }
+
         $this->form = new PaypalForm($dado_usuario);
+
+        if ($request->getMethod() == 'POST' && $request->getParameter('paypal')) {
+
+            if ($dado_usuario->isNew())
+                $this->form = new PaypalForm();
+
+            $post = $request->getParameter('paypal');
+            $post['user_id'] = $this->getUser()->getGuardUser()->getId();
+
+            $this->form->bind($post);
+
+            if ($this->form->isValid()) {
+                $this->form->save();
+                $this->getUser()->setFlash('notice', 'Dados de paypal atualizados.');
+                $this->redirect('@retirada_confirm');
+            }
+        }
     }
 
     public function executeCarteira(sfWebRequest $request) {
@@ -108,6 +141,8 @@ class retiradaActions extends sfActions {
             $this->getUser()->setFlash('error', 'Meio de pagamento não escolhido.');
             $this->redirect('@retirada');
         }
+
+        $this->redirect('@retirada_confirm');
     }
 
     public function executeConfirm(sfWebRequest $request) {
@@ -146,8 +181,8 @@ class retiradaActions extends sfActions {
         $urls = Doctrine::getTable('Url')->findByUserId($this->getUser()->getGuardUser()->getId());
         if ($urls->count()) {
             foreach ($urls as $url) {
-                if ($url->getUrlControle()->count()) {
-                    foreach ($url->getUrlControle() as $urlControle) {
+                if ($url->getUrlControleNaoResgatado()->count()) {
+                    foreach ($url->getUrlControleNaoResgatado() as $urlControle) {
                         $urlControle->setResgateId($this->resgate->getId());
                         $urlControle->setIsRescued(1);
                         $urlControle->save();
@@ -165,6 +200,18 @@ class retiradaActions extends sfActions {
 
         $resgate->setIsConfirmed(1);
         $resgate->save();
+
+        if ($resgate->getTipoResgateId() == 3) {
+            $operacao = new ContaOperacao();
+            $operacao->setTipoOperacaoId(4);
+            $operacao->setContaId($resgate->getSfGuardUser()->getConta()->getId());
+            $operacao->setValor($resgate->getValor());
+            $operacao->save();
+            $operacao->processar();
+            
+            $resgate->setStatusId(4);
+            $resgate->save();
+        }
     }
 
 }

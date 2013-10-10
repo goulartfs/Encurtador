@@ -56,7 +56,7 @@ Conta:
     Timestampable: ~
   columns:
     user_id: { type: integer(11) }
-    saldo: { type: float }
+    saldo: { type: "float(11,6)" }
   relations:
     sfGuardUser: { onDelete: CASCADE, onUpdate: CASCADE, local: user_id }
     
@@ -72,7 +72,7 @@ ContaOperacao:
   columns:
     conta_id: { type: integer(11) }
     tipo_operacao_id: { type: integer(11) }
-    valor: { type: float }
+    valor: { type: "float(11,6)" }
   relations:
     TipoOperacao: { onDelete: RESTRICT, onUpdate: RESTRICT }
     Conta: { onDelete: RESTRICT, onUpdate: RESTRICT }
@@ -82,7 +82,7 @@ Campanha:
     Timestampable: ~
   columns:
     user_id: { type: integer(11) }
-    orcamento: { type: float }
+    orcamento: { type: "float(11,6)" }
     titulo: { type: string(255) }
     descricao: { type: string() }
     url_campanha: { type: string() }
@@ -102,7 +102,7 @@ CustoClique:
     Timestampable: ~
   columns:
     nclique: { type: integer(11) }
-    custo: { type: float } 
+    custo: { type: "float(11,6)" } 
 
 Status:
   actAs:
@@ -124,7 +124,7 @@ Resgate:
     user_id: { type: integer(11) }
     tipo_resgate_id: { type: integer(11) }
     status_id: { type: integer(11) }
-    valor: { type: float }
+    valor: { type: "float(11,6)" }
     authkey: { type: varchar(255) }
     is_confirmed: { type: boolean, default: 0 }
   relations:
@@ -151,11 +151,6 @@ Paypal:
     Timestampable: ~
   columns:
     user_id: { type: integer(11) }
-    banco: { type: varchar(255) }
-    agencia: { type: varchar(255) }
-    tipo_conta: { type: varchar(255) }
-    conta_numero: { type: varchar(255) }
-    favorecido: { type: varchar(255) }
-    cpf: { type: varchar(255) }
+    email: { type: varchar(255) }
   relations:
     sfGuardUser: { onDelete: RESTRICT, onUpdate: RESTRICT, local: user_id }

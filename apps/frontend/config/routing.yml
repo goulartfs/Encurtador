@@ -107,6 +107,10 @@ retirada_finish:
   param: { module: retirada, action: finish }
   requirements:
     authkey: ~
+    
+suporte:
+  url:   /suport
+  param: { module: faleconosco, action: suporte }
   
 resolve_url:
   url:   /:url_id

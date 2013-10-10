@@ -26,7 +26,7 @@ class ContaOperacao extends BaseContaOperacao {
                 $conta->addSaldo($conta, $this);
                 break;
             case 4:
-                $conta->removeSaldo($conta, $this);
+                $conta->addSaldo($conta, $this);
                 break;
             default:
                 throw new sfException('Tipo de operação inválida');

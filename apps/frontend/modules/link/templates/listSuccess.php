@@ -26,7 +26,7 @@
             <table class="table no-margin">
                 <thead>
                     <tr>
-                        <th>Ganhos Totais</th>
+                        <th>Ganhos disponível para resgate</th>
                     </tr>
                 </thead>
                 <tbody>

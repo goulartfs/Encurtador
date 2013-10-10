@@ -26,8 +26,23 @@ class Url extends BaseUrl {
         return ($total['total']) ? $total['total'] : 0;
     }
 
+    public function getTotalDisponivel() {
+        $total = Doctrine::getTable('UrlControle')->createQuery('u')
+                        ->select('count(u.url_id) as total')
+                        ->where('u.url_id = ?', $this->getId())
+                        ->addWhere('u.is_rescued <> 1')
+                        ->groupBy('u.url_id')
+                        ->execute()->getFirst();
+
+        return ($total['total']) ? $total['total'] : 0;
+    }
+
     public function getGanhos() {
         return $this->getTotal() * CustoClique::getCustoPorClique();
+    }
+
+    public function getGanhosDisponivel() {
+        return $this->getTotalDisponivel() * CustoClique::getCustoPorClique();
     }
 
     public static function getGanhosDoUsuario(sfGuardUser $usuario) {
@@ -37,6 +52,18 @@ class Url extends BaseUrl {
         $ganhos = 0;
         foreach ($urls as $url) {
             $ganhos += $url->getGanhos();
+        }
+
+        return $ganhos;
+    }
+
+    public static function getGanhosDisponivelDoUsuario(sfGuardUser $usuario) {
+
+        $urls = Doctrine::getTable('Url')->findByUserId($usuario->getId());
+
+        $ganhos = 0;
+        foreach ($urls as $url) {
+            $ganhos += $url->getGanhosDisponivel();
         }
 
         return $ganhos;
@@ -53,6 +80,13 @@ class Url extends BaseUrl {
         }
 
         return $views;
+    }
+    
+    public function getUrlControleNaoResgatado(){
+        return Doctrine::getTable('UrlControle')->createQuery('u')
+                ->where('u.url_id = ?', $this->getId())
+                ->addWhere('u.is_rescued <> 1')
+                ->execute();
     }
 
 }

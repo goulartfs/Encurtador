@@ -55,7 +55,7 @@ class faleconoscoActions extends sfActions {
 
                 $this->getUser()->setFlash('notice', 'Email enviado com sucesso. Obrigado.');
 
-                $this->redirect('fale-conosco/suporte');
+                $this->redirect('@suporte');
             }
         }
     }
