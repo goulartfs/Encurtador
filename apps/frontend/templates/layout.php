@@ -10,7 +10,7 @@
         <?php include_javascripts() ?>
     </head>
 
-    <body>
+    <body class="home">
         <?php include_partial('commom/headerHome') ?>
         <div id="content">
             <div class="container">

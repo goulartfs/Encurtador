@@ -101,4 +101,10 @@ class mainActions extends sfActions {
         $this->url = $url;
     }
 
+    public function executeLogout(sfWebRequest $request) {
+        $this->getUser()->signOut();
+        $this->getUser()->setFlash('notice', 'Obrigado');
+        $this->redirect('@sf_guard_signin');
+    }
+
 }

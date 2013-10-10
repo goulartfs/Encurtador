@@ -35,6 +35,11 @@ a{
     height: 205px;
 }
 
+.link #header{
+    background: none repeat-x scroll center top #3785d8;
+    height: 97px;
+}
+
 #header .bg-header{
     background: url(/images/topo.jpg) no-repeat scroll center top transparent;
     height: 376px;
@@ -43,6 +48,19 @@ a{
 .interna #header .bg-header{
     background: url(/images/topo_interna.jpg) no-repeat scroll center top transparent;
     height: 205px;
+}
+
+.link #header .bg-header{
+    background: none no-repeat scroll center top #3785d8;
+    height: auto;
+}
+
+.link #header .container{
+    padding-top: 0;
+}
+
+.link .button-area{
+    margin-top: 32px;
 }
 
 #header .container{
@@ -92,7 +110,7 @@ a{
     padding-top: 10px;
 }
 
-#header button{
+.home #header button, .interna #header button{
     background: none;
     border: none;
     padding: 0;
