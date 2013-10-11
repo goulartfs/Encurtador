@@ -113,6 +113,10 @@ retirada_finish:
 suporte:
   url:   /suport
   param: { module: faleconosco, action: suporte }
+    
+payment:
+  url:   /payment/success/ref/:ref
+  param: { module: payment, action: index }
   
 resolve_url:
   url:   /:url_id
