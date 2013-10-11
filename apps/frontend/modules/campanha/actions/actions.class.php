@@ -47,9 +47,19 @@ class campanhaActions extends sfActions {
 
             if ($this->form->isValid()) {
                 $ad = $this->form->save();
-                $this->getUser()->setFlash('notice', 'Campanha cadastrada com sucesso.');
-
-                $this->redirect('@campanha_edit?id=' . $ad->getId());
+                
+                $ad->setAuthKey(md5(uniqid()));
+                $ad->save();
+                
+                $data = array(
+                    'custom'=>$ad->getAuthKey(),
+                    'amount'=>$ad->getOrcamento()->getValor(),
+                    'item_name'=>$ad->getOrcamento()->getDescricao(),
+                    'ref'=>'campanha',
+                );
+                
+                $this->getUser()->setAttribute('payment_data', $data);
+                $this->redirect('payment/paypal');
             }
         }
     }

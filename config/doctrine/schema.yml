@@ -77,16 +77,32 @@ ContaOperacao:
     TipoOperacao: { onDelete: RESTRICT, onUpdate: RESTRICT }
     Conta: { onDelete: RESTRICT, onUpdate: RESTRICT }
     
+Orcamento:
+  actAs:
+    Timestampable: ~
+  columns:
+    valor: { type: "float(11,6)" }
+    quantidade: { type: integer(11) }
+    descricao: { type: string(255) }
+    
 Campanha:
   actAs:
     Timestampable: ~
   columns:
     user_id: { type: integer(11) }
-    orcamento: { type: "float(11,6)" }
     titulo: { type: string(255) }
-    descricao: { type: string() }
     url_campanha: { type: string() }
+    orcamento_id: { type: integer(11) }
+    maximo_orcamento_diario: { type: string(255) }
+    auth_key: { type: string(255) }
+    payment_method: { type: string(255) }
+    is_payment_processed: { type: boolean, default: 0 }
+    ad_status: { type: string(255), default: 0 }
     is_active: { type: boolean, default: 1 }
+    is_finished: { type: boolean, default: 0 }
+    end_date: { type: datetime }
+  relations:
+    Orcamento: { onDelete: RESTRICT, onUpdate: RESTRICT }
     
 CampanhaControle:
   actAs:

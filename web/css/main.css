@@ -30,6 +30,10 @@ a{
     height: 376px;
 }
 
+.link #header{
+    border-bottom: 10px solid #70A5D1;
+}
+
 .interna #header{
     background: url(/images/bg_topo_interna.jpg) repeat-x scroll center top transparent;
     height: 205px;
