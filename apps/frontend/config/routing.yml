@@ -31,6 +31,10 @@ confirm_user:
 profile:
   url:   /profile
   param: { module: profile, action: index }
+  
+profile_account:
+  url:   /profile/account
+  param: { module: profile, action: account }
 
 profile_change:
   url:   /profile/:profile
