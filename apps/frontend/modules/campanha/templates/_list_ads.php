@@ -20,7 +20,26 @@
         <tbody>
             <?php foreach ($ads as $ad) { ?>
                 <tr>
-                    <td><a class="btn" title="Editar campanha" href="<?php print url_for('@campanha_edit?id=' . $ad->getId()) ?>"><i class="icon-pencil"></i></a></td>
+                    <td>
+                        <ul>
+                            <li>
+                                <?php if ($ad->getIsActive()) { ?>
+                                    <a class="" title="Pausar campanha" href="<?php print url_for('@campanha_status?id=' . $ad->getId()) ?>">
+                                        Pausar
+                                    </a>
+                                <?php } else { ?>
+                                    <a class="" title="Despausar campanha" href="<?php print url_for('@campanha_status?id=' . $ad->getId()) ?>">
+                                        Despausar
+                                    </a>
+                                <?php } ?>
+                            </li>
+                            <li>
+                                <a class="" title="Editar campanha" href="<?php print url_for('@campanha_edit?id=' . $ad->getId()) ?>">
+                                    Editar
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
                     <td><span class="label <?php print $ad->getStatusTransacao()->getLabel() ?>"><?php print $ad->getStatusTransacao() ?></span></td>
                     <td><?php print $ad->getTitulo() ?></td>
                     <td><?php print $ad->getOrcamento()->getQuantidade() ?></td>
@@ -28,7 +47,7 @@
                     <td><i class="<?php print ($ad->getIsActive()) ? 'icon-ok' : ''  ?>"></i></td>
                     <td><?php print $ad->getTotal() ?></td>
                     <td><?php print $ad->getIsFinished() ?></td>
-                    <td><?php print ($ad->getEndDate())?$ad->getDateTimeObject('end_date')->format('d/m/Y h:i:s'):null; ?></td>
+                    <td><?php print ($ad->getEndDate()) ? $ad->getDateTimeObject('end_date')->format('d/m/Y h:i:s') : null; ?></td>
                     <td><?php print $ad->getDateTimeObject('created_at')->format('d/m/Y h:i:s') ?></td>
                 </tr>
             <?php } ?>

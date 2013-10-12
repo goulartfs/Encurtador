@@ -14,21 +14,27 @@
             </div>
         <?php endif; ?>
 
-        <?php
-        foreach ($form as $field) {
-            if ($field->isHidden())
-                continue;
-            ?>
             <div class="control-group">
-                <?php print $field->renderLabel($field->renderLabelName(), array('class' => 'control-label')) ?>
+                <?php print $form['titulo']->renderLabel($form['titulo']->renderLabelName(), array('class' => 'control-label')) ?>
                 <div class="controls">
-                    <?php echo $field->renderError() ?>
-                    <?php echo $field->render(array('class' => 'text-input input-xlarge')) ?>
+                    <?php echo $form['titulo']->renderError() ?>
+                    <?php echo $form['titulo']->render(array('class' => 'text-input input-xlarge')) ?>
                 </div>
             </div>
-            <?php
-        }
-        ?>
+            <div class="control-group">
+                <?php print $form['url_campanha']->renderLabel($form['url_campanha']->renderLabelName(), array('class' => 'control-label')) ?>
+                <div class="controls">
+                    <?php echo $form['url_campanha']->renderError() ?>
+                    <?php echo $form['url_campanha']->render(array('class' => 'text-input input-xlarge')) ?>
+                </div>
+            </div>
+            <div class="control-group">
+                <?php print $form['maximo_orcamento_diario']->renderLabel($form['maximo_orcamento_diario']->renderLabelName(), array('class' => 'control-label')) ?>
+                <div class="controls">
+                    <?php echo $form['maximo_orcamento_diario']->renderError() ?>
+                    <?php echo $form['maximo_orcamento_diario']->render(array('class' => 'text-input input-xlarge')) ?>
+                </div>
+            </div>
         <?php print $form->renderHiddenFields() ?>
 
 

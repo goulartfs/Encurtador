@@ -56,7 +56,13 @@ campanha_new:
  
 campanha_edit:
   url: /advertise/:id/edit
-  param: { module: profile, action: editad }
+  param: { module: campanha, action: editad }
+  requirements:
+    id: ~
+ 
+campanha_status:
+  url: /advertise/:id/status
+  param: { module: campanha, action: status }
   requirements:
     id: ~
  
