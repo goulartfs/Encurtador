@@ -116,7 +116,7 @@ suporte:
     
 payment:
   url:   /payment/success/ref/:ref
-  param: { module: payment, action: index }
+  param: { module: payment, action: success }
   
 resolve_url:
   url:   /:url_id

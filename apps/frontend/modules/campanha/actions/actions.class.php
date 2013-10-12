@@ -49,6 +49,7 @@ class campanhaActions extends sfActions {
                 $ad = $this->form->save();
                 
                 $ad->setAuthKey(md5(uniqid()));
+                $ad->setStatusTransacaoId(1);
                 $ad->save();
                 
                 $data = array(
