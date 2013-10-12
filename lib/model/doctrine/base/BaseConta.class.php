@@ -9,15 +9,18 @@
  * @property float $saldo
  * @property sfGuardUser $sfGuardUser
  * @property Doctrine_Collection $ContaOperacao
+ * @property Doctrine_Collection $ContaTransacao
  * 
- * @method integer             getUserId()        Returns the current record's "user_id" value
- * @method float               getSaldo()         Returns the current record's "saldo" value
- * @method sfGuardUser         getSfGuardUser()   Returns the current record's "sfGuardUser" value
- * @method Doctrine_Collection getContaOperacao() Returns the current record's "ContaOperacao" collection
- * @method Conta               setUserId()        Sets the current record's "user_id" value
- * @method Conta               setSaldo()         Sets the current record's "saldo" value
- * @method Conta               setSfGuardUser()   Sets the current record's "sfGuardUser" value
- * @method Conta               setContaOperacao() Sets the current record's "ContaOperacao" collection
+ * @method integer             getUserId()         Returns the current record's "user_id" value
+ * @method float               getSaldo()          Returns the current record's "saldo" value
+ * @method sfGuardUser         getSfGuardUser()    Returns the current record's "sfGuardUser" value
+ * @method Doctrine_Collection getContaOperacao()  Returns the current record's "ContaOperacao" collection
+ * @method Doctrine_Collection getContaTransacao() Returns the current record's "ContaTransacao" collection
+ * @method Conta               setUserId()         Sets the current record's "user_id" value
+ * @method Conta               setSaldo()          Sets the current record's "saldo" value
+ * @method Conta               setSfGuardUser()    Sets the current record's "sfGuardUser" value
+ * @method Conta               setContaOperacao()  Sets the current record's "ContaOperacao" collection
+ * @method Conta               setContaTransacao() Sets the current record's "ContaTransacao" collection
  * 
  * @package    Encurtador
  * @subpackage model
@@ -50,6 +53,10 @@ abstract class BaseConta extends sfDoctrineRecord
              'onUpdate' => 'CASCADE'));
 
         $this->hasMany('ContaOperacao', array(
+             'local' => 'id',
+             'foreign' => 'conta_id'));
+
+        $this->hasMany('ContaTransacao', array(
              'local' => 'id',
              'foreign' => 'conta_id'));
 
