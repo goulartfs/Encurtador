@@ -43,7 +43,7 @@ class CampanhaForm extends BaseCampanhaForm {
         
         $this->validatorSchema['payment_method'] = new sfValidatorChoice(array('choices'=>  array_keys(self::$payments)));
 
-        unset($this['auth_key'], $this['is_payment_processed'], $this['ad_status'], $this['is_active'], $this['is_finished'], $this['end_date'],$this['created_at'], $this['updated_at']);
+        unset($this['auth_key'], $this['is_payment_processed'], $this['paypal_id'], $this['status_transacao_id'], $this['is_active'], $this['is_finished'], $this['end_date'],$this['created_at'], $this['updated_at']);
     }
 
 }

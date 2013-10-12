@@ -1,4 +1,4 @@
-<h2>Campanhas</h1>
+<h2>Campanhas</h2>
 <div class="row help-block">
     <div class="span12">
         <?php include_partial('campanha/list_ads', array('ads' => $pager->getResults(), 'pager' => $pager)) ?>

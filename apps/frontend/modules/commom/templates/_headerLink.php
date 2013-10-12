@@ -9,7 +9,7 @@
 
                 </div>
                 <div class="span4 text-right button-area">
-                    <a href="#"><button class="btn btn-warning timecron" type="button"></button></a>
+                    <a href="#"><button class="btn btn-warning timecron" type="button">Aguarde...</button></a>
                 </div>
             </div>
         </div>

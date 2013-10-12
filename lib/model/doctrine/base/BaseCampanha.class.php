@@ -12,39 +12,45 @@
  * @property string $maximo_orcamento_diario
  * @property string $auth_key
  * @property string $payment_method
+ * @property string $paypal_id
  * @property boolean $is_payment_processed
- * @property string $ad_status
+ * @property integer $status_transacao_id
  * @property boolean $is_active
  * @property boolean $is_finished
  * @property datetime $end_date
  * @property Orcamento $Orcamento
+ * @property StatusTransacao $StatusTransacao
  * 
- * @method integer   getUserId()                  Returns the current record's "user_id" value
- * @method string    getTitulo()                  Returns the current record's "titulo" value
- * @method string    getUrlCampanha()             Returns the current record's "url_campanha" value
- * @method integer   getOrcamentoId()             Returns the current record's "orcamento_id" value
- * @method string    getMaximoOrcamentoDiario()   Returns the current record's "maximo_orcamento_diario" value
- * @method string    getAuthKey()                 Returns the current record's "auth_key" value
- * @method string    getPaymentMethod()           Returns the current record's "payment_method" value
- * @method boolean   getIsPaymentProcessed()      Returns the current record's "is_payment_processed" value
- * @method string    getAdStatus()                Returns the current record's "ad_status" value
- * @method boolean   getIsActive()                Returns the current record's "is_active" value
- * @method boolean   getIsFinished()              Returns the current record's "is_finished" value
- * @method datetime  getEndDate()                 Returns the current record's "end_date" value
- * @method Orcamento getOrcamento()               Returns the current record's "Orcamento" value
- * @method Campanha  setUserId()                  Sets the current record's "user_id" value
- * @method Campanha  setTitulo()                  Sets the current record's "titulo" value
- * @method Campanha  setUrlCampanha()             Sets the current record's "url_campanha" value
- * @method Campanha  setOrcamentoId()             Sets the current record's "orcamento_id" value
- * @method Campanha  setMaximoOrcamentoDiario()   Sets the current record's "maximo_orcamento_diario" value
- * @method Campanha  setAuthKey()                 Sets the current record's "auth_key" value
- * @method Campanha  setPaymentMethod()           Sets the current record's "payment_method" value
- * @method Campanha  setIsPaymentProcessed()      Sets the current record's "is_payment_processed" value
- * @method Campanha  setAdStatus()                Sets the current record's "ad_status" value
- * @method Campanha  setIsActive()                Sets the current record's "is_active" value
- * @method Campanha  setIsFinished()              Sets the current record's "is_finished" value
- * @method Campanha  setEndDate()                 Sets the current record's "end_date" value
- * @method Campanha  setOrcamento()               Sets the current record's "Orcamento" value
+ * @method integer         getUserId()                  Returns the current record's "user_id" value
+ * @method string          getTitulo()                  Returns the current record's "titulo" value
+ * @method string          getUrlCampanha()             Returns the current record's "url_campanha" value
+ * @method integer         getOrcamentoId()             Returns the current record's "orcamento_id" value
+ * @method string          getMaximoOrcamentoDiario()   Returns the current record's "maximo_orcamento_diario" value
+ * @method string          getAuthKey()                 Returns the current record's "auth_key" value
+ * @method string          getPaymentMethod()           Returns the current record's "payment_method" value
+ * @method string          getPaypalId()                Returns the current record's "paypal_id" value
+ * @method boolean         getIsPaymentProcessed()      Returns the current record's "is_payment_processed" value
+ * @method integer         getStatusTransacaoId()       Returns the current record's "status_transacao_id" value
+ * @method boolean         getIsActive()                Returns the current record's "is_active" value
+ * @method boolean         getIsFinished()              Returns the current record's "is_finished" value
+ * @method datetime        getEndDate()                 Returns the current record's "end_date" value
+ * @method Orcamento       getOrcamento()               Returns the current record's "Orcamento" value
+ * @method StatusTransacao getStatusTransacao()         Returns the current record's "StatusTransacao" value
+ * @method Campanha        setUserId()                  Sets the current record's "user_id" value
+ * @method Campanha        setTitulo()                  Sets the current record's "titulo" value
+ * @method Campanha        setUrlCampanha()             Sets the current record's "url_campanha" value
+ * @method Campanha        setOrcamentoId()             Sets the current record's "orcamento_id" value
+ * @method Campanha        setMaximoOrcamentoDiario()   Sets the current record's "maximo_orcamento_diario" value
+ * @method Campanha        setAuthKey()                 Sets the current record's "auth_key" value
+ * @method Campanha        setPaymentMethod()           Sets the current record's "payment_method" value
+ * @method Campanha        setPaypalId()                Sets the current record's "paypal_id" value
+ * @method Campanha        setIsPaymentProcessed()      Sets the current record's "is_payment_processed" value
+ * @method Campanha        setStatusTransacaoId()       Sets the current record's "status_transacao_id" value
+ * @method Campanha        setIsActive()                Sets the current record's "is_active" value
+ * @method Campanha        setIsFinished()              Sets the current record's "is_finished" value
+ * @method Campanha        setEndDate()                 Sets the current record's "end_date" value
+ * @method Campanha        setOrcamento()               Sets the current record's "Orcamento" value
+ * @method Campanha        setStatusTransacao()         Sets the current record's "StatusTransacao" value
  * 
  * @package    Encurtador
  * @subpackage model
@@ -84,14 +90,17 @@ abstract class BaseCampanha extends sfDoctrineRecord
              'type' => 'string',
              'length' => 255,
              ));
+        $this->hasColumn('paypal_id', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
         $this->hasColumn('is_payment_processed', 'boolean', null, array(
              'type' => 'boolean',
              'default' => 0,
              ));
-        $this->hasColumn('ad_status', 'string', 255, array(
-             'type' => 'string',
-             'default' => 0,
-             'length' => 255,
+        $this->hasColumn('status_transacao_id', 'integer', 11, array(
+             'type' => 'integer',
+             'length' => 11,
              ));
         $this->hasColumn('is_active', 'boolean', null, array(
              'type' => 'boolean',
@@ -111,6 +120,12 @@ abstract class BaseCampanha extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Orcamento', array(
              'local' => 'orcamento_id',
+             'foreign' => 'id',
+             'onDelete' => 'RESTRICT',
+             'onUpdate' => 'RESTRICT'));
+
+        $this->hasOne('StatusTransacao', array(
+             'local' => 'status_transacao_id',
              'foreign' => 'id',
              'onDelete' => 'RESTRICT',
              'onUpdate' => 'RESTRICT'));

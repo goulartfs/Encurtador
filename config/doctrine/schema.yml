@@ -85,6 +85,12 @@ Orcamento:
     quantidade: { type: integer(11) }
     descricao: { type: string(255) }
     
+StatusTransacao:
+  actAs:
+    Timestampable: ~
+  columns:
+    status: { type: string(255) }
+    
 Campanha:
   actAs:
     Timestampable: ~
@@ -96,13 +102,15 @@ Campanha:
     maximo_orcamento_diario: { type: string(255) }
     auth_key: { type: string(255) }
     payment_method: { type: string(255) }
+    paypal_id: { type: string(255) }
     is_payment_processed: { type: boolean, default: 0 }
-    ad_status: { type: string(255), default: 0 }
+    status_transacao_id: { type: integer(11) }
     is_active: { type: boolean, default: 1 }
     is_finished: { type: boolean, default: 0 }
     end_date: { type: datetime }
   relations:
     Orcamento: { onDelete: RESTRICT, onUpdate: RESTRICT }
+    StatusTransacao: { onDelete: RESTRICT, onUpdate: RESTRICT }
     
 CampanhaControle:
   actAs:

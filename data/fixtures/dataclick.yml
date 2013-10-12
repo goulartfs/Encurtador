@@ -142,3 +142,14 @@ Orcamento:
     valor: 40
     quantidade: 5000
     descricao: "R$ 40,00 - 5000 impressões"
+StatusTransacao:
+  Status_1:
+    status: Aguardando pagamento
+  Status_2:
+    status: Pendente
+  Status_3:
+    status: Cancelado
+  Status_4:
+    status: Crítica no Paypal
+  Status_5:
+    status: Completo
