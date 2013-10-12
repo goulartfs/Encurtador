@@ -16,17 +16,16 @@ class mainActions extends sfActions {
      * @param sfRequest $request A request object
      */
     public function executeIndex(sfWebRequest $request) {
-
         if ($this->getUser()->isAuthenticated()) {
-            if (!$this->getUser()->hasAttribute('profile')) {
+            if (!$this->getUser()->hasAttribute('profile_preference')) {
                 if ($this->getUser()->getGuardUser()->getUsuario()->getTipoUsuario()->getId() == 1)
                     $this->redirect('@link');
                 if ($this->getUser()->getGuardUser()->getUsuario()->getTipoUsuario()->getId() == 2)
                     $this->redirect('@campanha');
             } else {
-                if ($this->getUser()->getAttribute('profile') == 'publisher')
+                if ($this->getUser()->getAttribute('profile_preference') == 'publisher')
                     $this->redirect('@link');
-                if ($this->getUser()->getAttribute('profile') == 'advertiser')
+                if ($this->getUser()->getAttribute('profile_preference') == 'advertiser')
                     $this->redirect('@campanha');
             }
         }
