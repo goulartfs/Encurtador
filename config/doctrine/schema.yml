@@ -77,6 +77,17 @@ ContaOperacao:
     TipoOperacao: { onDelete: RESTRICT, onUpdate: RESTRICT }
     Conta: { onDelete: RESTRICT, onUpdate: RESTRICT }
     
+ContaTransacao:
+  actAs:
+    Timestampable: ~
+  columns:
+    conta_id: { type: integer(11) }
+    auth_key: { type: string(255) }
+    valor: { type: "float(11,6)" }
+    is_processed: { type: boolean, default: 0 }
+  relations:
+    Conta: { onDelete: RESTRICT, onUpdate: RESTRICT }
+    
 Orcamento:
   actAs:
     Timestampable: ~

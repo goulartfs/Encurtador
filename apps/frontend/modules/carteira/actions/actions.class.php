@@ -33,10 +33,10 @@ class carteiraActions extends sfActions {
 
     public function executeAddcredit(sfWebRequest $request) {
 
-        $operacao = new ContaOperacao();
-        $operacao->setTipoOperacaoId(1);
-        $operacao->setContaId($this->getUser()->getGuardUser()->getConta()->getId());
-        $this->form = new ContaOperacaoForm($operacao);
+//        $operacao = new ContaOperacao();
+//        $operacao->setTipoOperacaoId(1);
+//        $operacao->setContaId($this->getUser()->getGuardUser()->getConta()->getId());
+        $this->form = new ContaOperacaoForm();
 
         if ($request->getMethod() == 'POST') {
 //            print_r($request->getParameter('conta_operacao'));
@@ -44,11 +44,24 @@ class carteiraActions extends sfActions {
 
             if ($this->form->isValid()) {
 
-                $operacao = $this->form->save();
-                $operacao->processar();
+                $transacao = new ContaTransacao();
+                $transacao->setAuthKey(md5(uniqid()));
+                $transacao->setValor($this->form->getValue('valor'));
+                $transacao->setContaId($this->getUser()->getGuardUser()->getConta()->getId());
+                $transacao->save();
+                
+                $data = array(
+                    'custom'=>$transacao->getAuthKey(),
+                    'amount'=>$transacao->getValor(),
+                    'item_name'=>'Adição de crédito na carteira CliqueBR - R$ ' . $transacao->getValor(),
+                    'ref'=>'carteira',
+                );
+                
+                $this->getUser()->setAttribute('payment_data', $data);
+                $this->redirect('payment/paypal');
 
-                $this->getUser()->setFlash('notice', 'Transação realizada com sucesso');
-                $this->redirect('@carteira');
+//                $this->getUser()->setFlash('notice', 'Transação realizada com sucesso');
+//                $this->redirect('@carteira');
             }
         }
     }

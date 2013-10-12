@@ -2,6 +2,7 @@ CREATE TABLE campanha (id BIGINT AUTO_INCREMENT, user_id BIGINT, titulo VARCHAR(
 CREATE TABLE campanha_controle (id BIGINT AUTO_INCREMENT, campanha_id BIGINT, ip_viewer VARCHAR(255), is_processed TINYINT(1) DEFAULT '0', data_processado datetime, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE conta (id BIGINT AUTO_INCREMENT, user_id BIGINT, saldo FLOAT(11, 6), created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE conta_operacao (id BIGINT AUTO_INCREMENT, conta_id BIGINT, tipo_operacao_id BIGINT, valor FLOAT(11, 6), created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX tipo_operacao_id_idx (tipo_operacao_id), INDEX conta_id_idx (conta_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE conta_transacao (id BIGINT AUTO_INCREMENT, conta_id BIGINT, auth_key VARCHAR(255), valor FLOAT(11, 6), is_processed TINYINT(1) DEFAULT '0', created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX conta_id_idx (conta_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE custo_clique (id BIGINT AUTO_INCREMENT, nclique BIGINT, custo FLOAT(11, 6), created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE dado_bancario (id BIGINT AUTO_INCREMENT, user_id BIGINT, banco VARCHAR(255), agencia VARCHAR(255), tipo_conta VARCHAR(255), conta_numero VARCHAR(255), favorecido VARCHAR(255), cpf VARCHAR(255), created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE orcamento (id BIGINT AUTO_INCREMENT, valor FLOAT(11, 6), quantidade BIGINT, descricao VARCHAR(255), created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
@@ -29,6 +30,7 @@ ALTER TABLE campanha ADD CONSTRAINT campanha_orcamento_id_orcamento_id FOREIGN K
 ALTER TABLE conta ADD CONSTRAINT conta_user_id_sf_guard_user_id FOREIGN KEY (user_id) REFERENCES sf_guard_user(id) ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE conta_operacao ADD CONSTRAINT conta_operacao_tipo_operacao_id_tipo_operacao_id FOREIGN KEY (tipo_operacao_id) REFERENCES tipo_operacao(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 ALTER TABLE conta_operacao ADD CONSTRAINT conta_operacao_conta_id_conta_id FOREIGN KEY (conta_id) REFERENCES conta(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+ALTER TABLE conta_transacao ADD CONSTRAINT conta_transacao_conta_id_conta_id FOREIGN KEY (conta_id) REFERENCES conta(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 ALTER TABLE dado_bancario ADD CONSTRAINT dado_bancario_user_id_sf_guard_user_id FOREIGN KEY (user_id) REFERENCES sf_guard_user(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 ALTER TABLE paypal ADD CONSTRAINT paypal_user_id_sf_guard_user_id FOREIGN KEY (user_id) REFERENCES sf_guard_user(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 ALTER TABLE resgate ADD CONSTRAINT resgate_user_id_sf_guard_user_id FOREIGN KEY (user_id) REFERENCES sf_guard_user(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
