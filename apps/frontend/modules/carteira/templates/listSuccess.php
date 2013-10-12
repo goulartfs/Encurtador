@@ -23,23 +23,5 @@
     </div>
     <div class="span3">
         <?php include_component('carteira', 'saldo') ?>
-        <table class="table table-condensed table-striped">
-            <thead>
-                <tr>
-                    <th colspan="2" class="text-right">Consolidado</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Seus links encurtados:</td>
-                    <td><p class="text-right">R$ 0,00</p></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <a class="btn btn-block btn-small" href="<?php print url_for('@link') ?>">Seus links encurtados</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 </div>

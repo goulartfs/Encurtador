@@ -105,12 +105,25 @@ class campanhaActions extends sfActions {
             $this->form->bind($request->getParameter('campanha'));
 
             if ($this->form->isValid()) {
-                $ad = $this->form->save();
+                
+                $campanha->setTitulo($this->form->getValue('titulo'));
+                $campanha->setUrlCampanha($this->form->getValue('url_campanha'));
+                $campanha->setMaximoOrcamentoDiario($this->form->getValue('maximo_orcamento_diario'));
+                $campanha->save();
+                
                 $this->getUser()->setFlash('notice', 'Campanha atualizada com sucesso.');
 
-                $this->redirect('@campanha_edit?id=' . $ad->getId());
+                $this->redirect('@campanha_edit?id=' . $campanha->getId());
             }
         }
+    }
+    
+    public function executeStatus(sfWebRequest $request){
+        $campanha = Doctrine::getTable('Campanha')->findOneById($request->getParameter('id'));
+        $campanha->setIsActive((boolean) !$campanha->getIsActive());
+        $campanha->save();
+        
+        $this->redirect('@campanha');
     }
 
 }

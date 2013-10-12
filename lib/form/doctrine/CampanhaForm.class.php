@@ -41,7 +41,7 @@ class CampanhaForm extends BaseCampanhaForm {
             'invalid' => 'Url inválida, verifique se há "http://" no início.'
         ));
         
-        $this->validatorSchema['payment_method'] = new sfValidatorChoice(array('choices'=>  array_keys(self::$payments)));
+        $this->validatorSchema['payment_method'] = new sfValidatorChoice(array('choices'=>  array_keys(self::$payments), 'required'=>$this->getObject()->isNew()));
 
         unset($this['auth_key'], $this['is_payment_processed'], $this['paypal_id'], $this['status_transacao_id'], $this['is_active'], $this['is_finished'], $this['end_date'],$this['created_at'], $this['updated_at']);
     }

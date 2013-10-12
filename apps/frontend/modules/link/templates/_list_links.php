@@ -17,7 +17,13 @@
         <tbody>
             <?php foreach ($urls as $url) { ?>
                 <tr>
-                    <td><?php print $url->getId() ?></td>
+                    <td>
+                        <ul>
+                            <li>
+                                <?php print link_to1('Editar', '@link_edit?id=' . $url->getId()) ?>
+                            </li>
+                        </ul>
+                    </td>
                     <td><?php print $url->getOriginalUrl() ?></td>
                     <td><a href="<?php print $url->getFullUrl() ?>"><?php print $url->getShortUrl() ?></a></td>
                     <td><?php print $url->getTotal() ?></td>

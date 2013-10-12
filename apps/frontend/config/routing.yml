@@ -56,7 +56,13 @@ campanha_new:
  
 campanha_edit:
   url: /advertise/:id/edit
-  param: { module: profile, action: editad }
+  param: { module: campanha, action: editad }
+  requirements:
+    id: ~
+ 
+campanha_status:
+  url: /advertise/:id/status
+  param: { module: campanha, action: status }
   requirements:
     id: ~
  
@@ -75,6 +81,12 @@ link:
 link_new:
   url: /link/new
   param: { module: link, action: list }
+  
+link_edit:
+  url: /link/:id/edit
+  param: { module: link, action: edit }
+  requirements:
+    id: ~
 
 link_mass:
   url: /link/mass-shortener

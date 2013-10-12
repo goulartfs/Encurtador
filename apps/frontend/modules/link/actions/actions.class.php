@@ -21,7 +21,7 @@ class linkActions extends sfActions {
         $this->getUser()->setFlash('title-page', 'Links');
         $this->setLayout('profile');
     }
-    
+
     public function executeIndex(sfWebRequest $request) {
         
     }
@@ -72,6 +72,29 @@ class linkActions extends sfActions {
 
                 $this->getUser()->setFlash('notice', 'Links encurtador com sucesso.');
                 $this->redirect('link/list');
+            }
+        }
+    }
+
+    public function executeEdit(sfWebRequest $request) {
+
+        $this->forward404If(!$request->getParameter('id'), 'Parametro não encontrado');
+        $link = Doctrine::getTable('Url')->findOneById($request->getParameter('id'));
+        $this->forward404If(!$link, 'Link não encontrada');
+
+        $this->form = new UrlForm($link);
+
+        if ($request->getMethod() == 'POST') {
+            $this->form->bind($request->getParameter('url'));
+
+            if ($this->form->isValid()) {
+
+                $link->setOriginalUrl($this->form->getValue('original_url'));
+                $link->save();
+
+                $this->getUser()->setFlash('notice', 'Link atualizado com sucesso.');
+
+                $this->redirect('@link_edit?id=' . $link->getId());
             }
         }
     }
