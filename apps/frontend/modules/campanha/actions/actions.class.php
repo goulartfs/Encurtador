@@ -21,7 +21,7 @@ class campanhaActions extends sfActions {
         $this->getUser()->setFlash('title-page', 'Campanhas');
         $this->setLayout('profile');
     }
-    
+
     public function executeIndex(sfWebRequest $request) {
         
     }
@@ -46,21 +46,50 @@ class campanhaActions extends sfActions {
             $this->form->bind($request->getParameter('campanha'));
 
             if ($this->form->isValid()) {
-                $ad = $this->form->save();
-                
-                $ad->setAuthKey(md5(uniqid()));
-                $ad->setStatusTransacaoId(1);
-                $ad->save();
-                
-                $data = array(
-                    'custom'=>$ad->getAuthKey(),
-                    'amount'=>$ad->getOrcamento()->getValor(),
-                    'item_name'=>$ad->getOrcamento()->getDescricao(),
-                    'ref'=>'campanha',
-                );
-                
-                $this->getUser()->setAttribute('payment_data', $data);
-                $this->redirect('payment/paypal');
+                if ($this->form->getValue('payment_method') == 'paypal') {
+                    $ad = $this->form->save();
+
+                    $ad->setAuthKey(md5(uniqid()));
+                    $ad->setStatusTransacaoId(1);
+                    $ad->save();
+
+                    $data = array(
+                        'custom' => $ad->getAuthKey(),
+                        'amount' => $ad->getOrcamento()->getValor(),
+                        'item_name' => $ad->getOrcamento()->getDescricao(),
+                        'ref' => 'campanha',
+                    );
+
+                    $this->getUser()->setAttribute('payment_data', $data);
+                    $this->redirect('payment/paypal');
+                }
+
+                if ($this->form->getValue('payment_method') == 'carteira') {
+                    $values = $this->form->getValues();
+
+                    $conta = $this->getUser()->getGuardUser()->getConta();
+
+                    $operacao = new ContaOperacao();
+                    $operacao->setContaId($conta->getId());
+                    $operacao->setTipoOperacaoId(2);
+                    $operacao->setValor(Doctrine::getTable('Orcamento')->findOneById($values['orcamento_id'])->getValor());
+
+                    try {
+                        $conta->removeSaldo($conta, $operacao);
+                        $conta->save();
+                        $operacao->save();
+                        
+                        $ad = $this->form->save();
+                        $ad->setStatusTransacaoId(5);
+                        $ad->setIsPaymentProcessed(1);
+                        $ad->save();
+                        
+                        $this->getUser()->setFlash('notice', 'Campanha criada com sucesso.');
+                        $this->redirect('@campanha');
+                    } catch (sfException $e) {
+                        $this->getUser()->setFlash('error', $e->getMessage());
+                    }
+                }
             }
         }
     }

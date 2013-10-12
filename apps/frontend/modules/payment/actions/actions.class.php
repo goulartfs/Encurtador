@@ -51,6 +51,7 @@ class paymentActions extends sfActions {
 
             $campanha->setStatusTransacaoId(($status == 'Completed') ? 5 : 4);
             $campanha->setIsPaymentProcessed(($status == 'Completed') ? 1 : 0);
+            $campanha->setPaypalId($paypal_id);
             $campanha->save();
         }
 

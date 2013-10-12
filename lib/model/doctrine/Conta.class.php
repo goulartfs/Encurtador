@@ -17,6 +17,9 @@ class Conta extends BaseConta {
     }
 
     public function removeSaldo(Conta $conta, ContaOperacao $operacao) {
+        if($conta->getSaldo() < $operacao->getValor())
+            throw new sfException('Fundos insuficientes para essa transação');
+            
         $conta->setSaldo($conta->getSaldo() - $operacao->getValor());
     }
 
