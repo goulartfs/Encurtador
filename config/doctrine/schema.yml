@@ -175,6 +175,7 @@ DadoBancario:
     banco: { type: varchar(255) }
     agencia: { type: varchar(255) }
     tipo_conta: { type: varchar(255) }
+    operacao: { type: varchar(255) }
     conta_numero: { type: varchar(255) }
     favorecido: { type: varchar(255) }
     cpf: { type: varchar(255) }

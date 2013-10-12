@@ -81,6 +81,12 @@ link:
 link_new:
   url: /link/new
   param: { module: link, action: list }
+  
+link_edit:
+  url: /link/:id/edit
+  param: { module: link, action: edit }
+  requirements:
+    id: ~
 
 link_mass:
   url: /link/mass-shortener

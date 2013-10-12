@@ -9,6 +9,7 @@
  * @property varchar $banco
  * @property varchar $agencia
  * @property varchar $tipo_conta
+ * @property varchar $operacao
  * @property varchar $conta_numero
  * @property varchar $favorecido
  * @property varchar $cpf
@@ -18,6 +19,7 @@
  * @method varchar      getBanco()        Returns the current record's "banco" value
  * @method varchar      getAgencia()      Returns the current record's "agencia" value
  * @method varchar      getTipoConta()    Returns the current record's "tipo_conta" value
+ * @method varchar      getOperacao()     Returns the current record's "operacao" value
  * @method varchar      getContaNumero()  Returns the current record's "conta_numero" value
  * @method varchar      getFavorecido()   Returns the current record's "favorecido" value
  * @method varchar      getCpf()          Returns the current record's "cpf" value
@@ -26,6 +28,7 @@
  * @method DadoBancario setBanco()        Sets the current record's "banco" value
  * @method DadoBancario setAgencia()      Sets the current record's "agencia" value
  * @method DadoBancario setTipoConta()    Sets the current record's "tipo_conta" value
+ * @method DadoBancario setOperacao()     Sets the current record's "operacao" value
  * @method DadoBancario setContaNumero()  Sets the current record's "conta_numero" value
  * @method DadoBancario setFavorecido()   Sets the current record's "favorecido" value
  * @method DadoBancario setCpf()          Sets the current record's "cpf" value
@@ -54,6 +57,10 @@ abstract class BaseDadoBancario extends sfDoctrineRecord
              'length' => 255,
              ));
         $this->hasColumn('tipo_conta', 'varchar', 255, array(
+             'type' => 'varchar',
+             'length' => 255,
+             ));
+        $this->hasColumn('operacao', 'varchar', 255, array(
              'type' => 'varchar',
              'length' => 255,
              ));
