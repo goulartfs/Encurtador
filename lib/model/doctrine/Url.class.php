@@ -17,24 +17,22 @@ class Url extends BaseUrl {
     }
 
     public function getTotal() {
-        $total = Doctrine::getTable('UrlControle')->createQuery('u')
-                        ->select('count(u.url_id) as total')
-                        ->where('u.url_id = ?', $this->getId())
-                        ->groupBy('u.url_id')
-                        ->execute()->getFirst();
+        $total = Doctrine_Query::create()
+                ->from("UrlControle u")
+                ->where('u.url_id = ?', $this->getId())
+                ->groupBy("u.url_id, date_format( u.created_at, '%d/%m/%Y' ) , u.ipuser");
 
-        return ($total['total']) ? $total['total'] : 0;
+        return $total->count();
     }
 
     public function getTotalDisponivel() {
-        $total = Doctrine::getTable('UrlControle')->createQuery('u')
-                        ->select('count(u.url_id) as total')
+        $total = Doctrine_Query::create()
+                        ->from("UrlControle u")
                         ->where('u.url_id = ?', $this->getId())
-                        ->addWhere('u.is_rescued <> 1')
-                        ->groupBy('u.url_id')
-                        ->execute()->getFirst();
+                        ->groupBy("u.url_id, date_format( created_at, '%d/%m/%Y' ) , ipuser")
+                        ->having("SUM(is_rescued) = 0");
 
-        return ($total['total']) ? $total['total'] : 0;
+        return $total->count();
     }
 
     public function getGanhos() {
@@ -72,7 +70,7 @@ class Url extends BaseUrl {
     public static function getTotalAcessoByUser(sfGuardUser $usuario) {
         $urls = Doctrine::getTable('Url')->findByUserId($usuario->getId());
         $views = 0;
-        
+
         if ($urls->count()) {
             foreach ($urls as $url) {
                 $views += $url->getTotal();
@@ -81,12 +79,12 @@ class Url extends BaseUrl {
 
         return $views;
     }
-    
-    public function getUrlControleNaoResgatado(){
+
+    public function getUrlControleNaoResgatado() {
         return Doctrine::getTable('UrlControle')->createQuery('u')
-                ->where('u.url_id = ?', $this->getId())
-                ->addWhere('u.is_rescued <> 1')
-                ->execute();
+                        ->where('u.url_id = ?', $this->getId())
+                        ->addWhere('u.is_rescued <> 1')
+                        ->execute();
     }
 
 }
