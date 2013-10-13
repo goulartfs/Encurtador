@@ -36,40 +36,6 @@ class mainActions extends sfActions {
         $url_ids = str_replace('-', ',', $encurtados);
         $this->urls = null;
 
-        if (!empty($url_ids) && !$this->getUser()->isAuthenticated()) {
-            $this->urls = Doctrine::getTable('Url')->createQuery('u')
-                    ->where('u.id in (' . $url_ids . ')')
-                    ->execute();
-        }
-
-        if ($request->getMethod() == 'POST') {
-
-            $this->form->bind($request->getParameter('encurtador'));
-            if ($this->form->isValid()) {
-
-                $url = $this->form->process();
-
-                if (!empty($encurtados)) {
-                    $encurtados .= '-';
-                }
-
-                $encurtados .= $url->getId();
-
-                if (!$this->getUser()->isAuthenticated()) {
-                    $this->getResponse()->setCookie('encurtados', $encurtados);
-                }
-
-                $gen_url = "<a href='{$url->getFullUrl()}'>{$url->getShortUrl()}</a>";
-                $this->getUser()->setFlash('notice', "<strong>Endereço encurtado com sucesso: </strong>" . $gen_url);
-
-                if (!$this->getUser()->isAuthenticated()) {
-                    $this->redirect('@homepage');
-                } else {
-                    $this->redirect('profile/links');
-                }
-            }
-        }
-
         $this->setLayout('layout');
     }
 
@@ -87,17 +53,23 @@ class mainActions extends sfActions {
                         ->orderBy('RAND()')
                         ->execute()->getFirst();
 
-        $url_controle = new UrlControle();
-        $url_controle->setIpuser($_SERVER['REMOTE_ADDR']);
-        $url_controle->setUrlId($url->getId());
-        $url_controle->save();
+        if (!$this->getRequest()->getCookie($request->getParameter('url_id')) && !$this->getUser()->hasFlash($request->getParameter('url_id'))) {
+//            sleep(2);
+            $this->getUser()->setFlash($request->getParameter('url_id'), 'true');
+            $this->getResponse()->setCookie($request->getParameter('url_id'), md5(uniqid()), time() + sfConfig::get('user_time_block') * 60);
 
-        if ($this->ad) {
-            $ad_controle = new CampanhaControle();
-            $ad_controle->setIpViewer($_SERVER['REMOTE_ADDR']);
-            $ad_controle->setCampanhaId($this->ad->getId());
-            $ad_controle->save();
+            $url_controle = new UrlControle();
+            $url_controle->setIpuser($_SERVER['REMOTE_ADDR']);
+            $url_controle->setUrlId($url->getId());
+            $url_controle->save();
         }
+
+            if ($this->ad) {
+                $ad_controle = new CampanhaControle();
+                $ad_controle->setIpViewer($_SERVER['REMOTE_ADDR']);
+                $ad_controle->setCampanhaId($this->ad->getId());
+                $ad_controle->save();
+            }
 
         $this->url = $url;
     }

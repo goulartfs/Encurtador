@@ -18,6 +18,8 @@ class ProjectConfiguration extends sfProjectConfiguration {
             'Caixa Econômica' => 'Caixa Econômica',
             'Banco do Brasil' => 'Banco do Brasil'
         ));
+        
+        sfConfig::set('user_time_block', (1/60));
 
         $this->enablePlugins('sfDoctrinePlugin');
         $this->enablePlugins('sfDoctrineGuardPlugin');
