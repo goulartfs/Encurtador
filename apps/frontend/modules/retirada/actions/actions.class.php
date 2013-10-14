@@ -20,7 +20,9 @@ class retiradaActions extends sfActions {
 
         $this->getUser()->setFlash('title-page', 'Resgate');
         $this->setLayout('profile');
-        $this->ganhos = Url::getGanhosDisponivelDoUsuario($this->getUser()->getGuardUser());
+        if ($this->getContext()->getActionName() != 'info') {
+            $this->ganhos = Url::getGanhosDisponivelDoUsuario($this->getUser()->getGuardUser());
+        }
     }
 
     public function executeIndex(sfWebRequest $request) {
@@ -218,4 +220,5 @@ class retiradaActions extends sfActions {
     public function executeInfo(sfWebRequest $request) {
         $this->setLayout('interna');
     }
+
 }
