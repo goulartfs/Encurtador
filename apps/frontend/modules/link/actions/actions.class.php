@@ -50,9 +50,9 @@ class linkActions extends sfActions {
             if ($this->form->isValid()) {
                 $url = $this->form->process();
 
-                $gen_url = "<a href='{$url->getFullUrl()}'>{$url->getShortUrl()}</a>";
+                $this->getUser()->setFlash('url', $url->getFullUrl());
 
-                $this->getUser()->setFlash('notice', "<strong>Endereço encurtado com sucesso: </strong>" . $gen_url);
+                $this->getUser()->setFlash('notice', "Endereço encurtado com sucesso: ");
 
                 $this->redirect('link/list');
             }

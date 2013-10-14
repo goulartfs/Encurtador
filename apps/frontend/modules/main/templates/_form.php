@@ -6,8 +6,7 @@
         <button class="" type="submit"><img src="/images/bt_encurtar.png" /></button>
         <p>
             <small>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/>
-                Ut pretium, eros vel auctor dictum.
+                Registre-se em nosso site e comece encurtar seus links.
             </small>
         </p>
     </div>

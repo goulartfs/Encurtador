@@ -13,8 +13,7 @@
             <div class="row pos-pq">
                 <p>
                     <small>
-                        Ut ac orci metus. Proin sit amet ipsum ac risus cursus porttitor et eget nibh. Aenean sollicitudin quis diam non laoreet.<br/>
-                        Suspendisse tincidunt orci ut lorem dictum, ac feugiat quam auctor. Mauris consectetur tempus sapien, et interdum est molestie et. 
+                        Porque Pagamos R$ 4 reais para cada 1000 Views, valor bem superios aos  demais encurtadores.Toda a publicidade é estritamente familiar, segura e sem popups. Servidores de anti-vírus estarão escaneando os anúncios 24/7.Pagamentos minimos, 8 reais. Pagaremos todos usuarios através do Paypal, Pagseguro ou depósito em conta.
                     </small>
                 </p>
             </div>

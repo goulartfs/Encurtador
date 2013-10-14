@@ -49,8 +49,8 @@ a{
 }
 
 #header .bg-header{
-    background: url(/images/topo.jpg) no-repeat scroll center top transparent;
-    height: 376px;
+    background: url(/images/topo.jpg) no-repeat scroll center top #031F4F;
+    height: 393px;
 }
 
 .interna #header .bg-header{
@@ -115,7 +115,7 @@ a{
     color: #fff;
     margin-left: 50px;
     font-size: 12pt;
-    padding-top: 10px;
+    padding-top: 25px;
 }
 
 .home #header button, .interna #header button{
