@@ -24,6 +24,7 @@
  * @property Doctrine_Collection $Usuario
  * @property Doctrine_Collection $ValidaUsuario
  * @property Doctrine_Collection $Conta
+ * @property Doctrine_Collection $Campanha
  * @property Doctrine_Collection $Resgate
  * @property Doctrine_Collection $DadoBancario
  * @property Doctrine_Collection $Paypal
@@ -47,6 +48,7 @@
  * @method Doctrine_Collection   getUsuario()               Returns the current record's "Usuario" collection
  * @method Doctrine_Collection   getValidaUsuario()         Returns the current record's "ValidaUsuario" collection
  * @method Doctrine_Collection   getConta()                 Returns the current record's "Conta" collection
+ * @method Doctrine_Collection   getCampanha()              Returns the current record's "Campanha" collection
  * @method Doctrine_Collection   getResgate()               Returns the current record's "Resgate" collection
  * @method Doctrine_Collection   getDadoBancario()          Returns the current record's "DadoBancario" collection
  * @method Doctrine_Collection   getPaypal()                Returns the current record's "Paypal" collection
@@ -69,6 +71,7 @@
  * @method sfGuardUser           setUsuario()               Sets the current record's "Usuario" collection
  * @method sfGuardUser           setValidaUsuario()         Sets the current record's "ValidaUsuario" collection
  * @method sfGuardUser           setConta()                 Sets the current record's "Conta" collection
+ * @method sfGuardUser           setCampanha()              Sets the current record's "Campanha" collection
  * @method sfGuardUser           setResgate()               Sets the current record's "Resgate" collection
  * @method sfGuardUser           setDadoBancario()          Sets the current record's "DadoBancario" collection
  * @method sfGuardUser           setPaypal()                Sets the current record's "Paypal" collection
@@ -176,6 +179,10 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
              'foreign' => 'user_id'));
 
         $this->hasMany('Conta', array(
+             'local' => 'id',
+             'foreign' => 'user_id'));
+
+        $this->hasMany('Campanha', array(
              'local' => 'id',
              'foreign' => 'user_id'));
 

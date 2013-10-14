@@ -1,3 +1,21 @@
+usuario:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Usuario
+    module:               usuario
+    prefix_path:          /usuario
+    column:               id
+    with_wildcard_routes: true
+
+configuracao:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Configuracao
+    module:               configuracao
+    prefix_path:          /configuracao
+    column:               id
+    with_wildcard_routes: true
+
 custo_clique:
   class: sfDoctrineRouteCollection
   options:

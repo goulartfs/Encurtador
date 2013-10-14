@@ -1,13 +1,13 @@
 generator:
   class: sfDoctrineGenerator
   param:
-    model_class:           Resgate
+    model_class:           Usuario
     theme:                 simpla
     non_verbose_templates: true
     with_show:             false
     singular:              ~
     plural:                ~
-    route_prefix:          resgate
+    route_prefix:          usuario
     with_doctrine_route:   true
     actions_base_class:    sfActions
 
@@ -15,12 +15,13 @@ generator:
       actions: ~
       fields:  ~
       list:    
-        title: Resgates
+        title: Dados cadastrais de usuários
+        display: [sfGuardUser, TipoUsuario, endereco, estado, cidade, cep, telefone]
         actions: []
         batch_actions: []
-        object_actions:
-          _edit: ~
-      filter:  ~
+        object_actions: []
+      filter:  
+        diplay: [user_id]
       form:    ~
       edit:    ~
       new:     ~

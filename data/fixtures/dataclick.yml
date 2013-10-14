@@ -152,4 +152,10 @@ StatusTransacao:
   Status_4:
     status: Crítica no Paypal
   Status_5:
-    status: Completo
+    status: Em aprovação
+  Status_6:
+    status: Liberada
+Configuracao:
+  Option_1:
+    chave: retirada_minima
+    valor: 8

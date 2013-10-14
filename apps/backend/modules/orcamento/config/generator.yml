@@ -14,8 +14,11 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
+      list:    
+        title: Orçamento de Campanhas
       filter:  ~
       form:    ~
-      edit:    ~
-      new:     ~
+      edit:    
+        title: Editar Orçamento
+      new:     
+        title: Novo Orçamento
