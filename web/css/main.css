@@ -44,6 +44,10 @@ a{
     height: 97px;
 }
 
+.link .banner-area{
+    padding-top: 18px;
+}
+
 #header .bg-header{
     background: url(/images/topo.jpg) no-repeat scroll center top transparent;
     height: 376px;
