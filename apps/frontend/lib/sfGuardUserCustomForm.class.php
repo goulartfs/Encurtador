@@ -14,7 +14,7 @@ class sfGuardUserCustomForm extends sfGuardUserForm
   {
       $this->widgetSchema['username'] = new sfWidgetFormInputHidden();
       $this->setDefault('is_active', '1');
-//      $this->widgetSchema['groups_list'] = new sfWidgetFormInputHidden();
-//    $this->widgetSchema['permissions_list'] = new sfWidgetFormInputHidden();
+      $this->widgetSchema->setLabel('password', 'Nova Senha');
+      $this->widgetSchema->setLabel('password_again', 'Repita a Senha');
   }
 }
