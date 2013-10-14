@@ -19,7 +19,7 @@
 <div class="row">
     <div class="span9">
         <?php include_partial('link/list_links', array('urls' => $pager->getResults(), 'pager' => $pager)) ?>
-        <?php include_partial('commom/pagination', array('pager'=>$pager, 'route'=>'@link')) ?>
+        <?php include_partial('commom/pagination', array('pager' => $pager, 'route' => '@link')) ?>
     </div>
     <div class="span3">
         <div class="thumbnail help-block">
@@ -33,7 +33,9 @@
                     <tr>
                         <td>
                             <p class="text-right lead">R$ <?php print $ganhos; ?></p>
-                            <a class="btn btn-block btn-primary" href="<?php print url_for('@retirada') ?>">Resgatar</a>
+                            <?php if ($ganhos >= Configuracao::getConfig('retirada_minima')) { ?>
+                                <a class="btn btn-block btn-primary" href="<?php print url_for('@retirada') ?>">Resgatar</a>
+                            <?php } ?>
                         </td>
                     </tr>
                 </tbody>
