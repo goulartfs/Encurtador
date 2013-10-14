@@ -20,6 +20,7 @@
  * @property datetime $end_date
  * @property Orcamento $Orcamento
  * @property StatusTransacao $StatusTransacao
+ * @property sfGuardUser $sfGuardUser
  * 
  * @method integer         getUserId()                  Returns the current record's "user_id" value
  * @method string          getTitulo()                  Returns the current record's "titulo" value
@@ -36,6 +37,7 @@
  * @method datetime        getEndDate()                 Returns the current record's "end_date" value
  * @method Orcamento       getOrcamento()               Returns the current record's "Orcamento" value
  * @method StatusTransacao getStatusTransacao()         Returns the current record's "StatusTransacao" value
+ * @method sfGuardUser     getSfGuardUser()             Returns the current record's "sfGuardUser" value
  * @method Campanha        setUserId()                  Sets the current record's "user_id" value
  * @method Campanha        setTitulo()                  Sets the current record's "titulo" value
  * @method Campanha        setUrlCampanha()             Sets the current record's "url_campanha" value
@@ -51,6 +53,7 @@
  * @method Campanha        setEndDate()                 Sets the current record's "end_date" value
  * @method Campanha        setOrcamento()               Sets the current record's "Orcamento" value
  * @method Campanha        setStatusTransacao()         Sets the current record's "StatusTransacao" value
+ * @method Campanha        setSfGuardUser()             Sets the current record's "sfGuardUser" value
  * 
  * @package    Encurtador
  * @subpackage model
@@ -129,6 +132,12 @@ abstract class BaseCampanha extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'RESTRICT',
              'onUpdate' => 'RESTRICT'));
+
+        $this->hasOne('sfGuardUser', array(
+             'local' => 'user_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE',
+             'onUpdate' => 'CASCADE'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

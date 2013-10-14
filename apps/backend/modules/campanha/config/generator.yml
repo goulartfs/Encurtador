@@ -15,7 +15,8 @@ generator:
       actions: ~
       fields:  ~
       list:    
-        display: [status_transacao_id, user_id, titulo, url_campanha, payment_method, is_active, is_finished, created_at, end_date]
+        title: Campanhas
+        display: [_liberar, StatusTransacao, sfGuardUser, titulo, url_campanha, payment_method, is_active, is_finished, created_at, end_date]
         actions: []
         batch_actions: []
         object_actions: []
