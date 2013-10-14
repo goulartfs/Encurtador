@@ -138,6 +138,10 @@ suporte:
 payment:
   url:   /payment/success/ref/:ref
   param: { module: payment, action: success }
+    
+referencia:
+  url:   /referrer
+  param: { module: referencia, action: index }
   
 resolve_url:
   url:   /:url_id
