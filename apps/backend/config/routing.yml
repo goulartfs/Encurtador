@@ -1,3 +1,39 @@
+custo_clique:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                CustoClique
+    module:               custo_clique
+    prefix_path:          /custo_clique
+    column:               id
+    with_wildcard_routes: true
+
+orcamento:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Orcamento
+    module:               orcamento
+    prefix_path:          /orcamento
+    column:               id
+    with_wildcard_routes: true
+
+resgate:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Resgate
+    module:               resgate
+    prefix_path:          /resgate
+    column:               id
+    with_wildcard_routes: true
+
+campanha:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Campanha
+    module:               campanha
+    prefix_path:          /campanha
+    column:               id
+    with_wildcard_routes: true
+
 url:
   class: sfDoctrineRouteCollection
   options:

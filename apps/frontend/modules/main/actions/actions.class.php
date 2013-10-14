@@ -56,6 +56,7 @@ class mainActions extends sfActions {
         $this->ad = Doctrine::getTable('Campanha')->createQuery('c')
                         ->where('c.is_active = 1')
                         ->addWhere('c.is_payment_processed = 1')
+                        ->addWhere('c.status_transacao_id = 6')
                         ->addWhere('c.is_finished <> 1')
                         ->orderBy('RAND()')
                         ->execute()->getFirst();

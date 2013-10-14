@@ -20,6 +20,12 @@
                     <ul id="main-nav">
                         <li><a href="<?php echo url_for('url/index') ?>" class="nav-top-item no-submenu <?php if (in_array($sf_context->getModuleName(), array('url')))
                         echo 'current' ?>">URL</a></li>
+                        <li><a href="<?php echo url_for('campanha/index') ?>" class="nav-top-item no-submenu <?php if (in_array($sf_context->getModuleName(), array('campanha')))
+                        echo 'current' ?>">Campanhas</a></li>
+                        <li><a href="<?php echo url_for('orcamento/index') ?>" class="nav-top-item no-submenu <?php if (in_array($sf_context->getModuleName(), array('orcamento')))
+                        echo 'current' ?>">Orçamentos</a></li>
+                        <li><a href="<?php echo url_for('resgate/index') ?>" class="nav-top-item no-submenu <?php if (in_array($sf_context->getModuleName(), array('resgate')))
+                        echo 'current' ?>">Resgates</a></li>
                         <li><a href="<?php echo url_for('sf_guard_user/index') ?>" class="nav-top-item no-submenu <?php if (in_array($sf_context->getModuleName(), array('sf_guard_user')))
                         echo 'current' ?>">Usuários</a></li>
                     </ul>
