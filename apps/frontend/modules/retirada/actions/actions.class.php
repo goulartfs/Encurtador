@@ -181,13 +181,14 @@ class retiradaActions extends sfActions {
         $urls = Doctrine::getTable('Url')->findByUserId($this->getUser()->getGuardUser()->getId());
         if ($urls->count()) {
             foreach ($urls as $url) {
-                if ($url->getUrlControleNaoResgatado()->count()) {
-                    foreach ($url->getUrlControleNaoResgatado() as $urlControle) {
-                        $urlControle->setResgateId($this->resgate->getId());
-                        $urlControle->setIsRescued(1);
-                        $urlControle->save();
-                    }
-                }
+                $url->atualizaControleNaoResgatado($this->resgate, $url);
+//                if ($url->getUrlControleNaoResgatado()->count()) {
+//                    foreach ($url->getUrlControleNaoResgatado() as $urlControle) {
+//                        $urlControle->setResgateId($this->resgate->getId());
+//                        $urlControle->setIsRescued(1);
+//                        $urlControle->save();
+//                    }
+//                }
             }
         }
 

@@ -27,10 +27,10 @@ class Url extends BaseUrl {
 
     public function getTotalDisponivel() {
         $total = Doctrine_Query::create()
-                        ->from("UrlControle u")
-                        ->where('u.url_id = ?', $this->getId())
-                        ->groupBy("u.url_id, date_format( created_at, '%d/%m/%Y' ) , ipuser")
-                        ->having("SUM(is_rescued) = 0");
+                ->from("UrlControle u")
+                ->where('u.url_id = ?', $this->getId())
+                ->groupBy("u.url_id, date_format( created_at, '%d/%m/%Y' ) , ipuser")
+                ->having("SUM(is_rescued) = 0");
 
         return $total->count();
     }
@@ -80,11 +80,14 @@ class Url extends BaseUrl {
         return $views;
     }
 
-    public function getUrlControleNaoResgatado() {
-        return Doctrine::getTable('UrlControle')->createQuery('u')
-                        ->where('u.url_id = ?', $this->getId())
-                        ->addWhere('u.is_rescued <> 1')
-                        ->execute();
+    public function atualizaControleNaoResgatado(Resgate $resgate, Url $url) {
+        Doctrine_Query::create()
+                ->update('UrlControle')
+                ->set('resgate_id', $resgate->getId())
+                ->set('is_rescued', 1)
+                ->where('url_id = ?', $url->getId())
+                ->addWhere('is_rescued <> ?', 1)
+                ->execute();
     }
 
 }
