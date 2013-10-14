@@ -21,7 +21,7 @@ generator:
         batch_actions: []
         object_actions: []
       filter:  
-        diplay: [user_id]
+        display: [user_id]
       form:    ~
       edit:    ~
       new:     ~
