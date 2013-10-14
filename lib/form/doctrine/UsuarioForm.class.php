@@ -18,9 +18,11 @@ class UsuarioForm extends BaseUsuarioForm
       $this->embedForm('subform', $subForm);
       
       $this->widgetSchema['user_id'] = new sfWidgetFormInputHidden();
+      $this->widgetSchema['password_atual'] = new sfWidgetFormInputPassword(array('label'=>'Senha Atual'));
       $this->widgetSchema['tipo_usuario_id'] = new sfWidgetFormInputHidden();
       $this->setDefault('user_id', sfContext::getInstance()->getUser()->getGuardUser()->getId());
       
+      $this->validatorSchema['password_atual'] = new sfValidatorString(array('required'=>false));
       
       unset($this['created_at'], $this['updated_at']);
   }

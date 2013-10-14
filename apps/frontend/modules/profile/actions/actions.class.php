@@ -35,7 +35,19 @@ class profileActions extends sfActions {
             $param = $request->getParameter('usuario');
             $param['subform']['sfGuardUser']['is_active'] = 1;
             $this->form->bind($param);
+            
             if ($this->form->isValid()) {
+                $pass = $this->form->getValue('password_atual');
+                $pass_novo = $this->form->getValue('subform');
+                
+                if ($pass && $pass_novo['sfGuardUser']['is_active']) {
+                    $is_correct = $this->getUser()->getGuardUser()->checkPassword($pass);
+                    if (!$is_correct) {
+                        $this->getUser()->setFlash('error', 'Senha atual não confere.');
+                        $this->redirect('profile/account');
+                    }
+                }
+                
                 $this->form->save();
 
                 $this->getUser()->setFlash('notice', 'Cadastro atualizado com sucesso.');
@@ -45,9 +57,15 @@ class profileActions extends sfActions {
             }
         }
     }
-    
+
     public function executeChangeProfile(sfWebRequest $request) {
         $this->getUser()->setAttribute('profile_preference', $request->getParameter('profile'));
         $this->redirect('@homepage');
     }
+
+    public function executeChangePass(sfWebRequest $request) {
+
+        $this->form = new sfGuardUserForm();
+    }
+
 }

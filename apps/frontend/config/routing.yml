@@ -36,6 +36,10 @@ profile_account:
   url:   /profile/account
   param: { module: profile, action: account }
 
+profile_pass:
+  url: /profile/change-pass
+  param: { module: profile, action: changePass }
+  
 profile_change:
   url:   /profile/:profile
   param: { module: profile, action: changeProfile }
