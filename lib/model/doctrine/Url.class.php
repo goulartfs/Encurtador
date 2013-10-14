@@ -20,7 +20,8 @@ class Url extends BaseUrl {
         $total = Doctrine_Query::create()
                 ->from("UrlControle u")
                 ->where('u.url_id = ?', $this->getId())
-                ->groupBy("u.url_id, date_format( u.created_at, '%d/%m/%Y' ) , u.ipuser");
+                ->groupBy("u.url_id, date_format( created_at, '%d/%m/%Y' ) , u.ipuser")
+                ->execute();
 
         return $total->count();
     }
@@ -29,7 +30,7 @@ class Url extends BaseUrl {
         $total = Doctrine_Query::create()
                 ->from("UrlControle u")
                 ->where('u.url_id = ?', $this->getId())
-                ->groupBy("u.url_id, date_format( created_at, '%d/%m/%Y' ) , ipuser")
+                ->groupBy("u.url_id, date_format(created_at, '%d/%m/%Y' ) , ipuser")
                 ->having("SUM(is_rescued) = 0");
 
         return $total->count();
