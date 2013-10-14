@@ -28,8 +28,8 @@
                                         Pausar
                                     </a>
                                 <?php } else { ?>
-                                    <a class="" title="Despausar campanha" href="<?php print url_for('@campanha_status?id=' . $ad->getId()) ?>">
-                                        Despausar
+                                    <a class="" title="Ativar campanha" href="<?php print url_for('@campanha_status?id=' . $ad->getId()) ?>">
+                                        Ativar
                                     </a>
                                 <?php } ?>
                             </li>
