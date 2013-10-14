@@ -13,7 +13,7 @@ abstract class BaseCampanhaFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'user_id'                 => new sfWidgetFormFilterInput(),
+      'user_id'                 => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('sfGuardUser'), 'add_empty' => true)),
       'titulo'                  => new sfWidgetFormFilterInput(),
       'url_campanha'            => new sfWidgetFormFilterInput(),
       'orcamento_id'            => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Orcamento'), 'add_empty' => true)),
@@ -31,7 +31,7 @@ abstract class BaseCampanhaFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
-      'user_id'                 => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'user_id'                 => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('sfGuardUser'), 'column' => 'id')),
       'titulo'                  => new sfValidatorPass(array('required' => false)),
       'url_campanha'            => new sfValidatorPass(array('required' => false)),
       'orcamento_id'            => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Orcamento'), 'column' => 'id')),
@@ -66,7 +66,7 @@ abstract class BaseCampanhaFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'                      => 'Number',
-      'user_id'                 => 'Number',
+      'user_id'                 => 'ForeignKey',
       'titulo'                  => 'Text',
       'url_campanha'            => 'Text',
       'orcamento_id'            => 'ForeignKey',

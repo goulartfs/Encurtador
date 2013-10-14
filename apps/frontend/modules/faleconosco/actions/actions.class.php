@@ -27,7 +27,7 @@ class faleconoscoActions extends sfActions {
 
     public function executeSuporte(sfWebRequest $request) {
         $this->getUser()->setFlash('title-page', 'Suporte');
-        $this->setLayout('profile');
+        $this->setLayout(($this->getUser()->isAuthenticated())?'profile':'interna');
 
         $this->form = new SuporteForm();
 

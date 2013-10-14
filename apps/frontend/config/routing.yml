@@ -126,6 +126,11 @@ retirada_finish:
   requirements:
     authkey: ~
     
+retirada_info:
+  url:   /withdraw/info
+  param: { module: retirada, action: info }
+
+    
 suporte:
   url:   /suport
   param: { module: faleconosco, action: suporte }

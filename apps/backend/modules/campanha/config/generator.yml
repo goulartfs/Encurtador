@@ -1,0 +1,27 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Campanha
+    theme:                 simpla
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          campanha
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:    
+        title: Campanhas
+        display: [_liberar, StatusTransacao, sfGuardUser, titulo, url_campanha, payment_method, is_active, is_finished, created_at, end_date]
+        actions: []
+        batch_actions: []
+        object_actions: []
+      filter:  
+        display: [status_transacao_id]
+      form:    ~
+      edit:    ~
+      new:     ~

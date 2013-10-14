@@ -41,12 +41,14 @@
                 </div>
     </div>
     <div class="span4">
+        <?php if ($ganhos >= Configuracao::getConfig('retirada_minima')) { ?>
         <form class="pull-right well alert-success" action="<?php print url_for('@retirada_select') ?>" method="post">
             <h5>Resgatar todo ganho disponível</h5>
             <?php include_partial('commom/form', array('form' => $form)) ?>
             <span class="help-block">Selecione como deseja efetuar o resgate</span>
             <button type="submit" class="btn btn-block btn-primary">Solicitar Resgate</button>
         </form>
+        <?php } ?>
     </div>
     <div class="span12">
         <hr>

@@ -20,12 +20,14 @@ class retiradaActions extends sfActions {
 
         $this->getUser()->setFlash('title-page', 'Resgate');
         $this->setLayout('profile');
-        $this->ganhos = Url::getGanhosDisponivelDoUsuario($this->getUser()->getGuardUser());
+        if ($this->getContext()->getActionName() != 'info') {
+            $this->ganhos = Url::getGanhosDisponivelDoUsuario($this->getUser()->getGuardUser());
+        }
     }
 
     public function executeIndex(sfWebRequest $request) {
         $this->form = new MeioResgateForm();
-        
+
         $resgate = Doctrine_Query::create()
                 ->from('Resgate r')
                 ->where('r.user_id = ?', $this->getUser()->getGuardUser()->getId())
@@ -181,13 +183,14 @@ class retiradaActions extends sfActions {
         $urls = Doctrine::getTable('Url')->findByUserId($this->getUser()->getGuardUser()->getId());
         if ($urls->count()) {
             foreach ($urls as $url) {
-                if ($url->getUrlControleNaoResgatado()->count()) {
-                    foreach ($url->getUrlControleNaoResgatado() as $urlControle) {
-                        $urlControle->setResgateId($this->resgate->getId());
-                        $urlControle->setIsRescued(1);
-                        $urlControle->save();
-                    }
-                }
+                $url->atualizaControleNaoResgatado($this->resgate, $url);
+//                if ($url->getUrlControleNaoResgatado()->count()) {
+//                    foreach ($url->getUrlControleNaoResgatado() as $urlControle) {
+//                        $urlControle->setResgateId($this->resgate->getId());
+//                        $urlControle->setIsRescued(1);
+//                        $urlControle->save();
+//                    }
+//                }
             }
         }
 
@@ -208,10 +211,14 @@ class retiradaActions extends sfActions {
             $operacao->setValor($resgate->getValor());
             $operacao->save();
             $operacao->processar();
-            
+
             $resgate->setStatusId(4);
             $resgate->save();
         }
+    }
+
+    public function executeInfo(sfWebRequest $request) {
+        $this->setLayout('interna');
     }
 
 }

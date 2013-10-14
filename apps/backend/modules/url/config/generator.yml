@@ -14,7 +14,11 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
+      list:    
+        title: Links
+        actions: []
+        batch_actions: []
+        object_actions: []
       filter:  ~
       form:    ~
       edit:    ~

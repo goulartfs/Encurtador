@@ -8,8 +8,8 @@
                 <th>#</th>
                 <th>Url Original</th>
                 <th>Url Encurtada</th>
-                <th>Visualizações</th>
                 <th>Ganho Disponível</th>
+                <th>Visualizações Total</th>
                 <th>Ganhos Totais</th>
                 <th>Criada em</th>
             </tr>
@@ -26,8 +26,8 @@
                     </td>
                     <td><?php print $url->getOriginalUrl() ?></td>
                     <td><a href="<?php print $url->getFullUrl() ?>"><?php print $url->getShortUrl() ?></a></td>
+                    <td><?php print "R$ " . $url->getGanhosDisponivel() . "<br><em>" . $url->getTotalDisponivel() . " views</em>" ?></td>
                     <td><?php print $url->getTotal() ?></td>
-                    <td><?php print "R$ " . $url->getGanhosDisponivel() ?></td>
                     <td><?php print "R$ " . $url->getGanhos() ?></td>
                     <td><?php print $url->getDateTimeObject('created_at')->format('d/m/Y h:i:s') ?></td>
                 </tr>

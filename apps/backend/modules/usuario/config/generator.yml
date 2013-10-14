@@ -1,0 +1,27 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Usuario
+    theme:                 simpla
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          usuario
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:    
+        title: Dados cadastrais de usuários
+        display: [sfGuardUser, TipoUsuario, endereco, estado, cidade, cep, telefone]
+        actions: []
+        batch_actions: []
+        object_actions: []
+      filter:  
+        display: [user_id]
+      form:    ~
+      edit:    ~
+      new:     ~
