@@ -1,23 +1,20 @@
 generator:
   class: sfDoctrineGenerator
   param:
-    model_class:           Url
+    model_class:           Orcamento
     theme:                 simpla
     non_verbose_templates: true
     with_show:             false
     singular:              ~
     plural:                ~
-    route_prefix:          url
+    route_prefix:          orcamento
     with_doctrine_route:   true
     actions_base_class:    sfActions
 
     config:
       actions: ~
       fields:  ~
-      list:    
-        actions: []
-        batch_actions: []
-        object_actions: []
+      list:    ~
       filter:  ~
       form:    ~
       edit:    ~

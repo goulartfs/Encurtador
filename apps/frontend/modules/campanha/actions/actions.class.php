@@ -41,7 +41,7 @@ class campanhaActions extends sfActions {
     }
 
     public function executeNewad(sfWebRequest $request) {
-        $this->form = new CampanhaForm();
+        $this->form = new CampanhaFrontForm();
         if ($request->getMethod() == 'POST') {
             $this->form->bind($request->getParameter('campanha'));
 
@@ -99,7 +99,7 @@ class campanhaActions extends sfActions {
         $campanha = Doctrine::getTable('Campanha')->findOneById($request->getParameter('id'));
         $this->forward404If(!$campanha, 'Campanha não encontrada');
 
-        $this->form = new CampanhaForm($campanha);
+        $this->form = new CampanhaFrontForm($campanha);
 
         if ($request->getMethod() == 'POST') {
             $this->form->bind($request->getParameter('campanha'));
