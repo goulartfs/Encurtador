@@ -13,7 +13,7 @@
 </form>
 <?php if ($sf_user->hasFlash('notice')) { ?>
     <p class="well well-small alert-info">
-        <?php print $sf_user->getFlash('notice'); ?>
+        <?php print $sf_user->getFlash('notice') . link_to($sf_user->getFlash('url'), $sf_user->getFlash('url')); ?>
     </p>
 <?php } ?>
 <div class="row">
