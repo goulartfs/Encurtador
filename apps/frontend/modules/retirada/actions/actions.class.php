@@ -25,7 +25,7 @@ class retiradaActions extends sfActions {
 
     public function executeIndex(sfWebRequest $request) {
         $this->form = new MeioResgateForm();
-        
+
         $resgate = Doctrine_Query::create()
                 ->from('Resgate r')
                 ->where('r.user_id = ?', $this->getUser()->getGuardUser()->getId())
@@ -209,10 +209,13 @@ class retiradaActions extends sfActions {
             $operacao->setValor($resgate->getValor());
             $operacao->save();
             $operacao->processar();
-            
+
             $resgate->setStatusId(4);
             $resgate->save();
         }
     }
 
+    public function executeInfo(sfWebRequest $request) {
+        $this->setLayout('interna');
+    }
 }

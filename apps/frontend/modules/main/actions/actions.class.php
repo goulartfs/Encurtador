@@ -79,7 +79,7 @@ class mainActions extends sfActions {
 
         if ($this->ad && $this->ad->getTotal() >= $this->ad->getOrcamento()->getQuantidade()) {
             $this->ad->setIsFinished(1);
-            $this->ad->setEndDate(date());
+            $this->ad->setEndDate(date('Y-m-d h:i:s'));
             $this->ad->save();
         }
 
