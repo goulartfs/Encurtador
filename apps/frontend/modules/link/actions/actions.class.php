@@ -27,7 +27,7 @@ class linkActions extends sfActions {
     }
 
     public function executeList(sfWebRequest $request) {
-        $this->getUser()->setFlash('title-page', 'Links');
+        $this->getUser()->setFlash('title-page', 'Publisher');
 
         $this->form = new EncurtadorForm();
 
