@@ -1,5 +1,5 @@
 <div class="span12">
-    <?php if ($urls) { ?>
+    <?php if (false && $urls) { ?>
         <table class="table table-striped table-condensed">
             <thead>
                 <tr>
@@ -18,5 +18,10 @@
                 <?php } ?>
             </tbody>
         </table>
+    <?php } ?>
+    <?php if(isset($url)){ ?>
+    <p class="alert alert-success">
+        Parabéns, você encurtou seu link: <?php print link_to($url->getFullUrl(), $url->getFullUrl()); ?>
+    </p>
     <?php } ?>
 </div>
