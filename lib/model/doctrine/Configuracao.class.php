@@ -12,5 +12,8 @@
  */
 class Configuracao extends BaseConfiguracao
 {
-
+    public static function getConfig($chave){
+        $config = Doctrine::getTable('Configuracao')->findOneByChave($chave);
+        return $config->getValor();
+    }
 }
