@@ -26,6 +26,8 @@
                         echo 'current' ?>">Orçamentos</a></li>
                         <li><a href="<?php echo url_for('resgate/index') ?>" class="nav-top-item no-submenu <?php if (in_array($sf_context->getModuleName(), array('resgate')))
                         echo 'current' ?>">Resgates</a></li>
+                        <li><a href="<?php echo url_for('conta/index') ?>" class="nav-top-item no-submenu <?php if (in_array($sf_context->getModuleName(), array('conta')))
+                        echo 'current' ?>">Carteira</a></li>
                         <li><a href="<?php echo url_for('configuracao/index') ?>" class="nav-top-item no-submenu <?php if (in_array($sf_context->getModuleName(), array('configuracao')))
                         echo 'current' ?>">Configurações</a></li>
                         <li><a href="<?php echo url_for('sf_guard_user/index') ?>" class="nav-top-item no-submenu <?php if (in_array($sf_context->getModuleName(), array('sf_guard_user')))

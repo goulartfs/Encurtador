@@ -83,6 +83,27 @@
                 <?php echo $form['telefone']->render(array('id' => 'telefone', 'class' => 'text-input input-xlarge', 'placeholder' => '')) ?>
             </div>
         </div>
+        <div class="control-group">
+            <label class="control-label" for="password_atual"><?php echo $form['password_atual']->renderLabelName() ?></label>
+            <div class="controls">
+                <?php echo $form['password_atual']->renderError() ?>
+                <?php echo $form['password_atual']->render(array('id' => 'password_atual', 'class' => 'text-input input-xlarge', 'placeholder' => '')) ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="password"><?php echo $form['subform']['sfGuardUser']['password']->renderLabelName() ?></label>
+            <div class="controls">
+                <?php echo $form['subform']['sfGuardUser']['password']->renderError() ?>
+                <?php echo $form['subform']['sfGuardUser']['password']->render(array('id' => 'password', 'class' => 'text-input input-xlarge', 'placeholder' => '')) ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="password_again"><?php echo $form['subform']['sfGuardUser']['password_again']->renderLabelName() ?></label>
+            <div class="controls">
+                <?php echo $form['subform']['sfGuardUser']['password_again']->renderError() ?>
+                <?php echo $form['subform']['sfGuardUser']['password_again']->render(array('id' => 'password_again', 'class' => 'text-input input-xlarge', 'placeholder' => '')) ?>
+            </div>
+        </div>
         
         <div class="control-group">
             <div class="controls">
