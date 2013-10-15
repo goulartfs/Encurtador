@@ -25,6 +25,16 @@ a{
     padding: 7px 20px;
 }
 
+.qtd-cliques{
+    background: url(/images/cursor.png) no-repeat scroll 50px center transparent;
+    padding-top: 10px;
+}
+
+.qtd-cliques h2{
+    border-bottom: 1px solid #cdcdcd;
+    width: 245px;
+}
+
 #header{
     background: url(/images/bg_topo.jpg) repeat-x scroll center top transparent;
     height: 376px;
