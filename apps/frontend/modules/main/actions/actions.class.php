@@ -35,6 +35,7 @@ class mainActions extends sfActions {
         
         $total = Doctrine_Query::create()
                 ->from("UrlControle u")
+                ->where("date_format(u.created_at, '%d/%m/%Y') = date_format(now(), '%d/%m/%Y')")
                 ->groupBy("u.url_id, date_format( created_at, '%d/%m/%Y' ) , u.ipuser")
                 ->execute();
 
