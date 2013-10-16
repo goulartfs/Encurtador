@@ -32,7 +32,7 @@ class mainActions extends sfActions {
 
         $this->form = new EncurtadorForm();
         $this->urls = null;
-        
+
         $total = Doctrine_Query::create()
                 ->from("UrlControle u")
                 ->where("date_format(u.created_at, '%d/%m/%Y') = date_format(now(), '%d/%m/%Y')")
@@ -47,6 +47,8 @@ class mainActions extends sfActions {
             if ($this->form->isValid()) {
 
                 $this->url = $this->form->process();
+                $this->url->setIpuser($_SERVER['REMOTE_ADDR']);
+                $this->url->save();
 
                 if ($this->getUser()->isAuthenticated()) {
                     $this->redirect('profile/links');
@@ -71,12 +73,14 @@ class mainActions extends sfActions {
                         ->orderBy('RAND()')
                         ->execute()->getFirst();
 
-        $url_controle = new UrlControle();
-        $url_controle->setIpuser($_SERVER['REMOTE_ADDR']);
-        $url_controle->setUrlId($url->getId());
-        $url_controle->save();
+        if ($_SERVER['REMOTE_ADDR'] != $url->getIpuser()) {
+            $url_controle = new UrlControle();
+            $url_controle->setIpuser($_SERVER['REMOTE_ADDR']);
+            $url_controle->setUrlId($url->getId());
+            $url_controle->save();
+        }
 
-        if ($this->ad) {
+        if ($this->ad && $_SERVER['REMOTE_ADDR'] != $url->getIpuser()) {
             $ad_controle = new CampanhaControle();
             $ad_controle->setIpViewer($_SERVER['REMOTE_ADDR']);
             $ad_controle->setCampanhaId($this->ad->getId());

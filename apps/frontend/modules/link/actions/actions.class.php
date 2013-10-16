@@ -71,7 +71,7 @@ class linkActions extends sfActions {
                 $this->form->process();
 
                 $this->getUser()->setFlash('notice', 'Links encurtador com sucesso.');
-                $this->redirect('link/list');
+                $this->redirect('@link');
             }
         }
     }

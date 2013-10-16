@@ -59,7 +59,7 @@ a{
 }
 
 #header .bg-header{
-    background: url(/images/topo.jpg) no-repeat scroll center top #031F4F;
+    background: url(/images/topo.jpg) repeat-x scroll center top #031F4F;
     height: 393px;
 }
 

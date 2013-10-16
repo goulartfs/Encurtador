@@ -8,15 +8,18 @@
  * @property integer $user_id
  * @property varchar $original_url
  * @property varchar $short_url
+ * @property string $ipuser
  * @property Doctrine_Collection $UrlControle
  * 
  * @method integer             getUserId()       Returns the current record's "user_id" value
  * @method varchar             getOriginalUrl()  Returns the current record's "original_url" value
  * @method varchar             getShortUrl()     Returns the current record's "short_url" value
+ * @method string              getIpuser()       Returns the current record's "ipuser" value
  * @method Doctrine_Collection getUrlControle()  Returns the current record's "UrlControle" collection
  * @method Url                 setUserId()       Sets the current record's "user_id" value
  * @method Url                 setOriginalUrl()  Sets the current record's "original_url" value
  * @method Url                 setShortUrl()     Sets the current record's "short_url" value
+ * @method Url                 setIpuser()       Sets the current record's "ipuser" value
  * @method Url                 setUrlControle()  Sets the current record's "UrlControle" collection
  * 
  * @package    Encurtador
@@ -42,6 +45,10 @@ abstract class BaseUrl extends sfDoctrineRecord
              'type' => 'varchar',
              'notnull' => true,
              'unique' => true,
+             'length' => 255,
+             ));
+        $this->hasColumn('ipuser', 'string', 255, array(
+             'type' => 'string',
              'length' => 255,
              ));
     }

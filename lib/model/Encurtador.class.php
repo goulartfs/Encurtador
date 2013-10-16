@@ -36,7 +36,7 @@ class Encurtador {
         if (sfContext::getInstance()->getUser()->isAuthenticated()) {
             $url->setUserId(sfContext::getInstance()->getUser()->getGuardUser()->getId());
         }
-
+        $url->setIpuser($_SERVER['REMOTE_ADDR']);
         $url->save();
 
         return $url;
