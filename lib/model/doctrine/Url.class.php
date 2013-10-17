@@ -17,24 +17,23 @@ class Url extends BaseUrl {
     }
 
     public function getTotal() {
-        $total = Doctrine::getTable('UrlControle')->createQuery('u')
-                        ->select('count(*) as total')
-                        ->where('u.url_id = ?', $this->getId())
-                        ->groupBy("u.url_id")
-                        ->execute()->getFirst();
+        $total = Doctrine_Query::create()
+                ->select("u.ipuser")
+                ->from("UrlControle u")
+                ->where('u.url_id = ?', $this->getId())
+                ->groupBy("u.ipuser, date_format(u.created_at, '%d/%m/%Y')");
 
-        return ($total['total']) ? $total['total'] : 0;
+        return $total->execute()->count();
     }
 
     public function getTotalDisponivel() {
-        $total = Doctrine::getTable('UrlControle')->createQuery('u')
-                        ->select('count(u.url_id) as total')
-                        ->where('u.url_id = ?', $this->getId())
-                        ->groupBy("u.url_id")
-                        ->having("SUM(is_rescued) = 0")
-                        ->execute()->getFirst();
+        $total = Doctrine_Query::create()
+                ->from("UrlControle u")
+                ->where('u.url_id = ?', $this->getId())
+                ->groupBy("u.ipuser, date_format(u.created_at, '%d/%m/%Y')")
+                ->having("SUM(is_rescued) = 0");
 
-        return ($total['total']) ? $total['total'] : 0;
+        return $total->execute()->count();
     }
 
     public function getGanhos() {
@@ -45,41 +44,55 @@ class Url extends BaseUrl {
         return number_format($this->getTotalDisponivel() * CustoClique::getCustoPorClique(), 2, ',', '.');
     }
 
-    public static function getGanhosDoUsuario(sfGuardUser $usuario) {
-
-        $urls = Doctrine::getTable('Url')->findByUserId($usuario->getId());
-
-        $ganhos = 0;
-        foreach ($urls as $url) {
-            $ganhos += $url->getGanhos();
-        }
-
-        return $ganhos;
-    }
-
     public static function getGanhosDisponivelDoUsuario(sfGuardUser $usuario) {
+        $pdo = Doctrine_Manager::getInstance()->getCurrentConnection();
+        $query = "SELECT count( * ) as numresult
+                    FROM (
+                        SELECT c.ipuser, date_format( c.created_at, '%d/%m/%Y' ) created_at
+                        FROM url u
+                        INNER JOIN url_controle c ON ( u.id = c.url_id )
+                        WHERE u.user_id =:user_id
+                        GROUP BY c.ipuser, date_format( c.created_at, '%d/%m/%Y' )
+                        HAVING SUM(c.is_rescued = 0)
+                    ) AS querycount";
 
-        $urls = Doctrine::getTable('Url')->findByUserId($usuario->getId());
+        $stmt = $pdo->prepare($query);
 
-        $ganhos = 0;
-        foreach ($urls as $url) {
-            $ganhos += $url->getGanhosDisponivel();
-        }
+        $params = array(
+            "user_id" => $usuario->getId()
+        );
 
-        return $ganhos;
+        $stmt->execute($params);
+
+        $results = $stmt->fetchAll();
+        $num = ((count($results)) ? $results[0]['numresult'] : 0) * CustoClique::getCustoPorClique();
+        
+        return number_format($num, 2, ',', '.');
     }
 
     public static function getTotalAcessoByUser(sfGuardUser $usuario) {
-        $urls = Doctrine::getTable('Url')->findByUserId($usuario->getId());
-        $views = 0;
+        $pdo = Doctrine_Manager::getInstance()->getCurrentConnection();
+        $query = "SELECT count( * ) as numresult
+                    FROM (
+                        SELECT c.ipuser, date_format( c.created_at, '%d/%m/%Y' ) created_at
+                        FROM url u
+                        INNER JOIN url_controle c ON ( u.id = c.url_id )
+                        WHERE u.user_id =:user_id
+                        GROUP BY c.ipuser, date_format( c.created_at, '%d/%m/%Y' )
+                    ) AS querycount";
 
-        if ($urls->count()) {
-            foreach ($urls as $url) {
-                $views += $url->getTotal();
-            }
-        }
+        $stmt = $pdo->prepare($query);
 
-        return $views;
+        $params = array(
+            "user_id" => $usuario->getId()
+        );
+
+        $stmt->execute($params);
+
+        $results = $stmt->fetchAll();
+        $num = (count($results)) ? $results[0]['numresult'] : 0;
+        
+        return number_format($num, 0, ',', '.');
     }
 
     public function atualizaControleNaoResgatado(Resgate $resgate, Url $url) {
