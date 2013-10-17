@@ -4,11 +4,16 @@
     </p>
 <?php } ?>
 <div class="row">
-    <div class="span8">
-        
+    <div class="span4 qtd-cliques text-right">
+        <img src="/images/quantidade_links.png" alt="Total de links encurtados" />
+        <h2 class="pull-right"><?php print $links_all? number_format($links_all, 0, ',', '.'):  0 ?></h2>
     </div>
     <div class="span4 qtd-cliques text-right">
-        <img src="/images/quantidade_cliques.png" alt="Quantidade de Cliques" />
-        <h2 class="pull-right"><?php print $cliques ? $cliques : 0 ?></h2>
+        <img src="/images/quantidade_cliques_all.png" alt="Quantidade de Cliques Totais" />
+        <h2 class="pull-right"><?php print $cliques_all ? number_format($cliques_all, 0, ',', '.') : 0 ?></h2>
+    </div>
+    <div class="span4 qtd-cliques text-right">
+        <img src="/images/quantidade_cliques.png" alt="Total de cliques hoje" />
+        <h2 class="pull-right"><?php print $cliques ? number_format($cliques, 0, ',', '.') : 0 ?></h2>
     </div>
 </div>
