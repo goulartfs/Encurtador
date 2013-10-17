@@ -17,31 +17,32 @@ class Url extends BaseUrl {
     }
 
     public function getTotal() {
-        $total = Doctrine_Query::create()
-                ->from("UrlControle u")
-                ->where('u.url_id = ?', $this->getId())
-                ->groupBy("u.url_id, date_format( created_at, '%d/%m/%Y' ) , u.ipuser")
-                ->execute();
+        $total = Doctrine::getTable('UrlControle')->createQuery('u')
+                        ->select('count(*) as total')
+                        ->where('u.url_id = ?', $this->getId())
+                        ->groupBy("u.url_id")
+                        ->execute()->getFirst();
 
-        return $total->count();
+        return ($total['total']) ? $total['total'] : 0;
     }
 
     public function getTotalDisponivel() {
-        $total = Doctrine_Query::create()
-                ->from("UrlControle u")
-                ->where('u.url_id = ?', $this->getId())
-                ->groupBy("u.url_id, date_format(created_at, '%d/%m/%Y' ) , ipuser")
-                ->having("SUM(is_rescued) = 0");
+        $total = Doctrine::getTable('UrlControle')->createQuery('u')
+                        ->select('count(u.url_id) as total')
+                        ->where('u.url_id = ?', $this->getId())
+                        ->groupBy("u.url_id")
+                        ->having("SUM(is_rescued) = 0")
+                        ->execute()->getFirst();
 
-        return $total->count();
+        return ($total['total']) ? $total['total'] : 0;
     }
 
     public function getGanhos() {
-        return $this->getTotal() * CustoClique::getCustoPorClique();
+        return number_format($this->getTotal() * CustoClique::getCustoPorClique(), 2, ',', '.');
     }
 
     public function getGanhosDisponivel() {
-        return $this->getTotalDisponivel() * CustoClique::getCustoPorClique();
+        return number_format($this->getTotalDisponivel() * CustoClique::getCustoPorClique(), 2, ',', '.');
     }
 
     public static function getGanhosDoUsuario(sfGuardUser $usuario) {

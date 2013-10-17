@@ -33,13 +33,13 @@ class mainActions extends sfActions {
         $this->form = new EncurtadorForm();
         $this->urls = null;
 
-        $total = Doctrine_Query::create()
-                ->from("UrlControle u")
-                ->where("date_format(u.created_at, '%d/%m/%Y') = date_format(now(), '%d/%m/%Y')")
-                ->groupBy("u.url_id, date_format( created_at, '%d/%m/%Y' ) , u.ipuser")
-                ->execute();
+        $total = Doctrine::getTable('UrlControle')->createQuery('u')
+                        ->select('count(*) as total')
+                        ->where("date_format(u.created_at, '%d/%m/%Y') = date_format(now(), '%d/%m/%Y')")
+                        ->groupBy("date_format( created_at, '%d/%m/%Y' )")
+                        ->execute()->getFirst();
 
-        $this->cliques = $total->count();
+        $this->cliques = ($total['total']) ? $total['total'] : 0;
 
         if ($request->getMethod() == 'POST') {
 

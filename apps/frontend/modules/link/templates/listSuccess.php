@@ -17,11 +17,11 @@
     </p>
 <?php } ?>
 <div class="row">
-    <div class="span9">
+    <div class="span10">
         <?php include_partial('link/list_links', array('urls' => $pager->getResults(), 'pager' => $pager)) ?>
         <?php include_partial('commom/pagination', array('pager' => $pager, 'route' => '@link')) ?>
     </div>
-    <div class="span3">
+    <div class="span2">
         <div class="thumbnail help-block">
             <table class="table no-margin">
                 <thead>
