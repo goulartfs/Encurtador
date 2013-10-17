@@ -32,7 +32,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <p class="text-right lead">R$ <?php print $ganhos; ?></p>
+                            <p class="text-right lead">R$ <?php print number_format($ganhos, 2, ',', '.') ?></p>
                             <?php if ($ganhos >= Configuracao::getConfig('retirada_minima')) { ?>
                                 <a class="btn btn-block btn-primary" href="<?php print url_for('@retirada') ?>">Resgatar</a>
                             <?php } ?>

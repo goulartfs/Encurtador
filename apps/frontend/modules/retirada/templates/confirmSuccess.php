@@ -20,7 +20,7 @@
         <h3>Valor do Resgate</h3>
         <div class="">
             <h4>
-                R$ <?php print $ganhos ?>
+                R$ <?php print number_format($ganhos, 2, ',', '.') ?>
             </h4>
             <h5>TOTAL</h5>
         </div>
