@@ -67,7 +67,7 @@ class Url extends BaseUrl {
         $results = $stmt->fetchAll();
         $num = ((count($results)) ? $results[0]['numresult'] : 0) * CustoClique::getCustoPorClique();
         
-        return number_format($num, 2, ',', '.');
+        return $num;
     }
 
     public static function getTotalAcessoByUser(sfGuardUser $usuario) {
