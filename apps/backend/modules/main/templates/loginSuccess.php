@@ -1,26 +1,15 @@
-<form action="<?php echo url_for('main/login') ?>" method="post">
-  <?php if ($sf_user->hasFlash('error')): ?>
-  <div class="notification information png_bg">
-		<div><?php echo $sf_user->getFlash('error') ?></div>
-	</div>
-  <?php endif; ?>
-  
-	<p>
-		<label>Usuário</label>
-		<?php echo $form['username']->render(array('class' => 'text-input')) ?>
-	</p>
-	<div class="clear"></div>
-	<p>
-		<label>Senha</label>
-		<?php echo $form['password']->render(array('class' => 'text-input')) ?>
-	</p>
-	<div class="clear"></div>
-	<p id="remember-password">
-		<?php echo $form['remember'] ?> Lembrar senha
-	</p>
-	<div class="clear"></div>
-	<p>
-	  <?php echo $form->renderHiddenFields() ?>
-		<input class="button" value="Login" type="submit">
-	</p>
+<form class="form-signin" action="<?php echo url_for('main/login') ?>" method="post">
+    <h2 class="form-signin-heading">Efetue Login</h2>
+    <?php if ($sf_user->hasFlash('error')): ?>
+        <div class="alert alert-error">
+            <div><?php echo $sf_user->getFlash('error') ?></div>
+        </div>
+    <?php endif; ?>
+    <?php echo $form['username']->render(array('class' => 'input-block-level', 'placeholder'=>'Username')) ?>
+    <?php echo $form['password']->render(array('class' => 'input-block-level', 'placeholder'=>'Password')) ?>
+    <label class="checkbox">
+        <?php echo $form['remember'] ?> Lembrar senha
+    </label>
+    <?php echo $form->renderHiddenFields() ?>
+    <button class="btn btn-block btn-large btn-primary" type="submit">Efetuar login</button>
 </form>
