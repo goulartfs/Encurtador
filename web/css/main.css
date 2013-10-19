@@ -29,13 +29,13 @@ a{
 }
 
 .qtd-cliques{
-    background: url(/images/cursor.png) no-repeat scroll 50px center transparent;
+    background: url(/images/cursor.png) no-repeat scroll left center transparent;
     padding-top: 10px;
 }
 
 .qtd-cliques h2{
     border-bottom: 1px solid #cdcdcd;
-    width: 245px;
+    width: 100%;
 }
 
 #header{
@@ -106,7 +106,7 @@ a{
     font-style: italic;
     font-weight: bold;
     letter-spacing: -2px;
-    margin-left: 80px;
+    /*margin-left: 80px;*/
     margin-top: 18px;
     color: #021e50;
     font-size: 30pt;
@@ -126,7 +126,7 @@ a{
 
 #header .pos-pq{
     color: #fff;
-    margin-left: 50px;
+    /*margin-left: 50px;*/
     font-size: 12pt;
     padding-top: 25px;
 }
@@ -149,9 +149,9 @@ a{
     line-height: 38px;
 }
 
-#header .display-fields{
+/*#header .display-fields{
     margin-left: 50px;
-}
+}*/
 
 
 #header form .display-fields > p{

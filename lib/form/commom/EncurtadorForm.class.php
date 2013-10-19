@@ -4,7 +4,7 @@ class EncurtadorForm extends sfForm {
 
     public function configure() {
         $this->setWidgets(array(
-            'url' => new sfWidgetFormInputText(array(), array('class' => 'input-xxlarge span9', 'placeholder' => 'Ex: http://www.exemplo.com')),
+            'url' => new sfWidgetFormInputText(array(), array('placeholder' => 'Ex: http://www.exemplo.com')),
         ));
 
         $this->setValidators(array(
