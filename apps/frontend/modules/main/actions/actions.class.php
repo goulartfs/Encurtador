@@ -51,7 +51,7 @@ class mainActions extends sfActions {
         if ($total) {
             $total = $total->toArray();
         }
-        
+
         $this->cliques_all = ($total['total']) ? $total['total'] : 0;
 
         $total = Doctrine::getTable('Url')->createQuery('u')
@@ -95,18 +95,22 @@ class mainActions extends sfActions {
                         ->orderBy('RAND()')
                         ->execute()->getFirst();
 
-        if ($_SERVER['REMOTE_ADDR'] != $url->getIpuser()) {
-            $url_controle = new UrlControle();
-            $url_controle->setIpuser($_SERVER['REMOTE_ADDR']);
-            $url_controle->setUrlId($url->getId());
-            $url_controle->save();
-        }
+        $jsonObject = json_decode(file_get_contents('http://4ready.com.br:8080/json'));
 
-        if ($this->ad && $_SERVER['REMOTE_ADDR'] != $url->getIpuser()) {
-            $ad_controle = new CampanhaControle();
-            $ad_controle->setIpViewer($_SERVER['REMOTE_ADDR']);
-            $ad_controle->setCampanhaId($this->ad->getId());
-            $ad_controle->save();
+        if ($jsonObject->country_code == 'BR') {
+            if ($jsonObject->ip != $url->getIpuser()) {
+                $url_controle = new UrlControle();
+                $url_controle->setIpuser($jsonObject->ip);
+                $url_controle->setUrlId($url->getId());
+                $url_controle->save();
+            }
+
+            if ($this->ad && $jsonObject->ip != $url->getIpuser()) {
+                $ad_controle = new CampanhaControle();
+                $ad_controle->setIpViewer($jsonObject->ip);
+                $ad_controle->setCampanhaId($this->ad->getId());
+                $ad_controle->save();
+            }
         }
 
         $this->url = $url;
