@@ -1,20 +1,20 @@
 <div class="row">
     <div class="span4">
-        <h4>Lorem ipsum dolor</h4>
+        <h4>API de Encurtamento</h4>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Se você tem um site com 1 ou 10.000 mil links e deseja mudar para o CliquesBR, você terá em breve um script simples, para realizar esta tarefa. 
         </p>
     </div>
     <div class="span4">
-        <h4>Lorem ipsum dolor</h4>
+        <h4>Sistema antifraude</h4>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Integração de sistema antifraude com rastreamento de ip geolocalizado a fim de minimizarmos acessos inválidos ou tentativas via scripts e/ou macros.
         </p>
     </div>
     <div class="span4">
-        <h4>Lorem ipsum dolor</h4>
+        <h4>Afiliados</h4>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Adição de um sistema de afiliados, iremos pagar para você 10% de tudo que o seu afiliado vier a lucrar no mês.
         </p>
     </div>
 </div>
