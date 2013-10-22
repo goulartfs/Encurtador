@@ -107,7 +107,7 @@ class Url extends BaseUrl {
                         FROM url u
                         INNER JOIN url_controle c ON ( u.id = c.url_id )
                         WHERE u.user_id =:user_id
-                        GROUP BY c.ipuser, date_format( c.created_at, '%d/%m/%Y' )
+                        GROUP BY c.ipuser, c.url_id, date_format( c.created_at, '%d/%m/%Y' )
                     ) AS querycount";
 
         $stmt = $pdo->prepare($query);
