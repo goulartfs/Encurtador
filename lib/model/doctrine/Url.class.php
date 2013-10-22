@@ -17,23 +17,52 @@ class Url extends BaseUrl {
     }
 
     public function getTotal() {
-        $total = Doctrine_Query::create()
-                ->select("u.ipuser")
-                ->from("UrlControle u")
-                ->where('u.url_id = ?', $this->getId())
-                ->groupBy("u.ipuser, date_format(u.created_at, '%d/%m/%Y')");
+        
+        $pdo = Doctrine_Manager::getInstance()->getCurrentConnection();
+        $query = "SELECT count( * ) as numresult
+                    FROM (
+                        SELECT c.ipuser
+                        FROM  url_controle c
+                        WHERE c.url_id =:url_id
+                        GROUP BY c.ipuser, date_format( c.created_at, '%d/%m/%Y' )
+                    ) AS querycount";
 
-        return $total->execute()->count();
+        $stmt = $pdo->prepare($query);
+        
+        $params = array(
+            "url_id" => $this->getId()
+        );
+
+        $stmt->execute($params);
+
+        $results = $stmt->fetchAll();
+        
+        return (count($results)) ? $results[0]['numresult'] : 0;
     }
 
     public function getTotalDisponivel() {
-        $total = Doctrine_Query::create()
-                ->from("UrlControle u")
-                ->where('u.url_id = ?', $this->getId())
-                ->groupBy("u.ipuser, date_format(u.created_at, '%d/%m/%Y')")
-                ->having("SUM(is_rescued) = 0");
+        
+        $pdo = Doctrine_Manager::getInstance()->getCurrentConnection();
+        $query = "SELECT count( * ) as numresult
+                    FROM (
+                        SELECT c.ipuser
+                        FROM  url_controle c
+                        WHERE c.url_id =:url_id
+                        GROUP BY c.ipuser, date_format( c.created_at, '%d/%m/%Y' )
+                        HAVING SUM(is_rescued) = 0
+                    ) AS querycount";
 
-        return $total->execute()->count();
+        $stmt = $pdo->prepare($query);
+        
+        $params = array(
+            "url_id" => $this->getId()
+        );
+
+        $stmt->execute($params);
+
+        $results = $stmt->fetchAll();
+        
+        return (count($results)) ? $results[0]['numresult'] : 0;
     }
 
     public function getGanhos() {
