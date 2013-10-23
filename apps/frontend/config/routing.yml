@@ -154,7 +154,7 @@ resolve_url:
     url_id: ~
   
 confirm_resolve:
-  url:   /:idl/:idc
+  url:   /confirm/:idl/:idc
   param: { module: main, action: confirmResolve }
   requirements:
     idl: ~

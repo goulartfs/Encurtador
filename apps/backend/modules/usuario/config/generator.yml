@@ -16,7 +16,7 @@ generator:
       fields:  ~
       list:    
         title: Dados cadastrais de usuários
-        display: [sfGuardUser, TipoUsuario, endereco, estado, cidade, cep, telefone]
+        display: [sfGuardUser, TipoUsuario, _saldo, endereco, estado, cidade, cep, telefone]
         actions: []
         batch_actions: []
         object_actions: []
