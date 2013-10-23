@@ -12,9 +12,9 @@ default:
     #language:     en
     #robots:       index, follow
 
-  stylesheets:    [/simpla/css/style.css]
+  stylesheets:    [/simpla/css/style.css, redmond/jquery-ui-1.10.3.custom.min.css]
 
-  javascripts:    [jquery-1.10.2.min.js, /simpla/js/simpla]
+  javascripts:    [jquery-1.10.2.min.js, jquery-ui-1.10.3.custom.min.js, /simpla/js/simpla, admin-dialog.js]
 
   has_layout:     true
   layout:         layout
