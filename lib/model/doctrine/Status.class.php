@@ -12,5 +12,8 @@
  */
 class Status extends BaseStatus
 {
-
+public function __toString() {
+    parent::__toString();
+    return $this->getTipo();
+}
 }

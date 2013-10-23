@@ -6,6 +6,8 @@ Url:
     original_url: { type: varchar(), notnull: true }
     short_url: { type: varchar(255), notnull: true, unique: true }
     ipuser: { type: string(255) }
+  relations:
+    sfGuardUser: { onDelete: RESTRICT, onUpdate: RESTRICT, local: user_id }
     
 UrlControle:
   actAs:

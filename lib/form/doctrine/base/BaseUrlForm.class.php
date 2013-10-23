@@ -16,7 +16,7 @@ abstract class BaseUrlForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'           => new sfWidgetFormInputHidden(),
-      'user_id'      => new sfWidgetFormInputText(),
+      'user_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('sfGuardUser'), 'add_empty' => true)),
       'original_url' => new sfWidgetFormInputText(),
       'short_url'    => new sfWidgetFormInputText(),
       'ipuser'       => new sfWidgetFormInputText(),
@@ -26,7 +26,7 @@ abstract class BaseUrlForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'           => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'user_id'      => new sfValidatorInteger(array('required' => false)),
+      'user_id'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('sfGuardUser'), 'required' => false)),
       'original_url' => new sfValidatorPass(),
       'short_url'    => new sfValidatorPass(),
       'ipuser'       => new sfValidatorString(array('max_length' => 255, 'required' => false)),

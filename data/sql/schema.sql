@@ -14,7 +14,7 @@ CREATE TABLE status_transacao (id BIGINT AUTO_INCREMENT, status VARCHAR(255), cr
 CREATE TABLE tipo_operacao (id BIGINT AUTO_INCREMENT, tipo VARCHAR(255), created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE tipo_resgate (id BIGINT AUTO_INCREMENT, tipo VARCHAR(255), descricao TEXT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE tipo_usuario (id BIGINT AUTO_INCREMENT, tipo VARCHAR(255), created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
-CREATE TABLE url (id BIGINT AUTO_INCREMENT, user_id BIGINT, original_url TEXT NOT NULL, short_url VARCHAR(255) NOT NULL UNIQUE, ipuser VARCHAR(255), created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE url (id BIGINT AUTO_INCREMENT, user_id BIGINT, original_url TEXT NOT NULL, short_url VARCHAR(255) NOT NULL UNIQUE, ipuser VARCHAR(255), created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE url_controle (id BIGINT AUTO_INCREMENT, url_id BIGINT, resgate_id BIGINT, ipuser VARCHAR(255), is_rescued TINYINT(1) DEFAULT '0', is_processed TINYINT(1) DEFAULT '0', data_processado datetime, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX url_id_idx (url_id), INDEX resgate_id_idx (resgate_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE usuario (id BIGINT AUTO_INCREMENT, user_id BIGINT, tipo_usuario_id BIGINT, endereco TEXT, estado VARCHAR(255), cidade VARCHAR(255), cep VARCHAR(255), telefone VARCHAR(255), created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX user_id_idx (user_id), INDEX tipo_usuario_id_idx (tipo_usuario_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE valida_usuario (id BIGINT AUTO_INCREMENT, user_id BIGINT, chave TEXT, is_confirmed TINYINT(1) DEFAULT '0', created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
@@ -38,6 +38,7 @@ ALTER TABLE paypal ADD CONSTRAINT paypal_user_id_sf_guard_user_id FOREIGN KEY (u
 ALTER TABLE resgate ADD CONSTRAINT resgate_user_id_sf_guard_user_id FOREIGN KEY (user_id) REFERENCES sf_guard_user(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 ALTER TABLE resgate ADD CONSTRAINT resgate_tipo_resgate_id_tipo_resgate_id FOREIGN KEY (tipo_resgate_id) REFERENCES tipo_resgate(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 ALTER TABLE resgate ADD CONSTRAINT resgate_status_id_status_id FOREIGN KEY (status_id) REFERENCES status(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+ALTER TABLE url ADD CONSTRAINT url_user_id_sf_guard_user_id FOREIGN KEY (user_id) REFERENCES sf_guard_user(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 ALTER TABLE url_controle ADD CONSTRAINT url_controle_url_id_url_id FOREIGN KEY (url_id) REFERENCES url(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 ALTER TABLE url_controle ADD CONSTRAINT url_controle_resgate_id_resgate_id FOREIGN KEY (resgate_id) REFERENCES resgate(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 ALTER TABLE usuario ADD CONSTRAINT usuario_user_id_sf_guard_user_id FOREIGN KEY (user_id) REFERENCES sf_guard_user(id) ON UPDATE CASCADE ON DELETE CASCADE;

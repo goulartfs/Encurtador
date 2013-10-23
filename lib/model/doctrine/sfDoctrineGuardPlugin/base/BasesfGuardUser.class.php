@@ -21,6 +21,7 @@
  * @property Doctrine_Collection $sfGuardUserGroup
  * @property sfGuardRememberKey $RememberKeys
  * @property sfGuardForgotPassword $ForgotPassword
+ * @property Doctrine_Collection $Url
  * @property Doctrine_Collection $Usuario
  * @property Doctrine_Collection $ValidaUsuario
  * @property Doctrine_Collection $Conta
@@ -45,6 +46,7 @@
  * @method Doctrine_Collection   getSfGuardUserGroup()      Returns the current record's "sfGuardUserGroup" collection
  * @method sfGuardRememberKey    getRememberKeys()          Returns the current record's "RememberKeys" value
  * @method sfGuardForgotPassword getForgotPassword()        Returns the current record's "ForgotPassword" value
+ * @method Doctrine_Collection   getUrl()                   Returns the current record's "Url" collection
  * @method Doctrine_Collection   getUsuario()               Returns the current record's "Usuario" collection
  * @method Doctrine_Collection   getValidaUsuario()         Returns the current record's "ValidaUsuario" collection
  * @method Doctrine_Collection   getConta()                 Returns the current record's "Conta" collection
@@ -68,6 +70,7 @@
  * @method sfGuardUser           setSfGuardUserGroup()      Sets the current record's "sfGuardUserGroup" collection
  * @method sfGuardUser           setRememberKeys()          Sets the current record's "RememberKeys" value
  * @method sfGuardUser           setForgotPassword()        Sets the current record's "ForgotPassword" value
+ * @method sfGuardUser           setUrl()                   Sets the current record's "Url" collection
  * @method sfGuardUser           setUsuario()               Sets the current record's "Usuario" collection
  * @method sfGuardUser           setValidaUsuario()         Sets the current record's "ValidaUsuario" collection
  * @method sfGuardUser           setConta()                 Sets the current record's "Conta" collection
@@ -167,6 +170,10 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
              'foreign' => 'user_id'));
 
         $this->hasOne('sfGuardForgotPassword as ForgotPassword', array(
+             'local' => 'id',
+             'foreign' => 'user_id'));
+
+        $this->hasMany('Url', array(
              'local' => 'id',
              'foreign' => 'user_id'));
 

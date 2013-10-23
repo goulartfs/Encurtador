@@ -13,7 +13,7 @@ abstract class BaseUrlFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'user_id'      => new sfWidgetFormFilterInput(),
+      'user_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('sfGuardUser'), 'add_empty' => true)),
       'original_url' => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'short_url'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'ipuser'       => new sfWidgetFormFilterInput(),
@@ -22,7 +22,7 @@ abstract class BaseUrlFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
-      'user_id'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'user_id'      => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('sfGuardUser'), 'column' => 'id')),
       'original_url' => new sfValidatorPass(array('required' => false)),
       'short_url'    => new sfValidatorPass(array('required' => false)),
       'ipuser'       => new sfValidatorPass(array('required' => false)),
@@ -48,7 +48,7 @@ abstract class BaseUrlFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'           => 'Number',
-      'user_id'      => 'Number',
+      'user_id'      => 'ForeignKey',
       'original_url' => 'Text',
       'short_url'    => 'Text',
       'ipuser'       => 'Text',
