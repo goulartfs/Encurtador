@@ -5,13 +5,13 @@
         <?php
         if ($resgate->getSfGuardUser()->getDadoBancario()->count()) {
             ?>
-            <strong>Banco</strong>: <?php print $resgate->getSfGuardUser()->getDadoBancario()->getBanco() ?><br>
-            <strong>Agência</strong>: <?php print $resgate->getSfGuardUser()->getDadoBancario()->getAgencia() ?><br>
-            <strong>Tipo Conta</strong>: <?php print $resgate->getSfGuardUser()->getDadoBancario()->getTipoConta() ?><br>
-            <strong>Operação</strong>: <?php print $resgate->getSfGuardUser()->getDadoBancario()->getOperacao() ?><br>
-            <strong>Nº da Conta</strong>: <?php print $resgate->getSfGuardUser()->getDadoBancario()->getContaNumero() ?><br>
-            <strong>Favorecido</strong>: <?php print $resgate->getSfGuardUser()->getDadoBancario()->getFavorevido() ?><br>
-            <strong>CPF</strong>: <?php print $resgate->getSfGuardUser()->getDadoBancario()->getCpf() ?><br>
+            <strong>Banco</strong>: <?php print $resgate->getSfGuardUser()->getDadoBancario()->getFirst()->getBanco() ?><br>
+            <strong>Agência</strong>: <?php print $resgate->getSfGuardUser()->getDadoBancario()->getFirst()->getAgencia() ?><br>
+            <strong>Tipo Conta</strong>: <?php print $resgate->getSfGuardUser()->getDadoBancario()->getFirst()->getTipoConta() ?><br>
+            <strong>Operação</strong>: <?php print $resgate->getSfGuardUser()->getDadoBancario()->getFirst()->getOperacao() ?><br>
+            <strong>Nº da Conta</strong>: <?php print $resgate->getSfGuardUser()->getDadoBancario()->getFirst()->getContaNumero() ?><br>
+            <strong>Favorecido</strong>: <?php print $resgate->getSfGuardUser()->getDadoBancario()->getFirst()->getFavorecido() ?><br>
+            <strong>CPF</strong>: <?php print $resgate->getSfGuardUser()->getDadoBancario()->getFirst()->getCpf() ?><br>
             <?php
         } else {
             print "Não informado.";
@@ -21,9 +21,9 @@
     <h3>Paypal</h3>
     <p>
         <?php
-        if ($resgate->getSfGuardUser()->getPaypal()->count()) {
+        if (Doctrine::getTable('Paypal')->findOneByUserId($resgate->getUserId())) {
             ?>
-            <strong>Email</strong>: <?php print $resgate->getSfGuardUser()->getDadoBancario()->getPaypal()->getEmail() ?><br>
+            <strong>Email</strong>: <?php print $resgate->getSfGuardUser()->getPaypal()->getFirst()->getEmail() ?><br>
             <?php
         } else {
             print "Não informado.";
