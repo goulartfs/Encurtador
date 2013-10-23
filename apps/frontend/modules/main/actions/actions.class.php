@@ -95,8 +95,8 @@ class mainActions extends sfActions {
                         ->orderBy('RAND()')
                         ->execute()->getFirst();
 
-        $jsonObject = json_decode(file_get_contents('http://4ready.com.br:8080/json'));
-
+        $jsonObject = json_decode(file_get_contents('http://dev.4ready.com.br/json/' . $_SERVER['REMOTE_ADDR']));
+        
         if ($jsonObject->country_code == 'BR') {
             if ($jsonObject->ip != $url->getIpuser()) {
                 $url_controle = new UrlControle();
