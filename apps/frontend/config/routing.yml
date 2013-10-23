@@ -152,6 +152,13 @@ resolve_url:
   param: { module: main, action: resolve }
   requirements:
     url_id: ~
+  
+confirm_resolve:
+  url:   /:idl/:idc
+  param: { module: main, action: confirmResolve }
+  requirements:
+    idl: ~
+    idc: ~
     
     
 # generic rules

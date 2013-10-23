@@ -97,19 +97,12 @@ class mainActions extends sfActions {
 
         $jsonObject = json_decode(file_get_contents('http://dev.4ready.com.br/json/' . $_SERVER['REMOTE_ADDR']));
         
+        $this->control = false;
+        $this->getUser()->setAttribute('ipuser', null);
         if ($jsonObject->country_code == 'BR') {
-            if ($jsonObject->ip != $url->getIpuser()) {
-                $url_controle = new UrlControle();
-                $url_controle->setIpuser($jsonObject->ip);
-                $url_controle->setUrlId($url->getId());
-                $url_controle->save();
-            }
-
             if ($this->ad && $jsonObject->ip != $url->getIpuser()) {
-                $ad_controle = new CampanhaControle();
-                $ad_controle->setIpViewer($jsonObject->ip);
-                $ad_controle->setCampanhaId($this->ad->getId());
-                $ad_controle->save();
+                $this->getUser()->setAttribute('ipuser', $jsonObject->ip);
+                $this->control = true;
             }
         }
 
@@ -120,6 +113,22 @@ class mainActions extends sfActions {
         $this->getUser()->signOut();
         $this->getUser()->setFlash('notice', 'Obrigado');
         $this->redirect('@sf_guard_signin');
+    }
+
+    public function executeConfirmResolve(sfWebRequest $request) {
+        $this->forward404Unless($request->isMethod('post'));
+        
+        $this->setLayout(false);
+
+        $url_controle = new UrlControle();
+        $url_controle->setIpuser($this->getUser()->getAttribute('ipuser', null));
+        $url_controle->setUrlId($request->getParameter('idl'));
+        $url_controle->save();
+
+        $ad_controle = new CampanhaControle();
+        $ad_controle->setIpViewer($this->getUser()->getAttribute('ipuser', null));
+        $ad_controle->setCampanhaId($request->getParameter('idc'));
+        $ad_controle->save();
     }
 
 }
