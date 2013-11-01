@@ -15,7 +15,7 @@
         Seu site deve ter/estar utilizando <strong>jQuery</strong>;
     </li>
     <li>
-        O script deve ser colocado entre as tags <code>&lt;header&gt;&lt;/header&gt;</code> ou logo antes do fechamento da tag <code>&lt;/body&gt;</code>;
+        O script deve ser colocado entre as tags <code>&lt;head&gt;&lt;/head&gt;</code> ou logo antes do fechamento da tag <code>&lt;/body&gt;</code>;
     </li>
 </ol>
 <div class="alert alert-danger">
