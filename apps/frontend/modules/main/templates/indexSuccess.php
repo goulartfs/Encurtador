@@ -19,7 +19,7 @@
 </div>
 <div class="row">
     <div class="span12">
-        <h3>O que está por vir?</h3>
+        <h3>Temos novidades para você!</h3>
     </div>
 </div>
 <?php include_partial('main/news') ?>
