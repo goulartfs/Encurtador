@@ -23,6 +23,7 @@
  * @property sfGuardForgotPassword $ForgotPassword
  * @property Doctrine_Collection $Url
  * @property Doctrine_Collection $Usuario
+ * @property Doctrine_Collection $Referal
  * @property Doctrine_Collection $ValidaUsuario
  * @property Doctrine_Collection $Conta
  * @property Doctrine_Collection $Campanha
@@ -48,6 +49,7 @@
  * @method sfGuardForgotPassword getForgotPassword()        Returns the current record's "ForgotPassword" value
  * @method Doctrine_Collection   getUrl()                   Returns the current record's "Url" collection
  * @method Doctrine_Collection   getUsuario()               Returns the current record's "Usuario" collection
+ * @method Doctrine_Collection   getReferal()               Returns the current record's "Referal" collection
  * @method Doctrine_Collection   getValidaUsuario()         Returns the current record's "ValidaUsuario" collection
  * @method Doctrine_Collection   getConta()                 Returns the current record's "Conta" collection
  * @method Doctrine_Collection   getCampanha()              Returns the current record's "Campanha" collection
@@ -72,6 +74,7 @@
  * @method sfGuardUser           setForgotPassword()        Sets the current record's "ForgotPassword" value
  * @method sfGuardUser           setUrl()                   Sets the current record's "Url" collection
  * @method sfGuardUser           setUsuario()               Sets the current record's "Usuario" collection
+ * @method sfGuardUser           setReferal()               Sets the current record's "Referal" collection
  * @method sfGuardUser           setValidaUsuario()         Sets the current record's "ValidaUsuario" collection
  * @method sfGuardUser           setConta()                 Sets the current record's "Conta" collection
  * @method sfGuardUser           setCampanha()              Sets the current record's "Campanha" collection
@@ -180,6 +183,10 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
         $this->hasMany('Usuario', array(
              'local' => 'id',
              'foreign' => 'user_id'));
+
+        $this->hasMany('Usuario as Referal', array(
+             'local' => 'id',
+             'foreign' => 'referal_id'));
 
         $this->hasMany('ValidaUsuario', array(
              'local' => 'id',

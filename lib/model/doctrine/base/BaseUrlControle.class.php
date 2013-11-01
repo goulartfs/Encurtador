@@ -11,25 +11,31 @@
  * @property boolean $is_rescued
  * @property boolean $is_processed
  * @property datetime $data_processado
+ * @property boolean $is_referal_rescued
+ * @property datetime $data_referal_processado
  * @property Url $Url
  * @property Resgate $Resgate
  * 
- * @method integer     getUrlId()           Returns the current record's "url_id" value
- * @method integer     getResgateId()       Returns the current record's "resgate_id" value
- * @method string      getIpuser()          Returns the current record's "ipuser" value
- * @method boolean     getIsRescued()       Returns the current record's "is_rescued" value
- * @method boolean     getIsProcessed()     Returns the current record's "is_processed" value
- * @method datetime    getDataProcessado()  Returns the current record's "data_processado" value
- * @method Url         getUrl()             Returns the current record's "Url" value
- * @method Resgate     getResgate()         Returns the current record's "Resgate" value
- * @method UrlControle setUrlId()           Sets the current record's "url_id" value
- * @method UrlControle setResgateId()       Sets the current record's "resgate_id" value
- * @method UrlControle setIpuser()          Sets the current record's "ipuser" value
- * @method UrlControle setIsRescued()       Sets the current record's "is_rescued" value
- * @method UrlControle setIsProcessed()     Sets the current record's "is_processed" value
- * @method UrlControle setDataProcessado()  Sets the current record's "data_processado" value
- * @method UrlControle setUrl()             Sets the current record's "Url" value
- * @method UrlControle setResgate()         Sets the current record's "Resgate" value
+ * @method integer     getUrlId()                   Returns the current record's "url_id" value
+ * @method integer     getResgateId()               Returns the current record's "resgate_id" value
+ * @method string      getIpuser()                  Returns the current record's "ipuser" value
+ * @method boolean     getIsRescued()               Returns the current record's "is_rescued" value
+ * @method boolean     getIsProcessed()             Returns the current record's "is_processed" value
+ * @method datetime    getDataProcessado()          Returns the current record's "data_processado" value
+ * @method boolean     getIsReferalRescued()        Returns the current record's "is_referal_rescued" value
+ * @method datetime    getDataReferalProcessado()   Returns the current record's "data_referal_processado" value
+ * @method Url         getUrl()                     Returns the current record's "Url" value
+ * @method Resgate     getResgate()                 Returns the current record's "Resgate" value
+ * @method UrlControle setUrlId()                   Sets the current record's "url_id" value
+ * @method UrlControle setResgateId()               Sets the current record's "resgate_id" value
+ * @method UrlControle setIpuser()                  Sets the current record's "ipuser" value
+ * @method UrlControle setIsRescued()               Sets the current record's "is_rescued" value
+ * @method UrlControle setIsProcessed()             Sets the current record's "is_processed" value
+ * @method UrlControle setDataProcessado()          Sets the current record's "data_processado" value
+ * @method UrlControle setIsReferalRescued()        Sets the current record's "is_referal_rescued" value
+ * @method UrlControle setDataReferalProcessado()   Sets the current record's "data_referal_processado" value
+ * @method UrlControle setUrl()                     Sets the current record's "Url" value
+ * @method UrlControle setResgate()                 Sets the current record's "Resgate" value
  * 
  * @package    Encurtador
  * @subpackage model
@@ -62,6 +68,13 @@ abstract class BaseUrlControle extends sfDoctrineRecord
              'default' => 0,
              ));
         $this->hasColumn('data_processado', 'datetime', null, array(
+             'type' => 'datetime',
+             ));
+        $this->hasColumn('is_referal_rescued', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => 0,
+             ));
+        $this->hasColumn('data_referal_processado', 'datetime', null, array(
              'type' => 'datetime',
              ));
     }

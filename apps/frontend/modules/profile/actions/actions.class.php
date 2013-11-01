@@ -34,6 +34,8 @@ class profileActions extends sfActions {
         if ($request->getMethod() == 'POST') {
             $param = $request->getParameter('usuario');
             $param['subform']['sfGuardUser']['is_active'] = 1;
+            $param['referal_id'] = $this->getUser()->getGuardUser()->getUsuario()->getReferalId();
+            $param['referal_code'] = $this->getUser()->getGuardUser()->getUsuario()->getReferalCode();
             $this->form->bind($param);
             
             if ($this->form->isValid()) {

@@ -11,19 +11,22 @@
  * @property string $ipuser
  * @property sfGuardUser $sfGuardUser
  * @property Doctrine_Collection $UrlControle
+ * @property Doctrine_Collection $ReferalControle
  * 
- * @method integer             getUserId()       Returns the current record's "user_id" value
- * @method varchar             getOriginalUrl()  Returns the current record's "original_url" value
- * @method varchar             getShortUrl()     Returns the current record's "short_url" value
- * @method string              getIpuser()       Returns the current record's "ipuser" value
- * @method sfGuardUser         getSfGuardUser()  Returns the current record's "sfGuardUser" value
- * @method Doctrine_Collection getUrlControle()  Returns the current record's "UrlControle" collection
- * @method Url                 setUserId()       Sets the current record's "user_id" value
- * @method Url                 setOriginalUrl()  Sets the current record's "original_url" value
- * @method Url                 setShortUrl()     Sets the current record's "short_url" value
- * @method Url                 setIpuser()       Sets the current record's "ipuser" value
- * @method Url                 setSfGuardUser()  Sets the current record's "sfGuardUser" value
- * @method Url                 setUrlControle()  Sets the current record's "UrlControle" collection
+ * @method integer             getUserId()          Returns the current record's "user_id" value
+ * @method varchar             getOriginalUrl()     Returns the current record's "original_url" value
+ * @method varchar             getShortUrl()        Returns the current record's "short_url" value
+ * @method string              getIpuser()          Returns the current record's "ipuser" value
+ * @method sfGuardUser         getSfGuardUser()     Returns the current record's "sfGuardUser" value
+ * @method Doctrine_Collection getUrlControle()     Returns the current record's "UrlControle" collection
+ * @method Doctrine_Collection getReferalControle() Returns the current record's "ReferalControle" collection
+ * @method Url                 setUserId()          Sets the current record's "user_id" value
+ * @method Url                 setOriginalUrl()     Sets the current record's "original_url" value
+ * @method Url                 setShortUrl()        Sets the current record's "short_url" value
+ * @method Url                 setIpuser()          Sets the current record's "ipuser" value
+ * @method Url                 setSfGuardUser()     Sets the current record's "sfGuardUser" value
+ * @method Url                 setUrlControle()     Sets the current record's "UrlControle" collection
+ * @method Url                 setReferalControle() Sets the current record's "ReferalControle" collection
  * 
  * @package    Encurtador
  * @subpackage model
@@ -66,6 +69,10 @@ abstract class BaseUrl extends sfDoctrineRecord
              'onUpdate' => 'RESTRICT'));
 
         $this->hasMany('UrlControle', array(
+             'local' => 'id',
+             'foreign' => 'url_id'));
+
+        $this->hasMany('ReferalControle', array(
              'local' => 'id',
              'foreign' => 'url_id'));
 

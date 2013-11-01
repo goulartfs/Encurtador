@@ -101,12 +101,59 @@ class mainActions extends sfActions {
         $this->getUser()->setAttribute('ipuser', null);
         if ($jsonObject->country_code == 'BR') {
             if ($this->ad && $jsonObject->ip != $url->getIpuser()) {
-                $this->getUser()->setAttribute('ipuser', $jsonObject->ip);
-                $this->control = true;
+        $this->getUser()->setAttribute('ipuser', $jsonObject->ip);
+        $this->control = true;
             }
         }
 
         $this->url = $url;
+    }
+
+    public function executeResolveScript(sfWebRequest $request) {
+        $this->setLayout('link');
+        $this->forward404If(!$request->getParameter('u'));
+
+        if (strpos($request->getParameter('h'), 'localhost:9001') !== false) {
+            $this->redirect($request->getParameter('h'));
+        }
+
+        $this->ad = Doctrine::getTable('Campanha')->createQuery('c')
+                        ->where('c.is_active = 1')
+                        ->addWhere('c.is_payment_processed = 1')
+                        ->addWhere('c.is_finished <> 1')
+                        ->orderBy('RAND()')
+                        ->execute()->getFirst();
+
+        $usuario = Doctrine::getTable('Usuario')->findOneByReferalCode($request->getParameter('u'));
+        if ($usuario) {
+            $url = Doctrine::getTable('Url')->createQuery('u')
+                            ->where('u.original_url = ?', $request->getParameter('h'))
+                            ->addWhere('u.user_id = ?', $usuario->getSfGuardUser()->getId())
+                            ->execute()->getFirst();
+            if (!$url) {
+                $url = new Url();
+                $url->setOriginalUrl($request->getParameter('h'));
+                $url->setShortUrl(Encurtador::generateUniqueId());
+                $url->setUserId($usuario->getSfGuardUser()->getId());
+                $url->save();
+            } else {
+                $this->redirect(sfContext::getInstance()->getController()->genUrl('@resolve_url?url_id=' . $url->getShortUrl()));
+            }
+        }
+
+        $jsonObject = json_decode(file_get_contents('http://dev.4ready.com.br/json/' . $_SERVER['REMOTE_ADDR']));
+        
+        $this->control = false;
+        $this->getUser()->setAttribute('ipuser', null);
+        if ($jsonObject->country_code == 'BR') {
+            if ($this->ad && $jsonObject->ip != $url->getIpuser()) {
+        $this->getUser()->setAttribute('ipuser', $jsonObject->ip);
+        $this->control = true;
+            }
+        }
+
+        $this->url = $url;
+        $this->setTemplate('resolve');
     }
 
     public function executeLogout(sfWebRequest $request) {
@@ -117,7 +164,7 @@ class mainActions extends sfActions {
 
     public function executeConfirmResolve(sfWebRequest $request) {
         $this->forward404Unless($request->isMethod('post'));
-        
+
         $this->setLayout(false);
 
         $url_controle = new UrlControle();

@@ -19,6 +19,8 @@ UrlControle:
     is_rescued: { type: boolean, default: 0 }
     is_processed: { type: boolean, default: 0 }
     data_processado: { type: datetime }
+    is_referal_rescued: { type: boolean, default: 0 }
+    data_referal_processado: { type: datetime }
   relations:
     Url: { onDelete: RESTRICT, onUpdate: RESTRICT }
     Resgate: { onDelete: RESTRICT, onUpdate: RESTRICT }
@@ -35,14 +37,31 @@ Usuario:
   columns:
     user_id: { type: integer(11) }
     tipo_usuario_id: { type: integer(11) }
+    referal_id: { type:  integer(11) }
     endereco: { type: string() }
     estado: { type: string(255) }
     cidade: { type: string(255) }
     cep: { type: string(255) }
-    telefone: { type: string(255);}
+    telefone: { type: string(255) }
+    referal_code: { type: string(255) }
   relations:
     sfGuardUser: { onDelete: CASCADE, onUpdate: CASCADE, local: user_id }
+    Referal: { onDelete: CASCADE, onUpdate: CASCADE, local: referal_id, foreignAlias: Referal, class: sfGuardUser }
     TipoUsuario: { onDelete: RESTRICT, onUpdate: RESTRICT }
+    
+ReferalControle:
+  actAs:
+    Timestampable: ~
+  columns:
+    url_id: { type: integer(11) }
+    resgate_id: { type: integer(11) }
+    ipuser: { type: string(255) }
+    is_rescued: { type: boolean, default: 0 }
+    is_processed: { type: boolean, default: 0 }
+    data_processado: { type: datetime }
+  relations:
+    Url: { onDelete: RESTRICT, onUpdate: RESTRICT }
+    Resgate: { onDelete: RESTRICT, onUpdate: RESTRICT }
     
 ValidaUsuario:
   actAs:

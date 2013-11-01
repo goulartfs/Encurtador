@@ -211,3 +211,12 @@ a{
 #footer ul.navbar li:first-child{
     margin-left: 0;
 }
+
+#copyarea{
+    display: block;
+    font-size: 16pt;
+    height: 30px;
+    padding-top: 15px;
+    text-align: center;
+    vertical-align: middle;
+}

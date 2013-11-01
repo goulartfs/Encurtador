@@ -98,5 +98,14 @@ class linkActions extends sfActions {
             }
         }
     }
+    
+    public function executePageScript(sfWebRequest $request){
+        
+    }
+    
+    public function executeGerarScript(sfWebRequest $request){
+        $this->url_site = $request->getParameter('url_site');
+        $this->setLayout(false);
+    }
 
 }

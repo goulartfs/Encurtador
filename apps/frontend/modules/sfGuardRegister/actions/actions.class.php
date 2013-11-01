@@ -89,5 +89,12 @@ class sfGuardRegisterActions extends sfActions {
         
         $this->redirect('profile/links');
     }
+    
+    public function executeReferal(sfWebRequest $request){
+        $usuario = Doctrine::getTable('Usuario')->findOneByReferalCode($request->getParameter('referal_code'));
+        $this->forward404If(!$usuario, "Código de referência inválido.");
+        $this->getUser()->setAttribute('referal_id', $usuario->getSfGuardUser()->getId());
+        $this->redirect('@sf_guard_register');
+    }
 
 }

@@ -124,6 +124,32 @@ class Url extends BaseUrl {
         return number_format($num, 0, ',', '.');
     }
 
+    public static function getTotalAcessoByUserDisponivelReferencia(sfGuardUser $usuario) {
+        $pdo = Doctrine_Manager::getInstance()->getCurrentConnection();
+        $query = "SELECT count( * ) as numresult
+                    FROM (
+                        SELECT c.ipuser, date_format( c.created_at, '%d/%m/%Y' ) created_at
+                        FROM url u
+                        INNER JOIN url_controle c ON ( u.id = c.url_id )
+                        WHERE u.user_id =:user_id
+                        GROUP BY c.ipuser, c.url_id, date_format( c.created_at, '%d/%m/%Y' )
+                        HAVING SUM(c.is_referal_rescued) = 0
+                    ) AS querycount";
+
+        $stmt = $pdo->prepare($query);
+
+        $params = array(
+            "user_id" => $usuario->getId()
+        );
+
+        $stmt->execute($params);
+
+        $results = $stmt->fetchAll();
+        $num = (count($results)) ? $results[0]['numresult'] : 0;
+        
+        return number_format($num, 0, ',', '.');
+    }
+
     public function atualizaControleNaoResgatado(Resgate $resgate, Url $url) {
         Doctrine_Query::create()
                 ->update('UrlControle')

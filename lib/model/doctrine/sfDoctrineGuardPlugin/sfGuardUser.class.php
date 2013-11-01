@@ -49,6 +49,8 @@ class sfGuardUser extends PluginsfGuardUser {
             $usuario = new Usuario();
             $usuario->setUserId($this->getId());
             $usuario->setTipoUsuarioId($tipo_usuario);
+            $usuario->setReferalId(sfContext::getInstance()->getUser()->getAttribute('referal_id', NULL));
+            $usuario->setReferalCode(md5(uniqid("")));
             $usuario->save();
 
             return $usuario;
@@ -56,5 +58,17 @@ class sfGuardUser extends PluginsfGuardUser {
 
         return $this->getUsuario();
     }
-
+    
+    public function getTotalAcesso(){
+        return Url::getTotalAcessoByUser($this);
+    }
+    
+    public function getGanhoReferenciaTotal(){
+        return $this->getTotalAcesso() * CustoClique::getCustoPorClique() * (Configuracao::getConfig('referencia_percent') / 100);
+    }
+    
+    public function getGanhoReferenciaDisponivel(){
+        return Url::getTotalAcessoByUserDisponivelReferencia($this) * CustoClique::getCustoPorClique() * (Configuracao::getConfig('referencia_percent') / 100);
+    }
+    
 }
