@@ -95,7 +95,7 @@ class mainActions extends sfActions {
                         ->orderBy('RAND()')
                         ->execute()->getFirst();
 
-        $jsonObject = json_decode(file_get_contents('http://dev.4ready.com.br/json/' . $_SERVER['REMOTE_ADDR']));
+        $jsonObject = json_decode(file_get_contents('http://geo.4ready.com.br/json/' . $_SERVER['REMOTE_ADDR']));
         
         $this->control = false;
         $this->getUser()->setAttribute('ipuser', null);
@@ -141,7 +141,7 @@ class mainActions extends sfActions {
             }
         }
 
-        $jsonObject = json_decode(file_get_contents('http://dev.4ready.com.br/json/' . $_SERVER['REMOTE_ADDR']));
+        $jsonObject = json_decode(file_get_contents('http://geo.4ready.com.br/json/' . $_SERVER['REMOTE_ADDR']));
         
         $this->control = false;
         $this->getUser()->setAttribute('ipuser', null);
