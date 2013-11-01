@@ -113,7 +113,7 @@ class mainActions extends sfActions {
         $this->setLayout('link');
         $this->forward404If(!$request->getParameter('u'));
 
-        if (strpos($request->getParameter('h'), 'localhost:9001') !== false) {
+        if (strpos($request->getParameter('h'), 'cliquesbr.com.br') !== false) {
             $this->redirect($request->getParameter('h'));
         }
 
