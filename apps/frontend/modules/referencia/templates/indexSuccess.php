@@ -8,36 +8,60 @@
         <?php print url_for('@register_referal?referal_code=' . $referal_code, true) ?>
     </textarea>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Cliques</th>
-            <th>Ganhos Disponível</th>
-            <th>Ganhos Total</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($referencias as $referencia) { ?>
-            <tr>
-                <td><?php print $referencia->getSfGuardUser(); ?></td>
-                <td><?php print $referencia->getSfGuardUser()->getTotalAcesso(); ?></td>
-                <td><?php print "R$ " . number_format($referencia->getSfGuardUser()->getGanhoReferenciaDisponivel(), 2, ',', '.'); ?></td>
-                <td><?php print "R$ " . number_format($referencia->getSfGuardUser()->getGanhoReferenciaTotal(), 2, ',', '.'); ?></td>
-            </tr>
-        <?php } ?>
-    </tbody>
-</table>
+<div class="row">
+    <div class="span10">
+        <div class="thumbnail">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Cliques</th>
+                        <th>Ganhos Disponível</th>
+                        <th>Ganhos Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($referencias as $referencia) { ?>
+                        <tr>
+                            <td><?php print $referencia->getSfGuardUser(); ?></td>
+                            <td><?php print $referencia->getSfGuardUser()->getTotalAcesso(); ?></td>
+                            <td><?php print "R$ " . number_format($referencia->getSfGuardUser()->getGanhoReferenciaDisponivel(), 2, ',', '.'); ?></td>
+                            <td><?php print "R$ " . number_format($referencia->getSfGuardUser()->getGanhoReferenciaTotal(), 2, ',', '.'); ?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="span2">
+        <div class="thumbnail help-block">
+            <table class="table no-margin">
+                <thead>
+                    <tr>
+                        <th>Ganhos disponível para resgate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="text-right lead">R$ <?php print number_format($ganhos, 2, ',', '.') ?></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 <script>
     $("#copyarea").focus(function() {
-    var $this = $(this);
-    $this.select();
+        var $this = $(this);
+        $this.select();
 
-    // Work around Chrome's little problem
-    $this.mouseup(function() {
-        // Prevent further mouseup intervention
-        $this.unbind("mouseup");
-        return false;
+        // Work around Chrome's little problem
+        $this.mouseup(function() {
+            // Prevent further mouseup intervention
+            $this.unbind("mouseup");
+            return false;
+        });
     });
-});
 </script>

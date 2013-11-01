@@ -5,6 +5,26 @@
  * and open the template in the editor.
  */
 ?>
+<p>
+    O script de encurtamento de link irá varrer todos os links da sua página e substituir os links para gerar um encurtamento automático.<br/>
+    Os links poderão ser visto na sua lista de links a medida em que eles forem sendo acessados, assim você terá um melhor acompanhamento dos cliques.<br/>
+    Para o funcionamento correto do script deve-se atentar para as seguintes instruções:
+</p>
+<ol>
+    <li>
+        Seu site deve ter/estar utilizando <strong>jQuery</strong>;
+    </li>
+    <li>
+        O script deve ser colocado entre as tags <code>&lt;header&gt;&lt;/header&gt;</code> ou logo antes do fechamento da tag <code>&lt;/body&gt;</code>;
+    </li>
+</ol>
+<div class="alert alert-danger">
+    <h5>Importante</h5>
+    O script irá substituir todos os links do seu site fazendo com que o usuário seja redirecionado para nossos serviços,
+    <strong>caso deseje preservar os links referentes ao seu site</strong>, favor utilizar o formulário abaixo informando o seu domínio.
+    <br/>
+    Você pode utilizar: <em>http://www.seusite.com.br</em>, <em>www.seusite.com.br</em>, <em>seusite.com.br</em>, <em>seusite</em>.
+</div>
 <form id="gera-script" method="post" action="<?php print url_for('@link_gerar_script') ?>" class="form-horizontal">
     <fieldset>
         <legend>Script de Página</legend>
@@ -23,9 +43,9 @@
         </div>
     </fieldset>
 </form>
-<div class="alert alert-danger">
-    É necessário que seu site utilize <strong>jQuery</strong>, o não cumprimento desse requisito acarretará em falha na execução do script.
-</div>
+<p class="lead">
+    Copie abaixo o script e cole no seu site para um encurtamento automático e rápido!
+</p>
 <div id="load-script">
     <textarea id="copyarea" class="span12 alert-success" style="height: 220px; text-align: left; font-size: 10pt; font-family: Courier;">
 <script type="text/javascript">

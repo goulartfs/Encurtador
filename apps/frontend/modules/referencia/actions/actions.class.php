@@ -25,6 +25,7 @@ class referenciaActions extends sfActions {
     public function executeIndex(sfWebRequest $request) {
         $this->referal_code = $this->getUser()->getGuardUser()->getUsuario()->getReferalCode();
         $this->referencias = $this->getUser()->getGuardUser()->getReferal();
+        $this->ganhos = $this->getUser()->getGuardUser()->getTodoGanhoReferenciaDisponivel();
     }
 
 }

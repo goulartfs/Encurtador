@@ -22,7 +22,7 @@
             <h4>
                 R$ <?php print number_format($ganhos, 2, ',', '.') ?>
             </h4>
-            <h5>TOTAL</h5>
+            <h5>TOTAL (Links + Referência)</h5>
         </div>
     </div>
     <div class="span4">
@@ -42,7 +42,7 @@
                 }
             } else {
                 ?>
-                    Os ganhos de links serão creditados na sua carteira virtual CliqueBR.
+                    Os ganhos de links e referência serão creditados na sua carteira virtual CliqueBR.
                 <?php
             }
             ?>

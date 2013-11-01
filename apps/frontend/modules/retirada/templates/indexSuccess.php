@@ -27,21 +27,41 @@
     <?php endif; ?>
     <div class="span8">
         <h3>Todo ganho disponível</h3>
-                <div class="">
-                    <h4>
-                        R$ <?php print number_format($ganhos, 2, ',', '.') ?>
-                    </h4>
-                    <h5>TOTAL</h5>
-                </div>
+        <div class="row">
+            <div class="span2">
+                <h4>
+                    R$ <?php print number_format($ganhos, 2, ',', '.') ?>
+                </h4>
+                <h5>TOTAL</h5>
+            </div>
+            <div class="span1 lead">
+                =
+            </div>
+            <div class="span2">
+                <h4>
+                    R$ <?php print number_format($ganho_link, 2, ',', '.') ?>
+                </h4>
+                <h5>LINKS</h5>
+            </div>
+            <div class="span1 lead">
+                +
+            </div>
+            <div class="span2">
+                <h4>
+                    R$ <?php print number_format($ganhos_referencia, 2, ',', '.') ?>
+                </h4>
+                <h5>REFERÊNCIA</h5>
+            </div>
+        </div>
     </div>
     <div class="span4">
         <?php if ($ganhos >= Configuracao::getConfig('retirada_minima')) { ?>
-        <form class="pull-right well alert-success" action="<?php print url_for('@retirada_select') ?>" method="post">
-            <h5>Resgatar todo ganho disponível</h5>
-            <?php include_partial('commom/form', array('form' => $form)) ?>
-            <span class="help-block">Selecione como deseja efetuar o resgate</span>
-            <button type="submit" class="btn btn-block btn-primary">Solicitar Resgate</button>
-        </form>
+            <form class="pull-right well alert-success" action="<?php print url_for('@retirada_select') ?>" method="post">
+                <h5>Resgatar todo ganho disponível</h5>
+                <?php include_partial('commom/form', array('form' => $form)) ?>
+                <span class="help-block">Selecione como deseja efetuar o resgate</span>
+                <button type="submit" class="btn btn-block btn-primary">Solicitar Resgate</button>
+            </form>
         <?php } ?>
     </div>
     <div class="span12">

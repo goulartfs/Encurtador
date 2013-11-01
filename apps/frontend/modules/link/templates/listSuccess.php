@@ -26,16 +26,48 @@
             <table class="table no-margin">
                 <thead>
                     <tr>
-                        <th>Ganhos disponível para resgate</th>
+                        <th>Ganho Total Disponível</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="text-right lead">R$ <?php print number_format($ganho_total, 2, ',', '.') ?></p>
+                            <?php if ($ganho_total >= Configuracao::getConfig('retirada_minima')) { ?>
+                                <a class="btn btn-block btn-primary" href="<?php print url_for('@retirada') ?>">Resgatar</a>
+                            <?php } ?>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="thumbnail help-block">
+            <table class="table no-margin">
+                <thead>
+                    <tr>
+                        <th>Ganhos disponível de link</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>
                             <p class="text-right lead">R$ <?php print number_format($ganhos, 2, ',', '.') ?></p>
-                            <?php if ($ganhos >= Configuracao::getConfig('retirada_minima')) { ?>
-                                <a class="btn btn-block btn-primary" href="<?php print url_for('@retirada') ?>">Resgatar</a>
-                            <?php } ?>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="thumbnail help-block">
+            <table class="table no-margin">
+                <thead>
+                    <tr>
+                        <th>Ganhos disponível de referências</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="text-right lead">R$ <?php print number_format($ganhos_referencia, 2, ',', '.') ?></p>
                         </td>
                     </tr>
                 </tbody>

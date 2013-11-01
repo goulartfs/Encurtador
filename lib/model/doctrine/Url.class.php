@@ -160,4 +160,14 @@ class Url extends BaseUrl {
                 ->execute();
     }
 
+    public function atualizaControleReferenciaNaoResgatado(Resgate $resgate, Url $url) {
+        Doctrine_Query::create()
+                ->update('UrlControle')
+                ->set('resgate_referal_id', $resgate->getId())
+                ->set('is_referal_rescued', 1)
+                ->where('url_id = ?', $url->getId())
+                ->addWhere('is_referal_rescued <> ?', 1)
+                ->execute();
+    }
+
 }

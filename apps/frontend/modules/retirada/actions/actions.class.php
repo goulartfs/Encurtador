@@ -21,7 +21,9 @@ class retiradaActions extends sfActions {
         $this->getUser()->setFlash('title-page', 'Resgate');
         $this->setLayout('profile');
         if ($this->getContext()->getActionName() != 'info') {
-            $this->ganhos = Url::getGanhosDisponivelDoUsuario($this->getUser()->getGuardUser());
+            $this->ganho_link = Url::getGanhosDisponivelDoUsuario($this->getUser()->getGuardUser());
+            $this->ganhos_referencia = $this->getUser()->getGuardUser()->getTodoGanhoReferenciaDisponivel();
+            $this->ganhos = $this->ganho_link + $this->ganhos_referencia;
         }
     }
 
@@ -184,13 +186,18 @@ class retiradaActions extends sfActions {
         if ($urls->count()) {
             foreach ($urls as $url) {
                 $url->atualizaControleNaoResgatado($this->resgate, $url);
-//                if ($url->getUrlControleNaoResgatado()->count()) {
-//                    foreach ($url->getUrlControleNaoResgatado() as $urlControle) {
-//                        $urlControle->setResgateId($this->resgate->getId());
-//                        $urlControle->setIsRescued(1);
-//                        $urlControle->save();
-//                    }
-//                }
+            }
+        }
+
+        $referencias = $this->getUser()->getGuardUser()->getReferal();
+        if ($referencias->count()) {
+            foreach ($referencias as $referencia) {
+                $urls = Doctrine::getTable('Url')->findByUserId($referencia->getSfGuardUser()->getId());
+                if ($urls->count()) {
+                    foreach ($urls as $url) {
+                        $url->atualizaControleReferenciaNaoResgatado($this->resgate, $url);
+                    }
+                }
             }
         }
 

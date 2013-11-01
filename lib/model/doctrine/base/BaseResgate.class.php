@@ -15,6 +15,7 @@
  * @property TipoResgate $TipoResgate
  * @property Status $Status
  * @property Doctrine_Collection $UrlControle
+ * @property Doctrine_Collection $ResgateReferal
  * @property Doctrine_Collection $ReferalControle
  * 
  * @method integer             getUserId()          Returns the current record's "user_id" value
@@ -27,6 +28,7 @@
  * @method TipoResgate         getTipoResgate()     Returns the current record's "TipoResgate" value
  * @method Status              getStatus()          Returns the current record's "Status" value
  * @method Doctrine_Collection getUrlControle()     Returns the current record's "UrlControle" collection
+ * @method Doctrine_Collection getResgateReferal()  Returns the current record's "ResgateReferal" collection
  * @method Doctrine_Collection getReferalControle() Returns the current record's "ReferalControle" collection
  * @method Resgate             setUserId()          Sets the current record's "user_id" value
  * @method Resgate             setTipoResgateId()   Sets the current record's "tipo_resgate_id" value
@@ -38,6 +40,7 @@
  * @method Resgate             setTipoResgate()     Sets the current record's "TipoResgate" value
  * @method Resgate             setStatus()          Sets the current record's "Status" value
  * @method Resgate             setUrlControle()     Sets the current record's "UrlControle" collection
+ * @method Resgate             setResgateReferal()  Sets the current record's "ResgateReferal" collection
  * @method Resgate             setReferalControle() Sets the current record's "ReferalControle" collection
  * 
  * @package    Encurtador
@@ -101,6 +104,10 @@ abstract class BaseResgate extends sfDoctrineRecord
         $this->hasMany('UrlControle', array(
              'local' => 'id',
              'foreign' => 'resgate_id'));
+
+        $this->hasMany('UrlControle as ResgateReferal', array(
+             'local' => 'id',
+             'foreign' => 'resgate_referal_id'));
 
         $this->hasMany('ReferalControle', array(
              'local' => 'id',

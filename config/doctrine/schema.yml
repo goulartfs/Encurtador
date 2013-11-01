@@ -19,11 +19,13 @@ UrlControle:
     is_rescued: { type: boolean, default: 0 }
     is_processed: { type: boolean, default: 0 }
     data_processado: { type: datetime }
+    resgate_referal_id: { type: integer(11) }
     is_referal_rescued: { type: boolean, default: 0 }
     data_referal_processado: { type: datetime }
   relations:
     Url: { onDelete: RESTRICT, onUpdate: RESTRICT }
     Resgate: { onDelete: RESTRICT, onUpdate: RESTRICT }
+    ResgateReferal: { onDelete: RESTRICT, onUpdate: RESTRICT, local: resgate_referal_id, foreignAlias: ResgateReferal, class: Resgate }
 
 TipoUsuario:
   actAs:

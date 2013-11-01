@@ -58,17 +58,25 @@ class sfGuardUser extends PluginsfGuardUser {
 
         return $this->getUsuario();
     }
-    
-    public function getTotalAcesso(){
+
+    public function getTotalAcesso() {
         return Url::getTotalAcessoByUser($this);
     }
-    
-    public function getGanhoReferenciaTotal(){
+
+    public function getGanhoReferenciaTotal() {
         return $this->getTotalAcesso() * CustoClique::getCustoPorClique() * (Configuracao::getConfig('referencia_percent') / 100);
     }
-    
-    public function getGanhoReferenciaDisponivel(){
+
+    public function getGanhoReferenciaDisponivel() {
         return Url::getTotalAcessoByUserDisponivelReferencia($this) * CustoClique::getCustoPorClique() * (Configuracao::getConfig('referencia_percent') / 100);
     }
-    
+
+    public function getTodoGanhoReferenciaDisponivel() {
+        $ganhos = 0;
+        foreach ($this->getReferal() as $referencia) {
+            $ganhos += $referencia->getSfGuardUser()->getGanhoReferenciaDisponivel();
+        }
+        return $ganhos;
+    }
+
 }
