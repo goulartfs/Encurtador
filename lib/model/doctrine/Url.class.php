@@ -121,7 +121,7 @@ class Url extends BaseUrl {
         $results = $stmt->fetchAll();
         $num = (count($results)) ? $results[0]['numresult'] : 0;
         
-        return number_format($num, 0, ',', '.');
+        return $num;
     }
 
     public static function getTotalAcessoByUserDisponivelReferencia(sfGuardUser $usuario) {
@@ -147,7 +147,7 @@ class Url extends BaseUrl {
         $results = $stmt->fetchAll();
         $num = (count($results)) ? $results[0]['numresult'] : 0;
         
-        return number_format($num, 0, ',', '.');
+        return $num;
     }
 
     public function atualizaControleNaoResgatado(Resgate $resgate, Url $url) {

@@ -24,7 +24,7 @@
                     <?php foreach ($referencias as $referencia) { ?>
                         <tr>
                             <td><?php print $referencia->getSfGuardUser(); ?></td>
-                            <td><?php print $referencia->getSfGuardUser()->getTotalAcesso(); ?></td>
+                            <td><?php print number_format($referencia->getSfGuardUser()->getTotalAcesso(), 0, ',', '.'); ?></td>
                             <td><?php print "R$ " . number_format($referencia->getSfGuardUser()->getGanhoReferenciaDisponivel(), 2, ',', '.'); ?></td>
                             <td><?php print "R$ " . number_format($referencia->getSfGuardUser()->getGanhoReferenciaTotal(), 2, ',', '.'); ?></td>
                         </tr>
