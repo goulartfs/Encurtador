@@ -16,6 +16,7 @@ class mainActions extends sfActions {
      * @param sfRequest $request A request object
      */
     public function executeIndex(sfWebRequest $request) {
+        $pdo = Doctrine_Manager::getInstance()->getCurrentConnection();
         if ($this->getUser()->isAuthenticated()) {
             if (!$this->getUser()->hasAttribute('profile_preference')) {
                 if ($this->getUser()->getGuardUser()->getUsuario()->getTipoUsuario()->getId() == 1)
@@ -45,14 +46,18 @@ class mainActions extends sfActions {
 
         $this->cliques = ($total['total']) ? $total['total'] : 0;
 
-        $total = Doctrine::getTable('UrlControle')->createQuery('u')
-                        ->select('count(*) as total')
-                        ->execute()->getFirst();
-        if ($total) {
-            $total = $total->toArray();
-        }
+        $query = "SELECT count( * ) as total
+                    FROM (
+                    SELECT count( id )
+                    FROM url_controle
+                    GROUP BY id
+                    ) AS total_url";
+        
+        $stmt = $pdo->prepare($query);
+        $stmt->execute(array());
 
-        $this->cliques_all = ($total['total']) ? $total['total'] : 0;
+        $results = $stmt->fetchAll();
+        $this->cliques_all = (count($results)) ? $results[0]['total'] : 0;
 
         $total = Doctrine::getTable('Url')->createQuery('u')
                         ->select('count(*) as total')
