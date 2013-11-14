@@ -2,7 +2,7 @@
     <div class="span4">
         <h4>API de Encurtamento</h4>
         <p>
-            Se você tem um site com 1 ou 10.000 mil links e deseja mudar para o CliquesBR, você terá em breve um script simples, para realizar esta tarefa. 
+            Se você tem um site com 1 ou 10.000 mil links e deseja mudar para o CliquesBR, você tem um script simples, para realizar esta tarefa.
         </p>
     </div>
     <div class="span4">
@@ -14,7 +14,7 @@
     <div class="span4">
         <h4>Afiliados</h4>
         <p>
-            Adição de um sistema de afiliados, iremos pagar para você 10% de tudo que o seu afiliado vier a lucrar no mês.
+            Um novo sistema de afiliados, iremos pagar para você 10% de tudo que o seu afiliado vier a lucrar.
         </p>
     </div>
 </div>
