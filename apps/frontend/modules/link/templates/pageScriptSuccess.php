@@ -30,24 +30,6 @@
     <code>var sites_para_exclusao = ["facebook","twitter","etc"];</code><br/>
     Conforme script abaixo.
 </div>
-<!--<form id="gera-script" method="post" action="<?php print url_for('@link_gerar_script') ?>" class="form-horizontal">
-    <fieldset>
-        <legend>Script de Página</legend>
-
-        <div class="control-group">
-            <label for="url_site" class="control-label">Url do site</label>        
-            <div class="controls">
-                <input type="text" id="url_site" name="url_site" placeholder="http://www.seusite.com" class="text-input input-xlarge">                    
-                <span class="help-block">Essa url não será encurtada</span>
-            </div>
-        </div>
-        <div class="control-group">
-            <div class="controls">
-                <button class="btn btn-primary" type="submit">Gerar Script</button>
-            </div>
-        </div>
-    </fieldset>
-</form>-->
 <p class="well well-small">
     Caso você utilize os serviços do Blogger e esteja enfrentando problemas, adicione esta linha antes de incluir nosso script para adicionar o <strong>jQuery</strong> ao seu site:<br/>
         <code>&lt;script src="http://code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;</code>
