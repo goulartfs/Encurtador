@@ -83,6 +83,11 @@ class linkActions extends sfActions {
         $this->forward404If(!$request->getParameter('id'), 'Parametro não encontrado');
         $link = Doctrine::getTable('Url')->findOneById($request->getParameter('id'));
         $this->forward404If(!$link, 'Link não encontrada');
+        if($link->getUserId()!=$this->getUser()->getGuardUser()->getId()){
+            $message = "Este link não pertence à você.";
+            $this->getUser()->setFlash("404message", $message);
+            throw new sfError404Exception($message);
+        }
 
         $this->form = new UrlForm($link);
 
@@ -109,5 +114,4 @@ class linkActions extends sfActions {
         $this->url_site = $request->getParameter('url_site');
         $this->setLayout(false);
     }
-
 }
