@@ -30,24 +30,6 @@
     <code>var sites_para_exclusao = ["facebook","twitter","etc"];</code><br/>
     Conforme script abaixo.
 </div>
-<!--<form id="gera-script" method="post" action="<?php print url_for('@link_gerar_script') ?>" class="form-horizontal">
-    <fieldset>
-        <legend>Script de Página</legend>
-
-        <div class="control-group">
-            <label for="url_site" class="control-label">Url do site</label>        
-            <div class="controls">
-                <input type="text" id="url_site" name="url_site" placeholder="http://www.seusite.com" class="text-input input-xlarge">                    
-                <span class="help-block">Essa url não será encurtada</span>
-            </div>
-        </div>
-        <div class="control-group">
-            <div class="controls">
-                <button class="btn btn-primary" type="submit">Gerar Script</button>
-            </div>
-        </div>
-    </fieldset>
-</form>-->
 <p class="well well-small">
     Caso você utilize os serviços do Blogger e esteja enfrentando problemas, adicione esta linha antes de incluir nosso script para adicionar o <strong>jQuery</strong> ao seu site:<br/>
         <code>&lt;script src="http://code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;</code>
@@ -59,7 +41,7 @@
     <textarea id="copyarea" class="span12 alert-success" style="height: 160px; text-align: left; font-size: 10pt; font-family: Courier;">
 <script type="text/javascript">
     var sites_para_exclusao = ["site1","site2","site3"];
-    jQuery(function(){sites_excluded="";jQuery.each(sites_para_exclusao,function(e,t){sites_excluded+="a[href*="+t+"],"});var e=jQuery("a[href*=http]:not("+sites_excluded+"a[href*=cliquesbr])");for(var t=0;t<e.length;t++){newHref=e[t].href;e[t].href="http://localhost:9001/s?u=c81e728d9d4c2f636f067f89cc14862c&h="+newHref}})
+    jQuery(function(){sites_excluded="";jQuery.each(sites_para_exclusao,function(e,t){sites_excluded+="a[href*="+t+"],"});var e=jQuery("a[href*=http]:not("+sites_excluded+"a[href*=cliquesbr])");for(var t=0;t<e.length;t++){newHref=e[t].href;e[t].href="<?php print URL_BASE ?>/s?u=<?php print $sf_user->getGuardUser()->getUsuario()->getReferalCode() ?>&h="+newHref}})
 </script>
 </textarea>
 </div>

@@ -31,7 +31,11 @@ confirm_user:
   param: { module: sfGuardRegister, action: confirm }
   requirements:
     id: ~
-  
+
+error404:
+  url:   /error
+  param: { module: main, action: error404 }
+
 profile:
   url:   /profile
   param: { module: profile, action: index }

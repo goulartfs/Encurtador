@@ -177,5 +177,9 @@ class mainActions extends sfActions {
         $ad_controle->setCampanhaId($request->getParameter('idc'));
         $ad_controle->save();
     }
-
+    
+    public function executeError404(sfWebRequest $request) {
+        $this->getUser()->setFlash('title-page', 'Error404!');
+        $this->message = $this->getUser()->getFlash('404message', "Página não encontrada!");
+    }
 }
