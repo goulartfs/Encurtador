@@ -12,7 +12,7 @@ default:
     #language:     en
     #robots:       index, follow
 
-  stylesheets:    [bootstrap.min.css, main.css]
+  stylesheets:    [bootstrap.min.css, hugo.css]
 
   javascripts:    [jquery-1.10.2.min.js, bootstrap.min.js]
 

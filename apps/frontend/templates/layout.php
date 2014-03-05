@@ -6,20 +6,16 @@
         <?php include_metas() ?>
         <?php include_title() ?>
         <link rel="shortcut icon" href="/favicon.ico" />
+        <link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
         <?php include_stylesheets() ?>
         <?php include_javascripts() ?>
     </head>
 
     <body class="home">
         <?php include_partial('commom/headerHome') ?>
+        <?php include_partial('commom/porques') ?>
         <div id="content">
-            <div class="container">
-                <div class="row">
-                    <div class="span12">
-                        <?php print $sf_content; ?>
-                    </div>
-                </div>
-            </div>
+            <?php print $sf_content; ?>
         </div>
         <?php include_partial('commom/footer') ?>
     </body>

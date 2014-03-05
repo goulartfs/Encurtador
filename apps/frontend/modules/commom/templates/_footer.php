@@ -1,4 +1,5 @@
-<div id="footer">
+
+<footer>
     <div class="container">
         <div class="row">
             <div class="span12">
@@ -12,4 +13,4 @@
             </div>
         </div>
     </div>
-</div>
+</footer>

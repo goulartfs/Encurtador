@@ -1,4 +1,4 @@
-<div id="header">
+<div id="header" style="display: none">
     <div class="bg-header">
         <div class="container">
             <?php include_partial('commom/logoArea') ?>
@@ -24,3 +24,34 @@
         </div>
     </div>
 </div>
+<header>
+    <div class="container">
+        <img src="/images/logo.png" alt="CliquesBR" class='logo'>
+        <div class="cadastro-login">
+            <a href="#">Cadastro <img src="images/right_arrow.png" alt=""></a>
+            <a href="#">Login <img src="images/right_arrow.png" alt=""></a>
+        </div>
+    </div>
+    <div class="form">
+        <form action="">
+            <input type="text" name='name'>
+            <label for="name">Nome</label>
+            <input type="text" name="surename">
+            <label for="surename">Sobrenome</label>
+            <input type="email" name="email">
+            <label for="email">Email</label>
+            <input type="text" name='user'>
+            <label for="user">Usuário</label>
+            <input type="password" name='psd'>
+            <label for="psw">Senha</label>
+            <input type="password" name='check-psw'>
+            <label for="check-psd">Repita a Senha</label>
+            <input type="text" name='user-type'>
+            <label for="user-type">Tipo de Usuário</label>
+
+            <input type="submit" name='submit' value="Cadastrar Agora">
+
+
+        </form>
+    </div>
+</header>
