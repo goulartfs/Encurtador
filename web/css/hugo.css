@@ -97,6 +97,7 @@ header span{
     float: right;
     position: relative;
     top: -39px;
+    cursor: pointer;
 }
 
 header span img {
