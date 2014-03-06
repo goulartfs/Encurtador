@@ -11,13 +11,13 @@
 	<header>
 		<div class="container">
 			<img src="images/logo.png" alt="CliquesBR" class='logo'>
-			<div class="cadastro-login">
-				<a href="#">Cadastro <img src="images/right_arrow.png" alt=""></a>
-				<a href="#">Login <img src="images/right_arrow.png" alt=""></a>
+			<div class="cadastro-login border">
+				<span class='cadastro'>Cadastro <img src="images/right_arrow.png" alt=""></span>
+				<span class='login'>Login <img src="images/right_arrow.png" alt=""></span>
 			</div>
 		</div>
-		<div class="form">
-			<form action="">
+		<div id='form' class="form esconder">
+			<form action="" class='' id='form-cadastro'>
 				<input type="text" name='name'>
 				<label for="name">Nome</label>
 				<input type="text" name="surename">
@@ -34,6 +34,17 @@
 				<label for="user-type">Tipo de Usuário</label>
 
 				<input type="submit" name='submit' value="Cadastrar Agora">
+
+
+			</form>
+
+			<form id='form-login' class='' action="">
+
+				<input type="email" name="email">
+				<label for="email">Email</label>
+				<input type="password" name='psd'>
+				<label for="psw">Senha</label>
+				<input type="submit" name='submit' value="Login">
 
 
 			</form>
@@ -127,5 +138,7 @@
 			</ul>
 		</div>
 	</footer>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>r
+	<script src='js/hugo_home.js'></script>
 </body>
 </html>

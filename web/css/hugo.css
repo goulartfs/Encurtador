@@ -74,7 +74,7 @@ header {
     display: inline-block;
 }
 
-header a{
+header span{
     font-weight: bold;
     font-size: 20px;
     color: white;
@@ -84,7 +84,7 @@ header a{
     bottom: -15px;
 }
 
-header a:last-child {
+.login {
     border-left: 1px solid #264573;
     padding-left: 20px;
 }
@@ -99,7 +99,7 @@ header a:last-child {
     top: -39px;
 }
 
-header a img {
+header span img {
     margin-left: 40px;
 }
 
@@ -221,6 +221,11 @@ header a img {
     margin-left: 5px;
 }
 
+.anuncios-relatos .relatos {
+    position: relative;
+    top: -25px;
+}
+
 .text p {
     margin-bottom: 10px;
 }
@@ -271,13 +276,12 @@ footer li {
 
 .form {
     display: inline-block;
-    position: relative;
+    position: absolute;
     width: 300px;
     background-color: #0f2444;
-    padding: 25px;
-    float: right;
+    padding: 15px 25px 10px 25px;
     right: 205px;
-    top: -40px;
+    top: 102px;
 }
 
 .form label {
@@ -295,6 +299,7 @@ footer li {
     border: 0;
     border-radius: 0;
     margin-bottom: 5px;
+    color: white;
 }
 
 .form input[type=submit] {
@@ -304,8 +309,9 @@ footer li {
     font-weight: bolder;
     text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
     font-size: 16px;
-    margin-top: 30px;
-    
+    margin-top: 10px;
+    float: left;
+
     background-image: -webkit-gradient(
         linear,
         left bottom,
@@ -318,4 +324,16 @@ footer li {
     background-image: -webkit-linear-gradient(top, #CD9300 0%, #F2CA02 100%);
     background-image: -ms-linear-gradient(top, #CD9300 0%, #F2CA02 100%);
     background-image: linear-gradient(to top, #CD9300 0%, #F2CA02 100%);
+}
+
+#form-login {
+    right: -145px;
+}
+
+.border {
+    border-bottom: 2px solid #264573;
+}
+
+.esconder {
+    display: none;
 }
