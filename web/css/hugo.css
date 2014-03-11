@@ -90,14 +90,24 @@ header span{
 }
 
 .cadastro-login {
-    background-color: #0f2444;
-    display: inline-block;
-    height: 40px;
-    width: 350px;
-    float: right;
-    position: relative;
-    top: -39px;
+    background-color: #0F2444;
     cursor: pointer;
+    display: inline-block;
+    float: right;
+    height: 40px;
+    position: relative;
+    top: 62px;
+    width: 350px;
+}
+
+.cadastro-login a {
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    font-family: Helvetica;
+    font-style: italic;
+    font-weight: bold;
+    padding-top: 11px;
 }
 
 header span img {

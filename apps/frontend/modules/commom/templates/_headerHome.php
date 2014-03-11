@@ -28,8 +28,9 @@
     <div class="container">
         <img src="/images/logo.png" alt="CliquesBR" class='logo'>
         <div class="cadastro-login">
-            <a href="#">Cadastro <img src="images/right_arrow.png" alt=""></a>
-            <a href="#">Login <img src="images/right_arrow.png" alt=""></a>
+            <a href="#">Cadastro <img src="/images/right_arrow.png" alt=""></a>
+            <a href="#">Login <img src="/images/right_arrow.png" alt=""></a>
+            <div class="clear"></div>
         </div>
     </div>
     <div class="form">
