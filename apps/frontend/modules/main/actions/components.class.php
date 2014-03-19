@@ -15,6 +15,10 @@ class mainComponents extends sfComponents {
     public function executeForm(sfWebRequest $request){
         $this->form = new EncurtadorForm();
     }
+
+    public function executeHomeRegister(sfWebRequest $request){
+        $this->form = new sfGuardRegisterForm();
+    }
 }
 
 ?>

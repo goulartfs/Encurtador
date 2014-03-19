@@ -68,6 +68,10 @@ header {
     height: 100px;
 }
 
+header .container{
+    position: relative;
+}
+
 .logo {
     position: relative;
     top: 30px;
@@ -291,7 +295,7 @@ footer li {
     width: 300px;
     background-color: #0f2444;
     padding: 15px 25px 10px 25px;
-    right: 205px;
+    right: 0;
     top: 102px;
 }
 
@@ -302,7 +306,7 @@ footer li {
     font-size: 12px;
 }
 
-.form input {
+.form input, .form select {
     width: 170px;
     float: right;
     height: 20px;
@@ -311,6 +315,11 @@ footer li {
     border-radius: 0;
     margin-bottom: 5px;
     color: white;
+}
+
+.form select {
+    height: 30px;
+    width: 182px;
 }
 
 .form input[type=submit] {
