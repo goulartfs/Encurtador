@@ -33,36 +33,6 @@ class mainActions extends sfActions {
         $this->form = new EncurtadorForm();
         $this->urls = null;
 
-        $total = Doctrine::getTable('UrlControle')->createQuery('u')
-                        ->select('count(*) as total')
-                        ->where("date_format(u.created_at, '%d/%m/%Y') = date_format(now(), '%d/%m/%Y')")
-                        ->groupBy("date_format( created_at, '%d/%m/%Y')")
-                        ->execute()->getFirst();
-
-        if ($total) {
-            $total = $total->toArray();
-        }
-
-        $this->cliques = ($total['total']) ? $total['total'] : 0;
-
-        $total = Doctrine::getTable('UrlControle')->createQuery('u')
-                        ->select('count(*) as total')
-                        ->execute()->getFirst();
-        if ($total) {
-            $total = $total->toArray();
-        }
-
-        $this->cliques_all = ($total['total']) ? $total['total'] : 0;
-
-        $total = Doctrine::getTable('Url')->createQuery('u')
-                        ->select('count(*) as total')
-                        ->execute()->getFirst();
-        if ($total) {
-            $total = $total->toArray();
-        }
-
-        $this->links_all = ($total['total']) ? $total['total'] : 0;
-
         if ($request->getMethod() == 'POST') {
 
             $this->form->bind($request->getParameter('encurtador'));
