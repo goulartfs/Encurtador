@@ -636,6 +636,17 @@ body.interna{
     font-size: 22px;
     padding-top: 40px;
 }
+
+/** 4 - Link **/
+
+.banner-area {
+    margin-top: 20px;
+}
+
+.button-area{
+    margin-top: 35px;
+}
+
 /** 5 - Geral **/
 
 header .container, #header .container{
