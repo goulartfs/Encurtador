@@ -1,4 +1,4 @@
-<div class="thumbnail">
+<div class="links">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -23,5 +23,10 @@
                 </tr>
             <?php } ?>
         </tbody>
+    </table>
+    <table class="table">
+        <tr>
+            <td></td>
+        </tr>
     </table>
 </div>

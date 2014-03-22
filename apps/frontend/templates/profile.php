@@ -12,9 +12,23 @@
 
     <body class="interna">
         <?php include_partial('commom/header') ?>
+        <?php
+            if(has_slot('encurtador-form')){
+            ?>
+                <div id="encurtador">
+                    <div class="container">
+                        <div class="row">
+                            <div class="span12">
+                                <?php print get_slot('encurtador-form'); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php
+            }
+        ?>
         <div id="content">
             <div class="container">
-                <?php include_partial('commom/sidebar') ?>
                 <div class="row">
                     <div class="span12">
                         <?php print $sf_content; ?>

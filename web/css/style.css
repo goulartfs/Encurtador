@@ -1,30 +1,22 @@
-/* RESET */
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-
-/* Eric Meyer's Reset Stylesheet: http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/ */
-
-small, strike, strong, sub, sup, tt, var,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-weight: inherit;
-    font-style: inherit;
-    font-size: 100%;
-    font-family: inherit;
-    vertical-align: baseline;
-}
-/* remember to define focus styles! */
 :focus {
     outline: 0;
 }
+
+/**
+ *  // Contents
+ *
+ *  1 - Home
+ *  2 - Interna
+ *  3 -
+ *  4 -
+ *  5 - Geral
+ *
+ *
+ */
+
+
+
+/** 1 - Home **/
 body {
     line-height: 1;
     color: black;
@@ -66,16 +58,6 @@ header {
     background-image: linear-gradient(to top, #3D5170 1%, #041E4C 100%);
 
     height: 100px;
-}
-
-header .container{
-    position: relative;
-}
-
-.logo {
-    position: relative;
-    top: 30px;
-    display: inline-block;
 }
 
 header span{
@@ -297,6 +279,7 @@ footer li {
     padding: 15px 25px 10px 25px;
     right: 0;
     top: 102px;
+    z-index: 10;
 }
 
 .form label {
@@ -366,4 +349,306 @@ footer li {
     margin-left: 9px;
     padding-top: 1px;
     /**/
+}
+
+/** 2 - Interna **/
+
+body.interna{
+    background: url(/images/background.png) repeat-x scroll 0 -250px transparent;
+    color: #414B5B;
+}
+
+.interna #header .bg-title{
+    background: radial-gradient(ellipse at center center , #1F375F 0%, #041531 100%) repeat scroll 0 0 #FFFFFF;
+    border-bottom: 5px solid #75CE02;
+}
+
+.interna #header .bg-title.no-border{
+    border-bottom-color: transparent;
+}
+
+.interna #header .bg-title h1{
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 50px;
+    font-style: italic;
+    font-weight: bolder;
+    margin-top: 60px;
+    margin-bottom: 1px;
+}
+
+.interna #content{
+    margin-top: 15px;
+}
+
+.interna .cadastro-login{
+    top: 15px;
+    position: absolute;
+    right: 0;
+}
+
+.interna .form{
+    top: 45px;
+}
+
+/** 3 - Profile (Área Logada) **/
+
+.interna #header .change-profile a.active{
+    background-color: #22457E;
+}
+
+.interna #header .change-profile a{
+    display: block;
+    float: right;
+    font-size: 14px;
+    font-weight: bold;
+    height: 60px;
+    text-align: center;
+    line-height: 52px;
+    width: 100px;
+    color: #FFFFFF;
+}
+
+.interna #header .user{
+    border-right: 1px solid #22457E;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 18px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    color: #fff;
+}
+
+.interna #header .user span{
+    display: block;
+    font-weight: normal;
+}
+
+.interna #header .user a.username{
+    display: block;
+    color: #FFF;
+}
+
+.interna #header a.logout{
+    color: #FFFFFF;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    background-color: #041531;
+    display: inline-block;
+    margin-top: 40px;
+    padding: 10px 20px;
+}
+
+.interna #header a.logout img{
+    margin-right: 20px;
+}
+
+.interna .title-page .navbar{
+    margin-bottom: 0;
+}
+
+.interna .title-page .navbar-inner{
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.interna .title-page .navbar-inner ul.nav{
+    float:right;
+}
+
+.interna .title-page .navbar .nav > .active > a,
+.interna .title-page .navbar .nav > .active > a:hover,
+.interna .title-page .navbar .nav > .active > a:focus,
+.interna .title-page .navbar .nav li.dropdown.open > .dropdown-toggle,
+.interna .title-page .navbar .nav li.dropdown.active > .dropdown-toggle,
+.interna .title-page .navbar .nav li.dropdown.open.active > .dropdown-toggle{
+    background: transparent;
+    box-shadow: 0 3px 16px #041531 inset;
+}
+
+.interna .title-page .navbar .nav a .caret{
+    border-left: 4px solid rgba(0, 0, 0, 0);
+    border-right: 4px solid rgba(0, 0, 0, 0);
+    border-top: 4px solid #FFFFFF;
+    content: "";
+    display: inline-block;
+    height: 6px;
+    vertical-align: bottom;
+    width: 0;
+}
+
+.interna .title-page .navbar .nav li.dropdown > a:hover .caret,
+.interna .title-page .navbar .nav li.dropdown > a:focus .caret{
+    border-top: 4px solid #FFFFFF;
+}
+
+.interna #encurtador {
+    border-bottom: 5px solid #75CE02;
+    color: #FFFFFF;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.interna #encurtador input[type="text"] {
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1) inset;
+    color: #C0C0C0;
+    font-size: 26px;
+    font-style: italic;
+    font-weight: bold;
+    height: 50px;
+    margin-top: 20px;
+    padding-bottom: 0;
+    padding-top: 0;
+    width: 75%;
+}
+
+.interna #encurtador input[type="submit"] {
+    background-image: linear-gradient(to top, #CD9300 0%, #F2CA02 100%);
+    border: 2px solid #FFFF00;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bolder;
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 10px;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+    width: 140px;
+}
+
+.interna #encurtador p{
+    color: #414B5B;
+}
+
+
+.interna .dados {
+    margin-top: 20px;
+}
+
+.interna .dados h3{
+    font-size: 20px;
+    font-weight: bolder;
+    text-shadow: 4px 3px 4px #BEC4C0;
+}
+/*.interna .dados .container {*/
+    /*border-bottom: 1px solid #d0d4dc;*/
+    /*padding-bottom: 30px;*/
+
+/*}*/
+
+.interna .dados .span5 {
+    background-color: #ececec;
+    text-align: center;
+    padding: 10px;
+    margin-left:20px;
+    border-radius: 5px;
+    box-shadow: 0 3px 12px #CDCDCD;
+}
+
+.interna .dados .span3 {
+    margin-left: 0;
+}
+
+
+.interna .links .container > h3 {
+    display: block;
+    border-bottom: 2px solid #96a4bb;
+    padding-bottom: 5px;
+}
+
+.interna .links aside {
+    display: inline-block;
+    float: left;
+}
+
+.interna .links aside h4 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.interna .links aside .bloco {
+    width: 200px;
+    height: 30px;
+    background-color: #021e50;
+}
+
+.interna .links table {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.interna .links table.table{
+    margin-bottom: 0;
+}
+
+.interna .links thead {
+    background-color: #bdc7d5;
+}
+
+.interna .links thead td {
+    font-weight: bold;
+    font-size: 14px;
+    padding: 20px 10px;
+}
+
+.interna .links tbody tr {
+    font-size: 14px;
+    height: 40px;
+}
+
+.interna .links tbody tr:nth-child(2n){
+    background-color: #dbe1e8;
+}
+
+.interna .links tbody tr:nth-child(2n+1){
+    background-color: white;
+}
+
+.interna .links tfoot {
+    background-color: #264573;
+    color: white;
+    font-size: 14px;
+}
+
+.interna .links tfoot td{
+    height: 30px;
+    padding: 5px 10px;
+}
+
+.interna .links table:last-child td{
+    background-color: #264573;
+    color: white;
+    padding: 10px 16px;
+}
+
+.interna .links table:last-child {
+    margin-top: 0;
+}
+
+.interna .links table span {
+    color: white;
+}
+
+.interna .lead textarea{
+    font-size: 22px;
+    padding-top: 40px;
+}
+/** 5 - Geral **/
+
+header .container, #header .container{
+    position: relative;
+}
+
+
+.logo {
+    position: relative;
+    top: 30px;
+    display: inline-block;
+}
+
+footer a, footer a:hover{
+    color: #414b5b;
 }

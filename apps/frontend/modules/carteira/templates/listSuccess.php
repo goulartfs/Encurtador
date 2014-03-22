@@ -1,7 +1,20 @@
 <h1>Sua Conta (<?php print $sf_user->getGuardUser()->getUsername() ?>)</h1>
+<section class="dados">
+    <div class="container">
+        <div class="row">
+            <div class="span4">
+            </div>
+            <div class="span3">
+            </div>
+            <div class="span5">
+                <?php include_component('carteira', 'saldo') ?>
+            </div>
+        </div>
+    </div>
+</section>
 <div class="row">
-    <div class="span9">
-        <table class="table table-striped">
+    <div class="span12 links">
+        <table class="table">
             <thead>
                 <tr>
                     <th colspan="2">Transações recentes</th>
@@ -20,8 +33,10 @@
                 <?php } ?>
             </tbody>
         </table>
-    </div>
-    <div class="span3">
-        <?php include_component('carteira', 'saldo') ?>
+        <table class="table">
+            <tr>
+                <td></td>
+            </tr>
+        </table>
     </div>
 </div>

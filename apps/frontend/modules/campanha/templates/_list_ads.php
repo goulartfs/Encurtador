@@ -1,8 +1,8 @@
-<div class="thumbnail">
+<div class="links">
     <table class="table table-striped">
         <thead>
             <tr>
-                <th colspan="7"><?php print $pager->getNbResults() ?> Campanhas encontradas</th>
+                <th colspan="9"><?php print $pager->getNbResults() ?> Campanhas encontradas</th>
             </tr>
             <tr>
                 <th>#</th>
@@ -56,5 +56,10 @@
                 </tr>
             <?php } ?>
         </tbody>
+    </table>
+    <table class="table">
+        <tr>
+            <td></td>
+        </tr>
     </table>
 </div>

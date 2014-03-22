@@ -1,5 +1,5 @@
 <?php
-if ($sf_user->getAttribute('profile') == 'publisher') {
+if ($sf_user->getAttribute('profile_preference') == 'publisher') {
     include_partial('commom/publisher');
 } else if ($sf_user->getAttribute('profile_preference') == 'advertiser') {
     include_partial('commom/advertiser');
