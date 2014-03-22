@@ -1,17 +1,3 @@
-<section class='numeros'>
-    <div class="container">
-        <div class="row">
-            <div class="span4">Total de Links</div>
-            <div class="span4">Total de Clientes</div>
-            <div class="span4">Total de Hoje</div>
-        </div>
-        <div class="row">
-            <div class="span4"><?php print $links_all ? number_format($links_all, 0, ',', '.') : 0 ?></div>
-            <div class="span4"><?php print $cliques_all ? number_format($cliques_all, 0, ',', '.') : 0 ?></div>
-            <div class="span4"><?php print $cliques ? number_format($cliques, 0, ',', '.') : 0 ?></div>
-        </div>
-    </div>
-</section>
 <section class='servicos'>
     <div class="container">
         <div class="row">
