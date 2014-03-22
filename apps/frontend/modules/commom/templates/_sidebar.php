@@ -19,7 +19,7 @@ if ($sf_user->getAttribute('profile') == 'publisher') {
     <div class="modal-body">
         <h4>API de Encurtamento</h4>
         <p>
-            Se você tem um site com 1 ou 10.000 mil links e deseja mudar para o CliquesBR, você tem um script simples, para realizar esta tarefa. <a href="<?php print url_for('@link_script') ?>" title="Page Script CliquesBR">Clique aqui</a> para saber mais!
+            Se você tem um site com 1 ou 10.000 mil links e deseja mudar para o Adplus, você tem um script simples, para realizar esta tarefa. <a href="<?php print url_for('@link_script') ?>" title="Page Script Adplus">Clique aqui</a> para saber mais!
         </p>
         <h4>Sistema antifraude</h4>
         <p>

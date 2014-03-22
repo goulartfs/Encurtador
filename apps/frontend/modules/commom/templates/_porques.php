@@ -1,6 +1,6 @@
 <section class='porques'>
     <div class="container">
-        <h1>Porque a CliquesBR?</h1>
+        <h1>Porque a Adplus?</h1>
         <p>Porque Pagamos R$ 4 reais para cada 1000 Views, valor bem superior aos demais encurtadores.
             Toda a publicidade é estritamente familiar, segura e sem popups.
         </p>

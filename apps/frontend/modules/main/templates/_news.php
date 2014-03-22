@@ -2,7 +2,7 @@
     <div class="span4">
         <h4>API de Encurtamento</h4>
         <p>
-            Se você tem um site com 1 ou 10.000 mil links e deseja mudar para o CliquesBR, você tem um script simples, para realizar esta tarefa.
+            Se você tem um site com 1 ou 10.000 mil links e deseja mudar para o Adplus, você tem um script simples, para realizar esta tarefa.
         </p>
     </div>
     <div class="span4">

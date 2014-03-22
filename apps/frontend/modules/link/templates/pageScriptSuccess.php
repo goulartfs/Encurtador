@@ -41,7 +41,7 @@
     <textarea id="copyarea" class="span12 alert-success" style="height: 160px; text-align: left; font-size: 10pt; font-family: Courier;">
 <script type="text/javascript">
     var sites_para_exclusao = ["site1","site2","site3"];
-    jQuery(function(){sites_excluded="";jQuery.each(sites_para_exclusao,function(e,t){sites_excluded+="a[href*="+t+"],"});var e=jQuery("a[href*=http]:not("+sites_excluded+"a[href*=cliquesbr])");for(var t=0;t<e.length;t++){newHref=e[t].href;e[t].href="<?php print URL_BASE ?>/s?u=<?php print $sf_user->getGuardUser()->getUsuario()->getReferalCode() ?>&h="+newHref}})
+    jQuery(function(){sites_excluded="";jQuery.each(sites_para_exclusao,function(e,t){sites_excluded+="a[href*="+t+"],"});var e=jQuery("a[href*=http]:not("+sites_excluded+"a[href*=Adplus])");for(var t=0;t<e.length;t++){newHref=e[t].href;e[t].href="<?php print URL_BASE ?>/s?u=<?php print $sf_user->getGuardUser()->getUsuario()->getReferalCode() ?>&h="+newHref}})
 </script>
 </textarea>
 </div>

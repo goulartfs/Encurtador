@@ -55,7 +55,7 @@ class sfGuardRegisterActions extends sfActions {
                 ob_start();
                 print "<h1>Obrigado por se cadastrar</h1>";
                 print "<p>Confirme seu cadastro: <a href='{$link}'>{$link}</a>.</p>";
-                print "<p>Atenciosamente,<br/><strong>CliquesBr</strong></p>";
+                print "<p>Atenciosamente,<br/><strong>Adplus</strong></p>";
                 $body = ob_get_clean();
                 
                 $email->setBody($body, 'text/html');
