@@ -1,4 +1,4 @@
-<form action="<?php echo url_for('@sf_guard_register') ?>" method="post">
+<form id="cadastro" action="<?php echo url_for('@sf_guard_register') ?>" method="post">
     <?php if ($sf_user->hasFlash('error')): ?>
         <div class="alert alert-error">
             <button type="button" class="close" data-dismiss="alert">×</button>

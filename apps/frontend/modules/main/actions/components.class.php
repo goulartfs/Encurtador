@@ -19,6 +19,10 @@ class mainComponents extends sfComponents {
     public function executeHomeRegister(sfWebRequest $request){
         $this->form = new sfGuardRegisterForm();
     }
+
+    public function executeHomeLogin(sfWebRequest $request){
+        $this->form = new sfGuardFormSignin();
+    }
 }
 
 ?>

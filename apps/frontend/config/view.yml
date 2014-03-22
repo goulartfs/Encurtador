@@ -12,9 +12,9 @@ default:
     #language:     en
     #robots:       index, follow
 
-  stylesheets:    [bootstrap.min.css, style_v2.css]
+  stylesheets:    [bootstrap.min.css, style.css]
 
-  javascripts:    [jquery-1.10.2.min.js, bootstrap.min.js]
+  javascripts:    [jquery-1.10.2.min.js, bootstrap.min.js, main.js]
 
   has_layout:     true
   layout:         interna

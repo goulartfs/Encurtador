@@ -357,3 +357,13 @@ footer li {
 .esconder {
     display: none;
 }
+
+.cadastro-login a{
+    margin-left: 25px;
+}
+
+.cadastro-login a img{
+    margin-left: 9px;
+    padding-top: 1px;
+    /**/
+}
