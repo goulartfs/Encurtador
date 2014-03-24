@@ -1,0 +1,24 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Relato
+    theme:                 simpla
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          relato
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        is_approved: { label: "Aprovado?" }
+      list:
+        display: [=nome, site, _imagem, is_approved]
+      filter:
+        display: [nome, site, is_approved]
+      form:    ~
+      edit:    ~
+      new:     ~

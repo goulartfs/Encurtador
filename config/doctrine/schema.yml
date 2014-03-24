@@ -221,3 +221,13 @@ Configuracao:
   columns:
     chave: { type: varchar(255) }
     valor: { type: varchar(255) }
+
+Relato:
+  actAs:
+    Timestampable: ~
+  columns:
+    nome: { type: varchar(255) }
+    site: { type: varchar(255) }
+    imagem: { type: varchar(255) }
+    texto: { type: string() }
+    is_approved: { type: boolean, default: 0 }

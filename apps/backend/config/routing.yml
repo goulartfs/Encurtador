@@ -1,3 +1,21 @@
+relato:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Relato
+    module:               relato
+    prefix_path:          /relato
+    column:               id
+    with_wildcard_routes: true
+
+relatos:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Relatos
+    module:               relatos
+    prefix_path:          /relatos
+    column:               id
+    with_wildcard_routes: true
+
 conta:
   class: sfDoctrineRouteCollection
   options:

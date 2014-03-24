@@ -48,6 +48,12 @@ class mainActions extends sfActions {
             }
         }
 
+        $this->relatos = Doctrine::getTable('Relato')->createQuery('r')
+            ->where('r.is_approved = 1')
+            ->limit(2)
+            ->orderBy('r.created_at desc')
+            ->execute();
+
         $this->setLayout('layout');
     }
 

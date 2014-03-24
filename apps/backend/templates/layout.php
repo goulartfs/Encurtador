@@ -22,6 +22,8 @@
                         echo 'current' ?>">Links</a></li>
                         <li><a href="<?php echo url_for('campanha/index') ?>" class="nav-top-item no-submenu <?php if (in_array($sf_context->getModuleName(), array('campanha')))
                         echo 'current' ?>">Campanhas</a></li>
+                        <li><a href="<?php echo url_for('relato/index') ?>" class="nav-top-item no-submenu <?php if (in_array($sf_context->getModuleName(), array('relato')))
+                        echo 'current' ?>">Relatos</a></li>
                         <li><a href="<?php echo url_for('orcamento/index') ?>" class="nav-top-item no-submenu <?php if (in_array($sf_context->getModuleName(), array('orcamento')))
                         echo 'current' ?>">Orçamentos</a></li>
                         <li><a href="<?php echo url_for('resgate/index') ?>" class="nav-top-item no-submenu <?php if (in_array($sf_context->getModuleName(), array('resgate')))

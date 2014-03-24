@@ -190,7 +190,6 @@ header span img {
 
 .anuncios-relatos .container {
     border-top: 1px solid #a6acb6;
-    padding-top: 30px;
 }
 
 .anuncios-relatos h2 {
@@ -211,16 +210,10 @@ header span img {
 
 .anuncios-relatos .text {
     display: inline-block;
-    width: 250px;
-    padding-top: 10px;
+    width: 295px;
     font-size: 12px;
     line-height: 18px;
-    margin-left: 5px;
-}
-
-.anuncios-relatos .relatos {
-    position: relative;
-    top: -25px;
+    margin-left: 15px;
 }
 
 .text p {
@@ -228,7 +221,6 @@ header span img {
 }
 
 .anuncios-relatos button {
-    float: left;
     font-weight: bolder;
     color: white;
     font-style: italic;
@@ -250,9 +242,19 @@ header span img {
 
 .relatos h4{
     font-weight: bold;
+    margin-top: 0;
+}
+
+.relatos h4:first-child{
+    margin-bottom: 0;
 }
 
 .relatos p {margin-top: 20px; }
+
+.relatos .img{
+    float: left;
+    width: 140px;
+}
 
 footer {
     background-color: #bebebe;
@@ -533,11 +535,6 @@ body.interna{
     font-weight: bolder;
     text-shadow: 4px 3px 4px #BEC4C0;
 }
-/*.interna .dados .container {*/
-    /*border-bottom: 1px solid #d0d4dc;*/
-    /*padding-bottom: 30px;*/
-
-/*}*/
 
 .interna .dados .span5 {
     background-color: #ececec;
