@@ -16,7 +16,35 @@ class mainActions extends sfActions {
      * @param sfRequest $request A request object
      */
     public function executeIndex(sfWebRequest $request) {
-        
+        $total = Doctrine::getTable('UrlControle')->createQuery('u')
+            ->select('count(*) as total')
+            ->where("date_format(u.created_at, '%d/%m/%Y') = date_format(now(), '%d/%m/%Y')")
+            ->groupBy("date_format( created_at, '%d/%m/%Y')")
+            ->execute()->getFirst();
+
+        if ($total) {
+            $total = $total->toArray();
+        }
+
+        $this->cliques = ($total['total']) ? $total['total'] : 0;
+
+        $total = Doctrine::getTable('UrlControle')->createQuery('u')
+            ->select('count(*) as total')
+            ->execute()->getFirst();
+        if ($total) {
+            $total = $total->toArray();
+        }
+
+        $this->cliques_all = ($total['total']) ? $total['total'] : 0;
+
+        $total = Doctrine::getTable('Url')->createQuery('u')
+            ->select('count(*) as total')
+            ->execute()->getFirst();
+        if ($total) {
+            $total = $total->toArray();
+        }
+
+        $this->links_all = ($total['total']) ? $total['total'] : 0;
     }
 
     public function executeLogin(sfWebRequest $request) {
