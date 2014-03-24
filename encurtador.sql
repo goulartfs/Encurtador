@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.32, for debian-linux-gnu (i686)
+-- MySQL dump 10.13  Distrib 5.5.32, for Win32 (x86)
 --
 -- Host: localhost    Database: encurtador
 -- ------------------------------------------------------
--- Server version	5.5.32-0ubuntu0.12.10.1
+-- Server version	5.5.32
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -109,7 +109,7 @@ CREATE TABLE `configuracao` (
 
 LOCK TABLES `configuracao` WRITE;
 /*!40000 ALTER TABLE `configuracao` DISABLE KEYS */;
-INSERT INTO `configuracao` VALUES (1,'retirada_minima','8','2013-10-17 00:49:05','2013-10-17 00:49:05'),(2,'referencia_percent','10','2013-11-01 03:50:24','2013-11-01 03:50:24');
+INSERT INTO `configuracao` VALUES (1,'retirada_minima','0','2013-10-17 00:49:05','2014-03-24 01:24:02'),(2,'referencia_percent','10','2013-11-01 03:50:24','2013-11-01 03:50:24');
 /*!40000 ALTER TABLE `configuracao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,7 +138,7 @@ CREATE TABLE `conta` (
 
 LOCK TABLES `conta` WRITE;
 /*!40000 ALTER TABLE `conta` DISABLE KEYS */;
-INSERT INTO `conta` VALUES (1,2,NULL,'2013-10-04 03:06:04','2013-10-04 03:06:04'),(2,3,NULL,'2013-11-01 03:34:54','2013-11-01 03:34:54');
+INSERT INTO `conta` VALUES (1,2,0.048000,'2013-10-04 03:06:04','2014-03-24 01:39:06'),(2,3,NULL,'2013-11-01 03:34:54','2013-11-01 03:34:54');
 /*!40000 ALTER TABLE `conta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +161,7 @@ CREATE TABLE `conta_operacao` (
   KEY `conta_id_idx` (`conta_id`),
   CONSTRAINT `conta_operacao_conta_id_conta_id` FOREIGN KEY (`conta_id`) REFERENCES `conta` (`id`),
   CONSTRAINT `conta_operacao_tipo_operacao_id_tipo_operacao_id` FOREIGN KEY (`tipo_operacao_id`) REFERENCES `tipo_operacao` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,6 +170,7 @@ CREATE TABLE `conta_operacao` (
 
 LOCK TABLES `conta_operacao` WRITE;
 /*!40000 ALTER TABLE `conta_operacao` DISABLE KEYS */;
+INSERT INTO `conta_operacao` VALUES (1,1,4,0.004000,'2014-03-24 01:24:25','2014-03-24 01:24:25'),(2,1,4,0.004000,'2014-03-24 01:26:16','2014-03-24 01:26:16'),(3,1,4,0.004000,'2014-03-24 01:26:37','2014-03-24 01:26:37'),(4,1,4,0.004000,'2014-03-24 01:27:32','2014-03-24 01:27:32'),(5,1,4,0.004000,'2014-03-24 01:27:56','2014-03-24 01:27:56'),(6,1,4,0.004000,'2014-03-24 01:28:09','2014-03-24 01:28:09'),(7,1,4,0.004000,'2014-03-24 01:28:52','2014-03-24 01:28:52'),(8,1,4,0.004000,'2014-03-24 01:29:03','2014-03-24 01:29:03'),(9,1,4,0.004000,'2014-03-24 01:29:16','2014-03-24 01:29:16'),(10,1,4,0.004000,'2014-03-24 01:36:51','2014-03-24 01:36:51'),(11,1,4,0.004000,'2014-03-24 01:38:04','2014-03-24 01:38:04'),(12,1,4,0.004000,'2014-03-24 01:39:06','2014-03-24 01:39:06');
 /*!40000 ALTER TABLE `conta_operacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -355,6 +356,36 @@ LOCK TABLES `referal_controle` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `relato`
+--
+
+DROP TABLE IF EXISTS `relato`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `relato` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) DEFAULT NULL,
+  `site` varchar(255) DEFAULT NULL,
+  `texto` text,
+  `is_approved` tinyint(1) DEFAULT '0',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `imagem` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `relato`
+--
+
+LOCK TABLES `relato` WRITE;
+/*!40000 ALTER TABLE `relato` DISABLE KEYS */;
+INSERT INTO `relato` VALUES (1,'Relato 1','http://www.site.com.br','Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',1,'2014-03-24 00:12:14','2014-03-24 01:13:30','ddfd433f29acd6590c270065ff31bf244b018de3.gif'),(2,'Relato 2','http://www.site.com.br','Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',0,'2014-03-24 00:27:17','2014-03-24 01:18:04','b4431309061424e12254a063dc514b6e7ac76161.gif'),(3,'Relato 3','http://www.site.com.br','Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',1,'2014-03-24 01:15:29','2014-03-24 01:15:29',NULL),(4,'Relato 4','http:/www.site.com.br','Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',1,'2014-03-24 01:41:23','2014-03-24 01:42:35','7483c272c34554af1cf8340e88e301bda5868998.gif');
+/*!40000 ALTER TABLE `relato` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `resgate`
 --
 
@@ -378,7 +409,7 @@ CREATE TABLE `resgate` (
   CONSTRAINT `resgate_status_id_status_id` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`),
   CONSTRAINT `resgate_tipo_resgate_id_tipo_resgate_id` FOREIGN KEY (`tipo_resgate_id`) REFERENCES `tipo_resgate` (`id`),
   CONSTRAINT `resgate_user_id_sf_guard_user_id` FOREIGN KEY (`user_id`) REFERENCES `sf_guard_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -387,6 +418,7 @@ CREATE TABLE `resgate` (
 
 LOCK TABLES `resgate` WRITE;
 /*!40000 ALTER TABLE `resgate` DISABLE KEYS */;
+INSERT INTO `resgate` VALUES (1,2,3,4,0.004000,'e1a6e8e918adf5ec446095a58e3adbb0',1,'2014-03-24 01:24:22','2014-03-24 01:24:25');
 /*!40000 ALTER TABLE `resgate` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -567,7 +599,7 @@ CREATE TABLE `sf_guard_user` (
 
 LOCK TABLES `sf_guard_user` WRITE;
 /*!40000 ALTER TABLE `sf_guard_user` DISABLE KEYS */;
-INSERT INTO `sf_guard_user` VALUES (1,'Filipe','Synthis','filipe@filipe.com','admin','sha1','eac19dda068fc171b0c57664d8b08a13','7fc0ce269805af211d9d000eedf110a97037714b',1,1,'2014-02-01 13:52:43','2013-10-04 03:04:40','2014-02-01 13:52:43'),(2,'Filipe','Synthis','goulartfs@gmail.com','filipe','sha1','34d57dfd9bee807be539d1d611b88347','52c76b61a98d76ed999d1e79dd174a7b1293b5d4',1,0,'2014-02-17 12:27:49','2013-10-17 00:49:05','2014-02-17 12:27:49'),(3,'Thiago','Alves de Oliveira Pereira','contato@cliquesbr.com.br','thiag','sha1','b9fee93edd9645725894f4dfa332fbd0','707c7afd2cd4e1ccb6df6a099219025a4943fe17',1,0,'2013-11-01 03:35:02','2013-11-01 03:34:54','2013-11-01 03:35:02');
+INSERT INTO `sf_guard_user` VALUES (1,'Filipe','Synthis','filipe@filipe.com','admin','sha1','eac19dda068fc171b0c57664d8b08a13','7fc0ce269805af211d9d000eedf110a97037714b',1,1,'2014-03-24 01:47:32','2013-10-04 03:04:40','2014-03-24 01:47:32'),(2,'Filipe','Synthis','goulartfs@gmail.com','filipe','sha1','34d57dfd9bee807be539d1d611b88347','52c76b61a98d76ed999d1e79dd174a7b1293b5d4',1,0,'2014-03-24 01:47:08','2013-10-17 00:49:05','2014-03-24 01:47:08'),(3,'Thiago','Alves de Oliveira Pereira','contato@cliquesbr.com.br','thiag','sha1','b9fee93edd9645725894f4dfa332fbd0','707c7afd2cd4e1ccb6df6a099219025a4943fe17',1,0,'2013-11-01 03:35:02','2013-11-01 03:34:54','2013-11-01 03:35:02');
 /*!40000 ALTER TABLE `sf_guard_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -776,7 +808,7 @@ CREATE TABLE `url` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `short_url` (`short_url`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -785,7 +817,7 @@ CREATE TABLE `url` (
 
 LOCK TABLES `url` WRITE;
 /*!40000 ALTER TABLE `url` DISABLE KEYS */;
-INSERT INTO `url` VALUES (1,2,'http://www.fsynthis.com.br','cf2930','177.98.96.137','2013-10-17 00:50:48','2013-10-17 00:50:48'),(2,2,'http://animalplanet.com','eda76c',NULL,'2013-11-01 02:38:59','2013-11-01 02:38:59'),(3,2,'http://www.globo.com','1d0934',NULL,'2013-11-01 02:39:54','2013-11-01 02:39:54'),(4,2,'http://www.terra.com.br','e3ab76',NULL,'2013-11-01 04:16:15','2013-11-01 04:16:15'),(5,1,'http://www.fsynthis.com.br','dcc124','189.106.129.233','2014-02-01 13:54:29','2014-02-01 13:54:29');
+INSERT INTO `url` VALUES (1,2,'http://www.fsynthis.com.br','cf2930','177.98.96.137','2013-10-17 00:50:48','2013-10-17 00:50:48'),(2,2,'http://animalplanet.com','eda76c',NULL,'2013-11-01 02:38:59','2013-11-01 02:38:59'),(3,2,'http://www.globo.com','1d0934',NULL,'2013-11-01 02:39:54','2013-11-01 02:39:54'),(4,2,'http://www.terra.com.br','e3ab76',NULL,'2013-11-01 04:16:15','2013-11-01 04:16:15'),(5,1,'http://www.fsynthis.com.br','dcc124','189.106.129.233','2014-02-01 13:54:29','2014-02-01 13:54:29'),(6,2,'http://www.naosalvo.com.br','a6fdd8','::1','2014-03-22 02:53:02','2014-03-22 02:53:02');
 /*!40000 ALTER TABLE `url` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -825,7 +857,7 @@ CREATE TABLE `url_controle` (
 
 LOCK TABLES `url_controle` WRITE;
 /*!40000 ALTER TABLE `url_controle` DISABLE KEYS */;
-INSERT INTO `url_controle` VALUES (1,1,NULL,'200.158.204.28',0,0,NULL,NULL,0,NULL,'2013-10-17 00:52:18','2013-10-17 00:52:18');
+INSERT INTO `url_controle` VALUES (1,1,1,'200.158.204.28',1,0,NULL,NULL,0,NULL,'2013-10-17 00:52:18','2013-10-17 00:52:18');
 /*!40000 ALTER TABLE `url_controle` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -908,4 +940,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-17 15:28:41
+-- Dump completed on 2014-03-24  1:48:46
