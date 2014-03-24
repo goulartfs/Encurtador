@@ -137,7 +137,7 @@ class mainActions extends sfActions {
     public function executeLogout(sfWebRequest $request) {
         $this->getUser()->signOut();
         $this->getUser()->setFlash('notice', 'Obrigado');
-        $this->redirect('@sf_guard_signin');
+        $this->redirect('@homepage');
     }
 
     public function executeConfirmResolve(sfWebRequest $request) {
@@ -159,5 +159,25 @@ class mainActions extends sfActions {
     public function executeError404(sfWebRequest $request) {
         $this->getUser()->setFlash('title-page', 'Error404!');
         $this->message = $this->getUser()->getFlash('404message', "Página não encontrada!");
+    }
+
+    public function executeProcessRelato(sfWebRequest $request){
+        $this->form = new RelatoUserForm();
+
+        if($request->getMethod()=='POST'){
+            $this->form->bind($request->getParameter('relato'), $request->getFiles('relato'));
+            if($this->form->isValid()){
+                $this->form->save();
+
+                $this->forward('main', 'finishRelato');
+            }
+        }
+
+        $this->setLayout('profile');
+    }
+
+    public  function executeFinishRelato(sfWebRequest $request){
+        $this->getUser()->setFlash('title-page', 'Relatos');
+        $this->setLayout('profile');
     }
 }

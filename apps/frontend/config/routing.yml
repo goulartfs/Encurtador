@@ -61,7 +61,11 @@ termos:
 sobre:
   url:   /sobre-nos
   param: { module: sobrenos, action: index }
- 
+
+relato:
+  url:   /relato
+  param: { module: main, action: processRelato }
+
 campanha:
   url: /advertise
   param: { module: campanha, action: list }

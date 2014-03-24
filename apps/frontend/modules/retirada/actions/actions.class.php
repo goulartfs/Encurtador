@@ -222,6 +222,8 @@ class retiradaActions extends sfActions {
             $resgate->setStatusId(4);
             $resgate->save();
         }
+
+        $this->form = new RelatoUserForm();
     }
 
     public function executeInfo(sfWebRequest $request) {
