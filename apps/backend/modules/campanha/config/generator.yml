@@ -17,7 +17,6 @@ generator:
       list:    
         title: Campanhas
         display: [_liberar, StatusTransacao, sfGuardUser, titulo, url_campanha, payment_method, is_active, is_finished, created_at, end_date]
-        actions: []
         batch_actions: []
         object_actions: 
           _edit: ~
