@@ -48,7 +48,7 @@ class faleconoscoActions extends sfActions {
                 $mensagem->setFrom($this->form->getValue('email'), $this->form->getValue('nome'));
                 $mensagem->setSubject("Contato Site - " . $this->form->getValue('assunto'));
                 $mensagem->addTo('goulartfs@gmail.com', 'Filipe');
-                $mensagem->addTo('contato@cliquesbr.com.br', 'Thiago');
+                $mensagem->addTo('contato@adpllus.com', 'Thiago');
                 $mensagem->setBody($body, 'text/plain');
 
                 $this->getMailer()->send($mensagem);

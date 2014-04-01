@@ -4,11 +4,7 @@
         <?php print $form->renderHiddenFields() ?>
     <input type="submit" value="Criar Link">
     <p class="text-left">
-        Sunt lubaes amor neuter, brevis vigiles.
-        Est camerarius vita, cesaris.
-        Cum buxum nocere, omnes vitaes anhelare regius, placidus classises.
-        Conclusion is the only futility, the only guarantee of density.
-        The captain robs with pestilence, hoist the reef until it laughs.
+        &nbsp;
     </p>
 </form>
 <?php end_slot(); ?>

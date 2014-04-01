@@ -1,9 +1,9 @@
 <h1 class="head_page">Resgatar seus ganhos</h1>
 <p>
-    Se os seus rendimentos chegarem a um total de R$ 8,00 ou mais, você poderá solicitar a retirada a qualquer momento, seus ganhos serão pagos em até 3 dias úteis, após o pedido de retirada. Verifique se o seu usuário Paypal, ou dados bancários estão corretos antes de confirmar, caso contrário, não nos responsabilizamos por erros por parte do usuário Publisher.
+    Os seus rendimentos chegando a um total de R$ 9,00 ou mais, você poderá solicitar a retirada, seus ganhos serão pagos em até 3 dias úteis, após o pedido de retirada. Verifique se o seu usuário Paypal, ou dados bancários estão corretos antes de confirmar.
 </p>
 <p>
-    Atingindo o valor mínimo de R$ 8,00, aparecerá logo abaixo um menu com as opções de retirada, com isto basta escolher a qualquer momento a opção que melhor se encaixe para você.
+    Atingindo o valor mínimo de R$ 9,00, aparecerá logo abaixo um menu com as opções de retirada, com isto basta escolher a qualquer momento a opção que melhor se encaixe para você.
 </p>
 <div class="row">
     <div class="span12">

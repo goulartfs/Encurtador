@@ -53,7 +53,7 @@ class carteiraActions extends sfActions {
                 $data = array(
                     'custom'=>$transacao->getAuthKey(),
                     'amount'=>$transacao->getValor(),
-                    'item_name'=>'Adição de crédito na carteira CliqueBR - R$ ' . $transacao->getValor(),
+                    'item_name'=>'Adição de crédito na carteira Adpllus - R$ ' . $transacao->getValor(),
                     'ref'=>'carteira',
                 );
                 

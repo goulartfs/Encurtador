@@ -46,7 +46,7 @@ class sfGuardRegisterActions extends sfActions {
                 $validacao->save();
                 
                 $email = $this->getMailer()->compose();
-                $email->setFrom('contato@cliquesbr.com.br', 'CliquesBr');
+                $email->setFrom('contato@adpllus.com', 'Adpllus');
                 $email->setSubject('Confirmação de Cadastro');
                 $email->addTo($user->getEmailAddress(), $user->getFirstName());
                 
@@ -55,7 +55,7 @@ class sfGuardRegisterActions extends sfActions {
                 ob_start();
                 print "<h1>Obrigado por se cadastrar</h1>";
                 print "<p>Confirme seu cadastro: <a href='{$link}'>{$link}</a>.</p>";
-                print "<p>Atenciosamente,<br/><strong>Adplus</strong></p>";
+                print "<p>Atenciosamente,<br/><strong>Adpllus</strong></p>";
                 $body = ob_get_clean();
                 
                 $email->setBody($body, 'text/html');

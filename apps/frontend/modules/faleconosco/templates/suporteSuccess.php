@@ -26,14 +26,6 @@
         </form>
     </div>
     <div class="span5">
-        <h2>Lorem ipsum</h2>
-        <p>
-            Sit and you will be absorbed sincerely.
-            Tumultumques observare in alter sala!
-            Frondator, ratione, et coordinatae.
-            Amors velum in quadrata!
-            You have to remain, and understand tantra by your listening.
-            Treasure, fortune, and grace.
-        </p>
+
     </div>
 </div>

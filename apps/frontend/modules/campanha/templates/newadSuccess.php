@@ -1,12 +1,3 @@
-<div class="row">
-    <div class="span12">
-        <div class="alert alert-info">
-            <i class="icon-info-sign"></i>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </div>
-    </div>
-    </div>
 <section class="dados">
     <div class="container">
         <div class="row">
@@ -37,7 +28,7 @@
                         <strong>Disclaimer</strong>
                         <label class="checkbox">
                             <input type="checkbox" name="termos" />
-                            Lorem ipsum dolor sit amet...
+                            Aceito que o AdPllus não reembolsará nenhum pagamento devido à fraude. O AdPllus irá mostrar o meu site pelo menos 5 segundos a pessoas reais.
                         </label>
                     </div>
                 </div>

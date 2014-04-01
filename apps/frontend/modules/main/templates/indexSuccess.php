@@ -4,7 +4,7 @@
             <div class="span4 redes-sociais">
                 <img src="/images/redes_sociais.png" alt="">
                 <h2>Redes Sociais</h2>
-                <p>Se você tem um site com 1 ou 10.000 mil links e deseja mudar para o Adplus, você tem um script
+                <p>Se você tem um site com 1 ou 10.000 mil links e deseja mudar para o Adpllus, você tem um script
                     simples, para realizar esta tarefa</p>
             </div>
             <div class="span4 sites-blogs">

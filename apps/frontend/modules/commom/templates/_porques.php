@@ -1,11 +1,10 @@
 <section class='porques'>
     <div class="container">
-        <h1>Porque a Adplus?</h1>
-        <p>Porque Pagamos R$ 4 reais para cada 1000 Views, valor bem superior aos demais encurtadores.
-            Toda a publicidade é estritamente familiar, segura e sem popups.
+        <h1>Porque a Adpllus?</h1>
+        <p>Sabia que pode usar sua Influência na internet para ganhar dinheiro com o Adplus?
+            é Simples, basta você usar nosso encurtador de links e divulgá-los em seu site, blog, forum, redes sociais etc.
         </p>
-        <p>Servidores de antivírus estarão escaneando os anúncios 24/7. Pagamento mínimo R$ 8,00 reais.
-            Pagaremos todos os usuários através do Paypal, Pagseguro ou depósito em conta.
+        <p>Pagamento de R$ 3,05 para cada 1000 visualizações. Não perca tempo e cadastre-se.
         </p>
     </div>
 </section>

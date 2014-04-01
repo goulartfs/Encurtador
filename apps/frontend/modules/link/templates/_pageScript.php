@@ -3,7 +3,7 @@
         jQuery.each(sites_para_exclusao, function( index, value ) {
              sites_excluded += 'a[href*='+value+'],'
         });
-        var paragraphs = jQuery("a[href*=http]:not("+sites_excluded+"a[href*=cliquesbr])");
+        var paragraphs = jQuery("a[href*=http]:not("+sites_excluded+"a[href*=adpllus])");
         for (var i = 0; i < paragraphs.length; i++)
         {
             newHref = paragraphs[i].href;

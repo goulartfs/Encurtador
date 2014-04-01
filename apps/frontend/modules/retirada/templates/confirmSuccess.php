@@ -42,7 +42,7 @@
                 }
             } else {
                 ?>
-                    Os ganhos de links e referência serão creditados na sua carteira virtual CliqueBR.
+                    Os ganhos de links e referência serão creditados na sua carteira virtual Adpllus.
                 <?php
             }
             ?>
